@@ -54,6 +54,15 @@ module.exports = {
   get optimismWeb3() {
     return chainRandomClients.optimismRandomClient();
   },
+  get kavaWeb3() {
+    return chainRandomClients.kavaRandomClient();
+  },
+  get ethereumWeb3() {
+    return chainRandomClients.ethereumRandomClient();
+  },
+  get cantoWeb3() {
+    return chainRandomClients.cantoRandomClient();
+  },
 
   web3Factory: _web3Factory,
 

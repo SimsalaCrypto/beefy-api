@@ -56,6 +56,7 @@ const _tokens = {
       'Beefy Finance is a Decentralized, Multi-Chain Yield Optimizer platform that allows its users to earn compound interest on their crypto holdings.',
     logoURI:
       'https://raw.githubusercontent.com/beefyfinance/beefy-app/prod/src/images/single-assets/BIFI.png',
+    documentation: 'https://docs.beefy.finance/',
   },
   MAI: {
     name: 'MAI',
@@ -65,8 +66,9 @@ const _tokens = {
     decimals: 18,
     website: 'https://www.mai.finance/',
     description:
-      "MAI is a stable coin collateralized by your MATIC holdings. It's powered by Qi Dao, a protocol that enables any cryptocurrency community to create stablecoins backed by their native tokens.",
+      "MAI is a stablecoin collateralized by your crypto holdings. It's powered by Qi Dao, a protocol that enables any cryptocurrency community to create stablecoins backed by their native tokens.",
     logoURI: 'https://raw.githubusercontent.com/0xlaozi/qidao/main/images/mimatic-red.png',
+    documentation: 'https://docs.mai.finance/',
   },
   DOGE: {
     name: 'Doge Token',
@@ -132,6 +134,7 @@ const _tokens = {
     logoURI:
       'https://app.solarbeam.io/_next/image?url=https%3A%2F%2Fapp.solarbeam.io%2Fimages%2Ftokens%2Fusdc.png&w=48&q=50',
     website: 'https://www.circle.com/usdc',
+    documentation: 'https://developers.circle.com/docs',
     description:
       'USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
   },
@@ -167,6 +170,7 @@ const _tokens = {
     logoURI:
       'https://app.solarbeam.io/_next/image?url=https%3A%2F%2Fapp.solarbeam.io%2Fimages%2Ftokens%2Fusdc.png&w=48&q=50',
     website: 'https://www.circle.com/usdc',
+    documentation: 'https://developers.circle.com/docs',
     description:
       'USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
   },
@@ -203,6 +207,7 @@ const _tokens = {
     website: 'https://weth.io/',
     description: 'Ether or ETH is the native currency built on the Ethereum blockchain.',
     logoURI: 'https://arbiscan.io/token/images/weth_28.png',
+    documentation: 'https://ethereum.org/en/developers/docs/',
   },
   BNB: {
     name: 'Binance',
@@ -282,8 +287,9 @@ const _tokens = {
     decimals: 18,
     website: 'https://www.mai.finance/',
     description:
-      "MAI is a stable coin collateralized by your MATIC holdings. It's powered by Qi Dao, a protocol that enables any cryptocurrency community to create stablecoins backed by their native tokens.",
+      "MAI is a stablecoin collateralized by your crypto holdings. It's powered by Qi Dao, a protocol that enables any cryptocurrency community to create stablecoins backed by their native tokens.",
     logoURI: 'https://raw.githubusercontent.com/0xlaozi/qidao/main/images/mimatic-red.png',
+    documentation: 'https://docs.mai.finance/',
   },
   FTM: {
     name: 'Fantom Token',
@@ -307,6 +313,7 @@ const _tokens = {
     description:
       'You, the Spellcaster, can provide collateral in the form of various interest bearing crypto assets such as yvYFI, yvUSDT, yvUSDC, xSUSHI and more. With this, you can borrow magic internet money (MIM) which is a stable coin that you can swap for any other traditional stable coin.',
     logoURI: '',
+    documentation: 'https://docs.abracadabra.money/',
   },
   PETS: {
     name: 'PETS Token',
@@ -434,11 +441,33 @@ const _tokens = {
     address: '0xFFFfFfFfF6E528AD57184579beeE00c5d5e646F0',
     chainId: 1285,
     decimals: 8,
-    logoURI:
-      'https://moonriver.moonscan.io/token/images/kintsugibtc_32.png',
+    logoURI: 'https://moonriver.moonscan.io/token/images/kintsugibtc_32.png',
     website: 'https://kusama.network/',
     description:
       'xckBTC is the Moonriver bridged verison of kBTC. kBTC is an overcollaterized Bitcoin stablecoin asset on Kusama.',
+  },
+  wstKSM: {
+    name: 'Wrapped Staked KSM',
+    symbol: 'wstKSM',
+    address: '0x3bfd113ad0329a7994a681236323fb16E16790e3',
+    chainId: 1285,
+    decimals: 12,
+    logoURI:
+      'https://github.com/solarbeamio/solarbeam-tokenlist/blob/main/assets/moonriver/0xFfc7780C34B450d917d557E728f033033CB4fA8C/logo.png',
+    website: 'https://kusama.lido.fi/',
+    description:
+      'Staked KSM (stKSM) is a liquid staking solution for KSM backed by industry-leading staking providers. stKSM rebases daily to receive rewards, wrapping stKSM for wstKSM will stop the rebasing mechanism, and will allow users to continue accruing staking rewards.',
+  },
+  'BIFI-WMOVR LP': {
+    name: 'BIFI-WMOVR LP',
+    symbol: 'BIFI-WMOVR LP',
+    address: '0xaC726ee53edFAe5f8f4C2c0d611Fd71D58E743bA',
+    chainId: 1285,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://app.beefy.com/',
+    oracleId: 'sushi-mr-bifi-wmovr',
+    oracle: 'lps',
   },
 } as const;
 

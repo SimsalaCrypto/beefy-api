@@ -1,11 +1,18 @@
 'use strict';
+require('dotenv').config();
 
+import { initBoostService } from './api/boosts/getBoosts';
 import { initBifiBuyBackService } from './api/stats/bifibuyback/getBifiBuyback';
 import { initPriceService } from './api/stats/getAmmPrices';
 import { initApyService } from './api/stats/getApys';
 import { initMooTokenPriceService } from './api/stats/getMooTokenPrices';
 import { initVaultService } from './api/stats/getMultichainVaults';
 import { initTvlService } from './api/stats/getTvl';
+import { initTokenService } from './api/tokens/getTokens';
+import { initConfigService } from './api/config/getConfig';
+import { initVaultFeeService } from './api/vaults/getVaultFees';
+import { initTreasuryService } from './api/treasury/getTreasury';
+import { initProposalsService } from './api/snapshot/getProposals';
 
 require('./utils/redisHelper').initRedis();
 
@@ -41,9 +48,15 @@ const start = async () => {
   initApyService();
   initPriceService();
   initVaultService();
+  initBoostService();
+  initVaultFeeService();
   initTvlService();
   initBifiBuyBackService();
   initMooTokenPriceService();
+  initTokenService();
+  initConfigService();
+  initProposalsService();
+  initTreasuryService();
   app.listen(port);
   console.log(`> beefy-api running! (:${port})`);
 };

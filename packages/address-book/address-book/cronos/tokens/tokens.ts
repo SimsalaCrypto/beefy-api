@@ -16,6 +16,17 @@ const _tokens = {
   CRO: CRO,
   WCRO: CRO,
   WNATIVE: CRO,
+  FIRA: {
+    name: 'Fira',
+    symbol: 'FIRA',
+    address: '0x7ABa852082b6F763E13010CA33B5D9Ea4EeE2983',
+    chainId: 25,
+    decimals: 18,
+    logoURI: 'https://vvs.finance/images/tokens/0x7ABa852082b6F763E13010CA33B5D9Ea4EeE2983.svg',
+    website: 'https://defira.com/',
+    description:
+      'The FIRA token is the main governance token and currency for the Defiraverse. In the game world, it is known as the Fira Orb.',
+  },
   VERSA: {
     name: 'VersaGames VERSA',
     symbol: 'VERSA',
@@ -25,6 +36,17 @@ const _tokens = {
     logoURI: 'https://vvs.finance/images/tokens/0x00D7699b71290094CcB1a5884cD835bD65a78c17.svg',
     website: 'https://versagames.io/',
     description: 'VersaGames is the next-generation games marketplace.',
+  },
+  MTD: {
+    name: 'Minted',
+    symbol: 'MTD',
+    address: '0x0224010BA2d567ffa014222eD960D1fa43B8C8E1',
+    chainId: 25,
+    decimals: 18,
+    website: 'https://minted.network/',
+    description:
+      'Minted network is a decentralised NFT platform that aspires to be the digital bazaar of wonders for everyone to discover, trade, and find NFT gems, native to Ethereum and Cronos.',
+    logoURI: 'https://vvs.finance/images/tokens/0x0224010BA2d567ffa014222eD960D1fa43B8C8E1.svg',
   },
   FER: {
     name: 'Ferro',
@@ -123,6 +145,7 @@ const _tokens = {
       'Beefy Finance is a Decentralized, Multi-Chain Yield Optimizer platform that allows its users to earn compound interest on their crypto holdings.',
     logoURI:
       'https://raw.githubusercontent.com/beefyfinance/beefy-app/prod/src/images/single-assets/BIFI.png',
+    documentation: 'https://docs.beefy.finance/',
   },
   TONIC: {
     name: 'Tectonic Governance Token',
@@ -199,6 +222,7 @@ const _tokens = {
     logoURI:
       'https://app.solarbeam.io/_next/image?url=https%3A%2F%2Fapp.solarbeam.io%2Fimages%2Ftokens%2Fusdc.png&w=48&q=50',
     website: 'https://www.circle.com/usdc',
+    documentation: 'https://developers.circle.com/docs',
     description:
       'USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
   },
@@ -263,12 +287,24 @@ const _tokens = {
   BUSD: {
     name: 'BUSD Token',
     symbol: 'BUSD',
-    address: '0x6aB6d61428fde76768D7b45D8BFeec19c6eF91A8',
+    address: '0xC74D59A548ecf7fc1754bb7810D716E9Ac3e3AE5',
     chainId: 25,
     decimals: 18,
     website: 'https://www.binance.com/en/busd',
     description:
       'Binance USD (BUSD) is a 1:1 USD-backed stable coin issued by Binance (in partnership with Paxos), Approved and regulated by the New York State Department of Financial Services (NYDFS), The BUSD Monthly Audit Report can be viewed from the official website.',
+    logoURI:
+      'https://app.cronaswap.org/images/tokens/0x6aB6d61428fde76768D7b45D8BFeec19c6eF91A8.svg',
+  },
+  BUSDb: {
+    name: 'BUSD Token (Multichain)',
+    symbol: 'BUSD',
+    address: '0x6aB6d61428fde76768D7b45D8BFeec19c6eF91A8',
+    chainId: 25,
+    decimals: 18,
+    website: 'https://www.binance.com/en/busd',
+    description:
+      'Multichain bridged Binance USD (BUSD) is a 1:1 USD-backed stable coin issued by Binance (in partnership with Paxos), Approved and regulated by the New York State Department of Financial Services (NYDFS), The BUSD Monthly Audit Report can be viewed from the official website.',
     logoURI:
       'https://app.cronaswap.org/images/tokens/0x6aB6d61428fde76768D7b45D8BFeec19c6eF91A8.svg',
   },

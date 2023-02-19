@@ -1,6 +1,17 @@
 import { ChainId } from '../packages/address-book/address-book';
 import { sushi } from '../packages/address-book/address-book/one/platforms/sushi';
 import { addressBook } from '../packages/address-book/address-book';
+import yargs from 'yargs';
+import fs from 'fs';
+import path from 'path';
+
+import { ethers } from 'ethers';
+import { MULTICHAIN_RPC } from '../src/constants';
+
+import masterchefABI from '../src/abis/matic/SushiMiniChefV2.json';
+import LPPairABI from '../src/abis/LPPair.json';
+import ERC20ABI from '../src/abis/ERC20.json';
+
 const {
   polygon: {
     platforms: { sushi: sushiPolygon },
@@ -21,17 +32,6 @@ const {
     platforms: { pegasys: pegasys },
   },
 } = addressBook;
-
-const yargs = require('yargs');
-const fs = require('fs');
-const path = require('path');
-
-const { ethers } = require('ethers');
-const { MULTICHAIN_RPC } = require('../src/constants');
-
-const masterchefABI = require('../src/abis/matic/SushiMiniChefV2.json');
-const LPPairABI = require('../src/abis/LPPair.json');
-const ERC20ABI = require('../src/abis/ERC20.json');
 
 const projects = {
   sushiOne: {
@@ -79,6 +79,11 @@ const projects = {
     file: '../src/data/sys/pegasysLpPools.json',
     masterchef: pegasys.minichef,
   },
+  pancake: {
+    prefix: 'cakev2',
+    file: '../src/data/cakeLpPoolsV2.json',
+    masterchef: '0xa5f8C5Dbd5F286960b9d90548680aE5ebFf07652',
+  },
 };
 
 const args = yargs.options({
@@ -95,9 +100,14 @@ const args = yargs.options({
     choices: Object.keys(projects),
   },
   pool: {
-    type: 'interger',
+    type: 'integer',
     demandOption: true,
     describe: 'poolId from respective masterchef contract',
+  },
+  newFee: {
+    type: 'bool',
+    demandOption: true,
+    describe: 'If the beefy fee is 9.5% use true else use false',
   },
 }).argv;
 
@@ -157,6 +167,7 @@ async function main() {
     name: newPoolName,
     address: lp.address,
     decimals: `1e${lp.decimals}`,
+    beefyFee: args['newFee'] ? 0.095 : 0.045,
     poolId: poolId,
     chainId: chainId,
     lp0: {

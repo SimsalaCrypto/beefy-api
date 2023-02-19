@@ -1,65 +1,49 @@
-const getAlpacaApys = require('./alpaca/getAlpacaApys');
 const getBeltApys = require('./belt/getBeltApys');
 const { getDegensLpApys } = require('./degens');
-const getIcarusApys = require('./icarus/getIcarusApys');
 const getJetswapApys = require('./jetfuel/getJetswapApys');
-const getKebabLpApys = require('./kebab/getKebabLpApys');
-const getKebabPoolApy = require('./kebab/getKebabPoolApy');
-const getCakeApys = require('./pancake/getCakeApys');
-const getCakePoolApy = require('./pancake/getCakePoolApy');
 const { getCakeLpV2Apys } = require('./pancake/getCakeLpV2Apys');
+const getCakeV2PoolApy = require('./pancake/getCakeV2PoolApy');
 const getVenusApys = require('./venus/getVenusApys');
 const getMdexBscLpApys = require('./mdex/getMdexBscLpApys');
 const getMdexMdxApy = require('./mdex/getMdexMdxApy');
-const getTenfiApys = require('./tenfi/getTenfiApys');
 const getYelApys = require('./yel/getYelApys');
-const getCakeV2PoolApy = require('./pancake/getCakeV2PoolApy');
 const getBifiMaxiApy = require('./beefy/getBifiMaxiApy');
 const getOOELpApys = require('./ooe/getOOELpApys');
-const { getFarmheroApys } = require('./farmhero/getFarmheroApys');
-const getOmnifarmApys = require('./omnifarm/getOmnifarmApys');
-const getBifiMaxiV2Apy = require('./beefy/getBifiMaxiV2Apy');
 const getBifiGovApy = require('./beefy/getBifiGovApy');
 const getMoonpotApys = require('./pots/getMoonpotApys');
 const getBiswapApys = require('./biswap/getBiswapApys');
 const getStargateApys = require('./stargate/getStargateBscApys');
 const getValasApys = require('./valas/getValasApys');
 const getValasLpApys = require('./valas/getValasLpApys');
-const getbeCakeApy = require('./pancake/getbeCakeApy');
-const getbeCakeEarnApy = require('./pancake/getbeCakeEarnApy');
 const { getDotDotApy } = require('./getDotDotApy');
+const getConeApys = require('./getConeApys');
+const getThenaApys = require('./getThenaApys');
+const { getWombexApy } = require('./getWombexApy');
+const { getSwapFishApys } = require('./getSwapFishApys');
 
 const getApys = [
-  getAlpacaApys,
+  getSwapFishApys,
   getBeltApys,
   getBifiGovApy,
   getBifiMaxiApy,
-  getBifiMaxiV2Apy,
   getBiswapApys,
-  getCakeApys,
-  getCakePoolApy,
   getCakeLpV2Apys,
   getCakeV2PoolApy,
+  getConeApys,
   getDegensLpApys,
-  getFarmheroApys,
-  getIcarusApys,
   getJetswapApys,
-  getKebabLpApys,
-  getKebabPoolApy,
   getMdexBscLpApys,
   getMdexMdxApy,
-  getOmnifarmApys,
   getOOELpApys,
   getMoonpotApys,
-  getTenfiApys,
   getVenusApys,
   getYelApys,
   getStargateApys,
   getValasApys,
   getValasLpApys,
-  getbeCakeApy,
-  getbeCakeEarnApy,
   getDotDotApy,
+  getWombexApy,
+  getThenaApys,
 ];
 // ^^ APYs are sorted alphabetically
 

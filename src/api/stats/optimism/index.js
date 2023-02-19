@@ -1,19 +1,37 @@
 const getBeetsOpApys = require('./getBeetsOpApys');
-const getCurveApys = require('./getCurveApys');
+const { getCurveApys } = require('./getCurveApys');
 const getVelodromeApys = require('./getVelodromeApys');
 const getStargateOpApys = require('./getStargateOpApys');
 const getbeVeloApy = require('./getbeVeloApy');
-const getbeVeloEarningsApy = require('./getbeVeloEarningsApy');
 const getOptimismBifiGovApy = require('./getOptimismBifiEarningsApy');
+const { getAaveV3Apys } = require('./getAaveV3Apys');
+const { getRipaeApys } = require('./getRipaeApys');
+const { getSonneApys } = require('./getSonneApys');
+const { getOptimismBifiMaxiApy } = require('./getOptimismBifiMaxiApy');
+const { getHopApys } = require('./getHopApys');
+const { getHopOpApys } = require('./getHopOpApys');
+const { getOlpApys } = require('./getOlpApys');
+const getBeOpxApy = require('./getBeOpxApy');
+const getBeOpxEarnApy = require('./getBeOpxEarnApy');
+const getKyberOptimismApys = require('./getKyberOptimismApys');
 
 const getApys = [
+  getKyberOptimismApys,
   getBeetsOpApys,
   getCurveApys,
   getVelodromeApys,
   getStargateOpApys,
   getbeVeloApy,
-  getbeVeloEarningsApy,
   getOptimismBifiGovApy,
+  getOptimismBifiMaxiApy,
+  getAaveV3Apys,
+  getRipaeApys,
+  getSonneApys,
+  getHopApys,
+  getHopOpApys,
+  getOlpApys,
+  getBeOpxApy,
+  getBeOpxEarnApy,
 ];
 
 const getOptimismApys = async () => {

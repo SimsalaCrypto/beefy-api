@@ -7,7 +7,7 @@ const getJoeBoostedApys = require('./getJoeBoostedLpApys');
 const getJoeDualApys = require('./getJoeDualLpApys');
 const getJoeApy = require('./getJoeApy');
 const getPangolinPNGApy = require('./getPangolinPNGApy');
-const getCurveApys = require('./getCurveApys');
+const { getCurveApys } = require('./getCurveApys');
 const { getAaveApys } = require('./getAaveApys');
 const { getAaveV3Apys } = require('./getAaveV3Apys');
 const getBlizzLpApys = require('./getBlizzLpApys');
@@ -25,8 +25,12 @@ import { getPangolinV2Apys } from './getPangolinV2Apys';
 import getbeJOEApy from './getbeJOEApy';
 import getbeJOEEarnApy from './getbeJOEEarnApy';
 const getSwapsicleApys = require('./getSwapsicleApys');
+const { getGmxApys } = require('./getGmxApys');
+const getKyberAvaxApys = require('./getKyberAvaxApys');
 
 const getApys = [
+  getKyberAvaxApys,
+  getGmxApys,
   getbeJOEApy,
   getbeJOEEarnApy,
   getPangolinV2Apys,

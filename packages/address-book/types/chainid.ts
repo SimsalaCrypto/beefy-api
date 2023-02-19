@@ -16,4 +16,7 @@ export enum ChainId {
   sys = 57,
   emerald = 42262,
   optimism = 10,
+  kava = 2222,
+  ethereum = 1,
+  canto = 7700,
 }

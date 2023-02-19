@@ -49,8 +49,17 @@ const {
   OPTIMISM_CHAIN_ID,
   OPTIMISM_VAULTS_ENDPOINT,
 
+  KAVA_CHAIN_ID,
+  KAVA_VAULTS_ENDPOINT,
+
   SYS_CHAIN_ID,
   //SYS_VAULTS_ENDPOINT,
+
+  CANTO_CHAIN_ID,
+  //CANTO_VAULTS_ENDPOINT,
+
+  ETH_CHAIN_ID,
+  ETHEREUM_VAULTS_ENDPOINT,
 } = require('../../constants');
 const { getKey, setKey } = require('../../utils/redisHelper.js');
 
@@ -143,8 +152,23 @@ const chains = [
   {
     chainId: OPTIMISM_CHAIN_ID,
     vaultsEndpoint: OPTIMISM_VAULTS_ENDPOINT,
-    // governancePool: require('../../data/moonbeam/governancePool.json'),
+    governancePool: require('../../data/optimism/governancePool.json'),
   },
+  {
+    chainId: KAVA_CHAIN_ID,
+    vaultsEndpoint: KAVA_VAULTS_ENDPOINT,
+    // governancePool: require('../../data/kava/governancePool.json'),
+  },
+  {
+    chainId: ETH_CHAIN_ID,
+    vaultsEndpoint: ETHEREUM_VAULTS_ENDPOINT,
+    governancePool: require('../../data/ethereum/governancePool.json'),
+  },
+  // {
+  //   chainId: CANTO_CHAIN_ID,
+  //  vaultsEndpoint: CANTO_VAULTS_ENDPOINT,
+  //  governancePool: require('../../data/canto/governancePool.json'),
+  // },
 ];
 
 const getTvl = () => {
@@ -188,7 +212,6 @@ const initTvlService = async () => {
 
 const saveToRedis = async () => {
   await setKey('', tvl);
-  console.log('TVL saved to redis');
 };
 
 module.exports = { getTvl, initTvlService };

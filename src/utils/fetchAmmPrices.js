@@ -16,10 +16,13 @@ const MULTICALLS = {
   1313161554: '0xFE40f6eAD11099D91D51a945c145CFaD1DD15Bb8',
   122: '0xE99c8A590c98c7Ae9FB3B7ecbC115D2eBD533B50',
   1088: '0xfcDD5a02C611ba6Fe2802f885281500EC95805d7',
-  1284: '0xd9F2Da642FAA1307e4F70a5E3aC31b9bfe920eAF',
+  1284: '0xd1d13EaAb9A92c47E8D11628AE6cb6C824E85E4B',
   57: '0x820ae7BF39792D7ce7befC70B0172F4D267F1938',
   42262: '0xE99c8A590c98c7Ae9FB3B7ecbC115D2eBD533B50',
   10: '0x13C6bCC2411861A31dcDC2f990ddbe2325482222',
+  2222: '0xA338D34c5de06B88197609956a2dEAAfF7Af46c8',
+  1: '0x9D55cAEE108aBdd4C47E42088C97ecA43510E969',
+  7700: '0xe6CcE165Aa3e52B2cC55F17b1dBC6A8fe5D66610',
 };
 
 const MulticallAbi = require('../abis/BeefyPriceMulticall.json');
@@ -35,7 +38,6 @@ const sortByKeys = o => {
 const calcTokenPrice = (knownPrice, knownToken, unknownToken) => {
   const valuation = knownToken.balance.dividedBy(knownToken.decimals).multipliedBy(knownPrice);
   const price = valuation.multipliedBy(unknownToken.decimals).dividedBy(unknownToken.balance);
-  const weight = knownToken.balance.plus(unknownToken.balance).toNumber();
 
   return {
     price: price.toNumber(),
@@ -132,14 +134,17 @@ const fetchAmmPrices = async (pools, knownPrices) => {
           prices[unknownToken.oracleId] = price;
           weights[unknownToken.oracleId] = weight;
         }
-        const lpData = calcLpPrice(pool, prices);
-        lps[pool.name] = lpData.price;
-        breakdown[pool.name] = lpData;
 
         unsolved.splice(i, 1);
         solving = true;
       }
     }
+  }
+
+  for (const pool of pools) {
+    const lpData = calcLpPrice(pool, prices);
+    lps[pool.name] = lpData.price;
+    breakdown[pool.name] = lpData;
   }
 
   return {

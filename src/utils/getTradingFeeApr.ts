@@ -2,19 +2,20 @@ import { getUtcSecondsFromDayRange } from './getUtcSecondsFromDayRange';
 import {
   pairDayDataQuery,
   pairDayDataSushiQuery,
+  pairDayDataSushiTridentQuery,
   poolsDataQuery,
   dayDataQuery,
   joeDayDataQuery,
   balancerDataQuery,
   joeDayDataRangeQuery,
   protocolDayDataRangeQuery,
+  hopQuery,
 } from '../apollo/queries';
 import getBlockTime from './getBlockTime';
 import getBlockNumber from './getBlockNumber';
 import BigNumber from 'bignumber.js';
 import { NormalizedCacheObject } from '@apollo/client/core';
 import { ApolloClient } from '@apollo/client/core';
-import { chain } from 'lodash';
 
 interface PairDayData {
   id: string;
@@ -96,6 +97,49 @@ export const getTradingFeeAprSushi = async (
     }
   } catch (e) {
     console.error('> getTradingFeeAprSushi error', pairAddresses[0]);
+  }
+
+  return pairAddressToAprMap;
+};
+
+export const getTradingFeeAprSushiTrident = async (
+  client: ApolloClient<NormalizedCacheObject>,
+  pairAddresses: string[],
+  liquidityProviderFee: number
+) => {
+  const [start0, end0] = getUtcSecondsFromDayRange(1, 2);
+  const [start1, end1] = getUtcSecondsFromDayRange(3, 4);
+  const pairAddressToAprMap: Record<string, BigNumber> = {};
+
+  try {
+    let queryResponse0 = await client.query({
+      query: pairDayDataSushiTridentQuery(addressesToLowercase(pairAddresses), start0, end0),
+    });
+
+    let queryResponse1 = await client.query({
+      query: pairDayDataSushiTridentQuery(addressesToLowercase(pairAddresses), start1, end1),
+    });
+
+    const pairDayDatas0 = queryResponse0.data.pairDaySnapshots.map(pair => pair);
+    const pairDayDatas1 = queryResponse1.data.pairDaySnapshots.map(pair => pair);
+
+    for (const pairDayData of zip([pairDayDatas0, pairDayDatas1])) {
+      if (pairDayData && pairDayData[0] && pairDayData[1]) {
+        const pairAddress = pairDayData[0].id.split('-')[0].toLowerCase();
+        const avgVol = new BigNumber(pairDayData[0].volumeUSD)
+          .plus(pairDayData[1].volumeUSD)
+          .dividedBy(2);
+        const avgReserve = new BigNumber(pairDayData[0].liquidityUSD)
+          .plus(pairDayData[1].liquidityUSD)
+          .dividedBy(2);
+        pairAddressToAprMap[pairAddress] = new BigNumber(avgVol)
+          .times(liquidityProviderFee)
+          .times(365)
+          .dividedBy(avgReserve);
+      }
+    }
+  } catch (e) {
+    console.error('> getTradingFeeAprSushiTrident error', pairAddresses[0]);
   }
 
   return pairAddressToAprMap;
@@ -205,6 +249,39 @@ export const getVariableTradingFeeApr = async (
     }
   } catch (e) {
     console.error('> getVariableTradingFeeApr error', pairAddresses[0]);
+  }
+
+  return pairAddressToAprMap;
+};
+
+export const getTradingFeeAprHop = async (
+  client: ApolloClient<NormalizedCacheObject>,
+  pairAddresses: string[],
+  tokens: string[],
+  tvl: number[],
+  liquidityProviderFee: number
+) => {
+  const [start, end] = getUtcSecondsFromDayRange(1, 2);
+  const pairAddressToAprMap: Record<string, BigNumber> = {};
+
+  try {
+    let i = 0;
+    for (const token of tokens) {
+      let {
+        data: { tokenSwaps },
+      }: { data: { tokenSwaps } } = await client.query({
+        query: hopQuery(token, start, end),
+      });
+      const values = tokenSwaps.map(({ tokensSold }) => tokensSold);
+      const sum = BigNumber.sum.apply(null, values);
+      pairAddressToAprMap[pairAddresses[i]] = sum
+        .times(liquidityProviderFee)
+        .times(365)
+        .dividedBy(tvl[i]);
+      ++i;
+    }
+  } catch (e) {
+    console.error('> getTradingFeeAprHop error', pairAddresses[0]);
   }
 
   return pairAddressToAprMap;

@@ -7,13 +7,13 @@ API that powers [Beefy Finance](https://app.beefy.finance). You can find the rep
 ## To Run.
 
 ```
-yarn install-all
+yarn install-all 
 yarn start
 ```
 
 Note: After you start the API it can take a minute or two before you can fetch the APYs. We currently log `getApys()` to the console when all the data is available.
 
-Optional enviroment vars:
+Optional environment vars:
 
 `BSC_RPC` - A custom RPC endpoint that you want to use.
 `HECO_RPC` - A custom RPC endpoint for HECO. You can just leave the default one otherwise.
@@ -77,12 +77,12 @@ Each of these fields within the structure are:
 - **vaultApy** - The vaultApr compounded, using compoundingsPerYear and beefyPerformanceFee in the calculation.
 - **lpFee** - The Liquidity Provider (LP) fee per trade. This is an internal field for reference.
 - **tradingApr** - Annual interest from trading fees, not compounded.
-- **totalApy** - The known Total APY. Where fields are available to calculate the Total APY including trading fees, this is calculated. The final calculation is totalApy = (1 + vaultApr) \* (1 + (compounded tradingApr)) - 1.
+- **totalApy** - The known Total APY. Where fields are available to calculate the Total APY including trading fees, this is calculated. The final calculation is totalApy = (1 + vaultApy) * (1 + tradingApr) - 1.
 
 
 #### **/prices** All token prices under the same endpoint (crosschain).
 
-#### **/lps**: All liqudity pair prices under a single endpoint (crosschain).
+#### **/lps**: All liquidity pair prices under a single endpoint (crosschain).
 
 #### **/vaults**: TBD
 
@@ -102,6 +102,14 @@ Each of these fields within the structure are:
 #### **/cmc**: Custom endpoint required by [CoinMarketCap](https://coinmarketcap.com/) to display our vaults in their yield farming section
 
 #### **/supply**: Used by [Coingecko](https://coingecko.com) to display BIFI's total supply and circulating supply
+
+---
+
+---
+
+## Further Information
+
+For further information on the range of endpoints currently supported by the Beefy API, check out the latest version of our [API documentation](https://docs.beefy.finance/developer-documentation/beefy-api).
 
 ---
 

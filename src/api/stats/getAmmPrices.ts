@@ -4,9 +4,20 @@ import { fetchAmmPrices } from '../../utils/fetchAmmPrices';
 import { fetchDmmPrices } from '../../utils/fetchDmmPrices';
 import { fetchMooPrices } from '../../utils/fetchMooPrices';
 import { fetchXPrices } from '../../utils/fetchXPrices';
-import { fetchStargatePrices } from '../../utils/fetchStargatePrices';
+import { fetchWrappedAavePrices } from '../../utils/fetchWrappedAaveTokenPrices';
+import { fetchEulerTokenPrices } from '../../utils/fetchEulerTokenPrices';
 import { fetchbeFTMPrice } from '../../utils/fetchbeFTMPrice';
+import { fetchJbrlPrice } from '../../utils/fetchJbrlPrice';
+import { fetchyVaultPrices } from '../../utils/fetchyVaultPrices';
+import { fetchCurveTokenPrices } from '../../utils/fetchCurveTokenPrices';
+import { fetchKyberTokenPrices } from '../../utils/fetchKyberTokenPrices';
+import { fetchsfrxEthPrice } from '../../utils/fetchsfrxEthPrice';
+import {
+  fetchBalancerStablePoolPrice,
+  fetchBalancerLinearPoolPrice,
+} from '../../utils/fetchBalancerStablePoolPrices';
 import { fetchCoinGeckoPrices } from '../../utils/fetchCoinGeckoPrices';
+import { fetchCurrencyPrices } from '../../utils/fetchCurrencyPrices';
 import { getKey, setKey } from '../../utils/redisHelper';
 
 import getNonAmmPrices from './getNonAmmPrices';
@@ -32,6 +43,7 @@ import crowPools from '../../data/crowLpPools.json';
 import inchPools from '../../data/1inchLpPools.json';
 import saltPools from '../../data/degens/saltLpPools.json';
 import apePools from '../../data/degens/apeLpPools.json';
+import apeJunglePools from '../../data/degens/apeJungleLpPools.json';
 import soupPools from '../../data/degens/soupLpPools.json';
 import autoPools from '../../data/autoLpPools.json';
 import julPools from '../../data/julLpPools.json';
@@ -210,6 +222,7 @@ import creditumPools from '../../data/fantom/creditumPools.json';
 import ripaePools from '../../data/fantom/ripaeLpPools.json';
 import ripaeAvaxPools from '../../data/avax/ripaeLpPools.json';
 import beamswapPools from '../../data/moonbeam/beamswapLpPools.json';
+import beamswapMultiRewardLpPools from '../../data/moonbeam/beamswapMultiRewardLpPools.json';
 import stellaswapPools from '../../data/moonbeam/stellaswapLpPools.json';
 import stellaswapPoolsV2 from '../../data/moonbeam/stellaswapLpV2Pools.json';
 import darkCryptoPools from '../../data/cronos/darkCryptoLpPools.json';
@@ -223,6 +236,7 @@ import empLpPools from '../../data/degens/empLpPools.json';
 import vvsDualPools from '../../data/cronos/vvsDualLpPools.json';
 import joeBoostedLpPools from '../../data/avax/joeBoostedLpPools.json';
 import spookyV2LpPools from '../../data/fantom/spookyV2LpPools.json';
+import spookyV3LpPools from '../../data/fantom/spookyV3LpPools.json';
 import valasLpPools from '../../data/valasLpPools.json';
 import bombLpPools from '../../data/degens/bombLpPools.json';
 import pegasysLpPools from '../../data/sys/pegasysLpPools.json';
@@ -233,18 +247,43 @@ import yuzuDualPools from '../../data/emerald/yuzuDualLpPools.json';
 import dfxPools from '../../data/matic/dfxLpPools.json';
 import ripaeMaticPools from '../../data/matic/ripaeLpPools.json';
 import velodromePools from '../../data/optimism/velodromeLpPools.json';
+import giddyLpPools from '../../data/matic/giddyLpPools.json';
 import ripaeCronosPools from '../../data/cronos/ripaeLpPools.json';
 import dystopiaPools from '../../data/matic/dystopiaLpPools.json';
 import swapsiclePools from '../../data/avax/siclePools.json';
 import ripaeArbitrumPools from '../../data/arbitrum/ripaeLpPools.json';
 import radiantPools from '../../data/arbitrum/radiantLpPools.json';
+import conePools from '../../data/coneLpPools.json';
+import spiritV2Pools from '../../data/fantom/spiritVolatileLpPools.json';
+import hermesPools from '../../data/metis/hermesLpPools.json';
+import swapFishPools from '../../data/arbitrum/swapFishLpPools.json';
+import equalizerPools from '../../data/fantom/equalizerLpPools.json';
+import swapFishBscPools from '../../data/swapFishLpPools.json';
+import thenaPools from '../../data/degens/thenaLpPools.json';
+import sushiMainnetPools from '../../data/ethereum/sushiLpPools.json';
+import synapseLpPools from '../../data/ethereum/synapseLpPools.json';
+import solidlyLpPools from '../../data/ethereum/solidlyLpPools.json';
+import cantoLpPools from '../../data/canto/cantoLpPools.json';
+import { fetchVaultPrices } from '../../utils/fetchVaultPrices';
+import { addressBookByChainId } from '../../../packages/address-book/address-book';
 
 const INIT_DELAY = 2 * 1000;
 const REFRESH_INTERVAL = 5 * 60 * 1000;
 
 // FIXME: if this list grows too big we might hit the ratelimit on initialization everytime
 // Implement in case of emergency -> https://github.com/beefyfinance/beefy-api/issues/103
-const pools = [
+const pools = normalizePoolOracleIds([
+  ...cantoLpPools,
+  ...solidlyLpPools,
+  ...synapseLpPools,
+  ...sushiMainnetPools,
+  ...thenaPools,
+  ...swapFishBscPools,
+  ...equalizerPools,
+  ...swapFishPools,
+  ...hermesPools,
+  ...spiritV2Pools,
+  ...conePools,
   ...radiantPools,
   ...ripaeArbitrumPools,
   ...swapsiclePools,
@@ -260,6 +299,7 @@ const pools = [
   ...bombLpPools,
   ...valasLpPools,
   ...spookyV2LpPools,
+  ...spookyV3LpPools,
   ...vvsDualPools,
   ...joeBoostedLpPools,
   ...empLpPools,
@@ -272,7 +312,6 @@ const pools = [
   ...solidlyPools,
   ...wigoPools,
   ...darkCryptoPools,
-  ...beamswapPools,
   ...ripaePools,
   ...ripaeAvaxPools,
   ...ripaeMaticPools,
@@ -299,6 +338,8 @@ const pools = [
   ...chargePools,
   ...blockMinePools,
   ...oldPools,
+  ...beamswapMultiRewardLpPools,
+  ...beamswapPools,
   ...finnLpPools,
   ...bisonPools,
   ...maiAvaxLpPools,
@@ -450,6 +491,7 @@ const pools = [
   ...autoPools,
   ...alpacaLpPools,
   ...soupPools,
+  ...apeJunglePools,
   ...apePools,
   ...saltPools,
   ...inchPools,
@@ -470,7 +512,8 @@ const pools = [
   ...cakeLpPoolsV2,
   ...cakeLpV1Pools,
   ...cakeLpPools,
-];
+  ...giddyLpPools,
+]);
 
 const dmmPools = [...kyberPools, ...oldDmmPools];
 
@@ -479,6 +522,7 @@ const coinGeckoCoins = [
   'tether-eurt',
   'par-stablecoin',
   'jarvis-synthetic-euro',
+  'monerium-eur-money',
   'jpyc',
   'cad-coin',
   'xsgd',
@@ -492,7 +536,26 @@ const coinGeckoCoins = [
   'seth',
   'alchemix-usd',
   'ethereum',
+  'rocket-pool-eth',
+  'wrapped-steth',
+  'kava',
+  'aura-finance',
+  'convex-crv',
+  'usd-coin',
+  'dai',
+  'tether',
+  'havven',
+  'aura-bal',
+  'balancer',
+  'coinbase-wrapped-staked-eth',
+  'opx-finance',
+  'dola-usd',
+  'across-protocol',
+  'metavault-trade',
+  'seur',
 ];
+
+const currencies = ['cad'];
 
 const knownPrices = {
   BUSD: 1,
@@ -504,6 +567,13 @@ const knownPrices = {
   cUSD: 1,
   asUSDC: 1,
   VST: 1,
+  aUSDT: 1,
+  aDAI: 1,
+  aUSDC: 1,
+  amUSDT: 1,
+  amUSDC: 1,
+  amDAI: 1,
+  'DAI+': 1,
 };
 
 let tokenPricesCache: Promise<any>;
@@ -522,9 +592,13 @@ const updateAmmPrices = async () => {
         EURt: prices['tether-eurt'],
         PAR: prices['par-stablecoin'],
         jEUR: prices['jarvis-synthetic-euro'],
+        EURe: prices['monerium-eur-money'],
         JPYC: prices['jpyc'],
+        jJPY: prices['jpyc'],
         CADC: prices['cad-coin'],
+        jCAD: prices['cad-coin'],
         XSGD: prices['xsgd'],
+        jSGD: prices['xsgd'],
         USDB: prices['usd-balance'],
         GEL: prices['gelato'],
         PERP: prices['perpetual-protocol'],
@@ -534,18 +608,62 @@ const updateAmmPrices = async () => {
         sETH: prices['seth'],
         alUSD: prices['alchemix-usd'],
         alETH: prices['ethereum'],
+        rETH: prices['rocket-pool-eth'],
+        wstETH: prices['wrapped-steth'],
+        KAVA: prices['kava'],
+        WKAVA: prices['kava'],
+        AURA: prices['aura-finance'],
+        cvxCRV: prices['convex-crv'],
+        hETH: prices['ethereum'],
+        hUSDC: prices['usd-coin'],
+        hUSDT: prices['tether'],
+        hDAI: prices['dai'],
+        hSNX: prices['havven'],
+        auraBAL: prices['aura-bal'],
+        BAL: prices['balancer'],
+        cbETH: prices['coinbase-wrapped-staked-eth'],
+        OPX: prices['opx-finance'],
+        beOPX: prices['opx-finance'],
+        DOLA: prices['dola-usd'],
+        ACX: prices['across-protocol'],
+        MVX: prices['metavault-trade'],
+        sEUR: prices['seur'],
       };
     };
 
-    const ammPrices = fetchAmmPrices(pools, knownPrices);
+    const currencyPrices = async () => {
+      const prices = await fetchCurrencyPrices(currencies);
+      return {
+        CAD: prices['cad'],
+      };
+    };
+
+    const ammPrices = fetchAmmPrices(pools, knownPrices).then(prices => {
+      //Set prices for the wrapped version of native tokens (if native was set)
+      const nativeTokens = new Set(
+        Object.values(addressBookByChainId).map(addressbook =>
+          addressbook.tokens.WNATIVE.symbol.slice(1)
+        )
+      );
+      nativeTokens.forEach(nativeToken => {
+        if (prices.tokenPrices.hasOwnProperty(nativeToken))
+          prices.tokenPrices[`W${nativeToken}`] = prices.tokenPrices[nativeToken];
+      });
+      return prices;
+    });
+
+    const curveTokenPrices = ammPrices.then(async ({ poolPrices, tokenPrices, _ }) => {
+      return await fetchCurveTokenPrices(tokenPrices);
+    });
+
+    const kyberTokenPrices = ammPrices.then(async ({ poolPrices, tokenPrices, _ }) => {
+      return await fetchKyberTokenPrices(tokenPrices);
+    });
+
     const dmmPrices = fetchDmmPrices(dmmPools, knownPrices);
 
     const xPrices = ammPrices.then(async ({ poolPrices, tokenPrices, _ }) => {
       return await fetchXPrices(tokenPrices);
-    });
-
-    const stargatePrices = ammPrices.then(async ({ poolPrices, tokenPrices, _ }) => {
-      return await fetchStargatePrices(tokenPrices);
     });
 
     const mooPrices = ammPrices.then(async ({ poolPrices, tokenPrices, _ }) => {
@@ -554,6 +672,38 @@ const updateAmmPrices = async () => {
 
     const beFtmPrice = ammPrices.then(async ({ poolPrices, tokenPrices, _ }) => {
       return await fetchbeFTMPrice(tokenPrices);
+    });
+
+    const sfrxEthPrice = ammPrices.then(async ({ poolPrices, tokenPrices, _ }) => {
+      return await fetchsfrxEthPrice(tokenPrices);
+    });
+
+    const linearPoolPrice = ammPrices.then(async ({ poolPrices, tokenPrices, _ }) => {
+      const jbrlTokenPrice = await fetchJbrlPrice(tokenPrices);
+      const yVaultPrices = await fetchyVaultPrices(tokenPrices);
+      const vaultPrices = await fetchVaultPrices(tokenPrices);
+      const wrappedAavePrices = await fetchWrappedAavePrices(tokenPrices);
+      const eulerTokenPrices = await fetchEulerTokenPrices(tokenPrices);
+      const prices = {
+        ...tokenPrices,
+        ...vaultPrices,
+        ...wrappedAavePrices,
+        ...eulerTokenPrices,
+        ...jbrlTokenPrice,
+        ...yVaultPrices,
+      };
+
+      const linearPrices = await fetchBalancerLinearPoolPrice(prices);
+      const balancerStablePoolPrice = await fetchBalancerStablePoolPrice(linearPrices);
+
+      return {
+        ...linearPrices,
+        ...balancerStablePoolPrice,
+        ...wrappedAavePrices,
+        ...eulerTokenPrices,
+        ...jbrlTokenPrice,
+        ...yVaultPrices,
+      };
     });
 
     const beTokenPrice = ammPrices.then(async ({ poolPrices, tokenPrices, _ }) => {
@@ -567,20 +717,27 @@ const updateAmmPrices = async () => {
 
     const tokenPrices = ammPrices.then(async ({ _, tokenPrices, __ }) => {
       const dmm = await dmmPrices;
+      const curvePrices = await curveTokenPrices;
+      const kyberPrices = await kyberTokenPrices;
       const xTokenPrices = await xPrices;
       const mooTokenPrices = await mooPrices;
       const beFtmTokenPrice = await beFtmPrice;
-      const stargateTokenPrices = await stargatePrices;
+      const sfrxEthTokenPrice = await sfrxEthPrice;
       const beTokenTokenPrice = await beTokenPrice;
+      const linearPoolTokenPrice = await linearPoolPrice;
       return {
         ...tokenPrices,
         ...dmm.tokenPrices,
         ...mooTokenPrices,
         ...xTokenPrices,
-        ...stargateTokenPrices,
         ...beFtmTokenPrice,
         ...beTokenTokenPrice,
+        ...sfrxEthTokenPrice,
+        ...curvePrices,
+        ...kyberPrices,
+        ...linearPoolTokenPrice,
         ...(await coinGeckoPrices()),
+        ...(await currencyPrices()),
       };
     });
 
@@ -630,21 +787,39 @@ export const getLpBreakdown = async () => {
   return await lpBreakdownCache;
 };
 
-export const getAmmTokenPrice = async tokenSymbol => {
+export const getAmmTokenPrice = async (tokenSymbol, withUnkownLogging) => {
   const tokenPrices = await getAmmTokensPrices();
   if (tokenPrices.hasOwnProperty(tokenSymbol)) {
     return tokenPrices[tokenSymbol];
   }
-  console.error(`Unknown token '${tokenSymbol}'. Consider adding it to .json file`);
+  if (withUnkownLogging)
+    console.error(`Unknown token '${tokenSymbol}'. Consider adding it to .json file`);
 };
 
-export const getAmmLpPrice = async lpName => {
+export const getAmmLpPrice = async (lpName, withUnknownLogging) => {
   const lpPrices = await getAmmLpPrices();
   if (lpPrices.hasOwnProperty(lpName)) {
     return lpPrices[lpName];
   }
-  console.error(`Unknown liquidity pair '${lpName}'. Consider adding it to .json file`);
+  if (withUnknownLogging)
+    console.error(`Unknown liquidity pair '${lpName}'. Consider adding it to .json file`);
 };
+
+// We want to treat wrapped tokens the same way we'd treat normal ones => We then swap all wrapped token oracleIds to their underlying
+function normalizePoolOracleIds(pools) {
+  const wrappedNativeTokens = new Set(
+    Object.values(addressBookByChainId).map(addressbook => addressbook.tokens.WNATIVE.symbol)
+  );
+  pools.forEach(pool => {
+    const fields = ['lp0', 'lp1'];
+    fields.forEach(token => {
+      if (wrappedNativeTokens.has(pool[token].oracleId)) {
+        pool[token].oracleId = pool[token].oracleId.slice(1);
+      }
+    });
+  });
+  return pools;
+}
 
 export const initPriceService = async () => {
   const tokenPrices = await getKey('TOKEN_PRICES');
@@ -668,5 +843,4 @@ const saveToRedis = async () => {
   await setKey('TOKEN_PRICES', await tokenPricesCache);
   await setKey('LP_PRICES', await lpPricesCache);
   await setKey('LP_BREAKDOWN', await lpBreakdownCache);
-  console.log('Prices saved to redis');
 };

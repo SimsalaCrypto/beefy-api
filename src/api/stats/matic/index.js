@@ -6,7 +6,7 @@ const { getSushiOhmLpApys } = require('./getSushiOhmLpApys');
 const getComethMultiApys = require('./getComethMultiLpApys');
 const getPolygonBifiGovApy = require('./getPolygonBifiGovApy');
 const { getPolygonBifiMaxiApy } = require('./getPolygonBifiMaxiApy');
-const getCurveApys = require('./getCurveApys');
+const { getCurveApys } = require('./getCurveApys');
 const getJetswapApys = require('./getJetswapApys');
 const getIronSwapApys = require('./getIronSwapApys');
 const { getApeLpApys } = require('./getApeLpApys');
@@ -25,8 +25,16 @@ const getbeQiApy = require('./getbeQiApy');
 const getbeQiEarnApy = require('./getbeQiEarnApy');
 const getRipaeApys = require('./getRipaeApys');
 const getBalancerPolyApys = require('./getBalancerPolyApys');
+const getGiddyApys = require('./getGiddyApys');
 const getSolaceApy = require('./getSolaceApy');
 const getDystopiaApys = require('./getDystopiaApys');
+const getUniV3PolygonApys = require('./getUniV3PolygonApys');
+const { getHopApys } = require('./getHopApys');
+const { getMvxApys } = require('./getMvxApys');
+const { getAaveV3Apys } = require('./getAaveV3Apys');
+const { getGnsApys } = require('./getGnsApys');
+const getKyberPolygonApys = require('./getKyberPolygonApys');
+const getOvixApys = require('./getOvixApys');
 
 const getApys = [
   getbeQiApy,
@@ -55,8 +63,16 @@ const getApys = [
   getStargateApys,
   getRipaeApys,
   getBalancerPolyApys,
+  getGiddyApys,
   getSolaceApy,
   getDystopiaApys,
+  getUniV3PolygonApys,
+  getHopApys,
+  getMvxApys,
+  getAaveV3Apys,
+  getGnsApys,
+  getKyberPolygonApys,
+  getOvixApys,
 ];
 
 const BATCH_SIZE = 15;

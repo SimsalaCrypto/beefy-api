@@ -15,6 +15,231 @@ const BNB = {
 } as const;
 
 const _tokens = {
+  DEI: {
+    name: 'DEI',
+    symbol: 'DEI',
+    address: '0xDE1E704dae0B4051e80DAbB26ab6ad6c12262DA0',
+    chainId: 56,
+    decimals: 18,
+    website: 'https://deus.finance/',
+    description:
+      'DEI is an advanced algorithmic cross-chain fractional-reserve stablecoin, with one native bridge that will connect to all chains within the DEUS ecosystem. The collateral ratio of DEI is constantly monitored and adjusted via arbitrage bots.',
+    logoURI: 'https://app.deus.finance/tokens/dei.svg',
+    documentation: 'https://docs.deus.finance/',
+  },
+  ETSAlpha: {
+    name: 'ETS Alpha',
+    symbol: 'ETS Alpha',
+    address: '0x5B852898CD47d2Be1d77D30377b3642290f5Ec75',
+    chainId: 56,
+    decimals: 18,
+    website: 'https://overnight.fi/',
+    description:
+      'The exchange-traded strategies(ETS) of overnight.fi are ERC-20 structured products that lets users leverage a collateralized debt position (e.g. DAI lent on Aave) to borrow a volatile asset (e.g. WETH), pair it with a stablecoin, and provide stable-to-crypto liquidity, (e.g. WETH/DAI) in an AMM, like Uni V3. This allows earning high APY and hedging against crypto volatility. ',
+    logoURI: 'https://app.deus.finance/tokens/dei.svg',
+    documentation: 'https://docs.overnight.fi/',
+  },
+  THE: {
+    name: 'THENA',
+    symbol: 'THE',
+    address: '0xF4C8E32EaDEC4BFe97E0F595AdD0f4450a863a11',
+    chainId: 56,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://thena.fi/',
+    description:
+      'We envision THENA as being the native liquidity layer of BNB Chain, enabling value creation by opening the gates for new protocols that wish to solve the cold start liquidity problem, as well as for established protocols looking for a long-term solution to reduce costs to incentivize their liquidity. THENA is a public good owned by protocols and users, with both parties contributing to THENAs status as the leading AMM. We believe that in a decentralized and open-source economy, a collaborative strategy is essential to outrun the competition and establish your product as a market leader.',
+    documentation: 'https://thena.gitbook.io/thena/',
+  },
+  FISH: {
+    name: 'SwapFish',
+    symbol: 'FISH',
+    address: '0xb348B87b23D5977E2948E6f36ca07E1EC94d7328',
+    chainId: 56,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0xb348B87b23D5977E2948E6f36ca07E1EC94d7328.svg',
+    website: 'https://swapfish.fi/',
+    description: 'Brand new decentralized platform bringing you fresh fishing farms and more.',
+    oracleId: 'SWAPFISH',
+  },
+  MGP: {
+    name: 'Magpie Token',
+    symbol: 'MGP',
+    address: '0xD06716E1Ff2E492Cc5034c2E81805562dd3b45fa',
+    chainId: 56,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0xD06716E1Ff2E492Cc5034c2E81805562dd3b45fa.svg',
+    website: 'https://www.magpiexyz.io/',
+    documentation: 'https://docs.magpiexyz.io/',
+    description:
+      'Magpie XYZ is a BNB Chain native yield-boosting platform built on top of Wombat Exchange that maximizes benefits for governance token holders.',
+  },
+  HOOP: {
+    name: 'Primal Hoop',
+    symbol: 'HOOP',
+    address: '0xF19cfb40B3774dF6Eed83169Ad5aB0Aaf6865F25',
+    chainId: 56,
+    decimals: 18,
+    logoURI: 'https://assets.coingecko.com/coins/images/27405/small/HOOP_TOKEN.png?1663837803',
+    website: 'https://www.chibidinos.io/',
+    description:
+      'HOOP is the reward and in-game currency for the Chibi Dinos Gaming Universe. It can be used to pay for merchandise and events; future uses include staking and governance for in-game decisions. Chibi Dinos is a basketball and dinosaur themed metaverse with games such as Primal Hoop, an arcade basketball game with an adventure role-playing game (RPG) mode and Primal Pickem, a predictive play-to earn game (P2E).',
+  },
+  HAY: {
+    name: 'Hay Stablecoin',
+    symbol: 'HAY',
+    address: '0x0782b6d8c4551B9760e74c0545a9bCD90bdc41E5',
+    chainId: 56,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x0782b6d8c4551B9760e74c0545a9bCD90bdc41E5.svg',
+    website: 'https://helio.money/',
+    description:
+      'HAY is an over-collateralized destablecoin, where 1 HAY is always redeemable at $1 of cryptocurrency, and over-collateralized by BNB. Users can mint and borrow HAY by providing BNB as collateral, which can then be used to stake for yield, liquidity mining and as a means to transfer value.',
+  },
+  jCHF: {
+    name: 'Jarvis Synthetic Swiss Franc',
+    symbol: 'jCHF',
+    address: '0x7c869b5A294b1314E985283d01C702B62224a05f',
+    chainId: 56,
+    decimals: 18,
+    website: 'https://jarvis.network/',
+    description:
+      'jCHF is a multi-collateralized synthetic stable-coin from Jarvis tracking the price of the Swiss Franc. It is built on the top of UMA and Chainlink.',
+    logoURI: 'https://i.imgur.com/EknGhAl.png',
+  },
+  TRIVIA: {
+    name: 'TRIVIA',
+    symbol: 'TRIVIA',
+    address: '0xb465f3cb6Aba6eE375E12918387DE1eaC2301B05',
+    chainId: 56,
+    decimals: 3,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0xb465f3cb6Aba6eE375E12918387DE1eaC2301B05.png',
+    website: 'https://trivians.io/',
+    description:
+      'Trivians is the new generation crypto-powered Trivia gaming platform. It is a metaverse, where players play as Trivian characters and earn Trivian Token for their achievements.',
+  },
+  PEEL: {
+    name: 'Meta Apes Peel',
+    symbol: 'PEEL',
+    address: '0x734548a9e43d2D564600b1B2ed5bE9C2b911c6aB',
+    chainId: 56,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x734548a9e43d2D564600b1B2ed5bE9C2b911c6aB.png',
+    website: 'https://metaapesgame.com/',
+    description:
+      'Meta Apes is a free-to-play, play-and-earn MMO strategy game designed for mobile.',
+  },
+  WOM: {
+    name: 'Wombat Token',
+    symbol: 'WOM',
+    address: '0xAD6742A35fB341A9Cc6ad674738Dd8da98b94Fb1',
+    chainId: 56,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0xAD6742A35fB341A9Cc6ad674738Dd8da98b94Fb1.svg',
+    website: 'https://www.wombat.exchange/',
+    description:
+      'Swap stablecoins at minimal slippage and stake at maximum yield. Just one stablecoin currency to earn it all.',
+  },
+  MAI: {
+    name: 'Mai Stablecoin',
+    symbol: 'MAI',
+    address: '0x3F56e0c36d275367b8C502090EDF38289b3dEa0d',
+    chainId: 56,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://www.mai.finance/',
+    description:
+      "MAI is a stablecoin collateralized by your crypto holdings. It's powered by Qi Dao, a protocol that enables any cryptocurrency community to create stablecoins backed by their native tokens.",
+    documentation: 'https://docs.mai.finance/',
+  },
+  QI: {
+    name: 'QiDao',
+    symbol: 'QI',
+    address: '0xdDC3D26BAA9D2d979F5E2e42515478bf18F354D5',
+    chainId: 56,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://www.mai.finance/',
+    description:
+      'QiDao is a self-sustaining, community-governed protocol that allows you to borrow stablecoins interest-free against your crypto assets used as collateral. Loans are paid out and repaid in miTokens (stablecoin soft pegged to the USD).',
+    documentation: 'https://docs.mai.finance/',
+  },
+  BNBx: {
+    name: 'Liquid Staking BNB',
+    symbol: 'BNBx',
+    address: '0x1bdd3Cf7F79cfB8EdbB955f20ad99211551BA275',
+    chainId: 56,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x70e48Eb0881a8c56BAAD37EB4491eA85Eb47b4b2.svg',
+    website: 'https://staderlabs.com/',
+    description:
+      'Stader is a non-custodial smart contract-based staking platform that helps you conveniently discover and access staking solutions. We are building key staking middleware infra for multiple PoS networks for retail crypto users, exchanges and custodians.',
+  },
+  BAPE: {
+    name: 'Bored APEmove',
+    symbol: 'BAPE',
+    address: '0x70e48Eb0881a8c56BAAD37EB4491eA85Eb47b4b2',
+    chainId: 56,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x70e48Eb0881a8c56BAAD37EB4491eA85Eb47b4b2.svg',
+    website: 'https://apemove.io/',
+    description:
+      'APEmove is built around an essential daily activity for most people – moving around. We are the next project to effectively bring to life a functioning move&earn concept and totally FREE to JOIN. Users equip themselves with NFTs in the form of Sneakers. By walking, jogging, or running outdoors, users will earn in-game currency, which can either be used in-game or cashed out for profit. With Game-Fi, APEmove aims to nudge millions toward a healthier lifestyle, combat climate change and connect the public to Web 3.0, all while simultaneously hinging on its Social-Fi aspect to build a long-lasting platform fostering user-generated Web 3.0 content.',
+  },
+  SD: {
+    name: 'Stader (Wormhole)',
+    symbol: 'SD',
+    address: '0x3BC5AC0dFdC871B365d159f728dd1B9A0B5481E8',
+    chainId: 56,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x3BC5AC0dFdC871B365d159f728dd1B9A0B5481E8.svg',
+    website: 'https://staderlabs.com/',
+    description: 'Stader (SD) token is the native governance and value accrual token for Stader.',
+  },
+  CONE: {
+    name: 'Cone token',
+    symbol: 'CONE',
+    address: '0xA60205802E1B5C6EC1CAFA3cAcd49dFeECe05AC9',
+    chainId: 56,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://www.cone.exchange/home',
+    description:
+      'Cone is a decentralized exchange on the BSC network with low fees, near 0 slippage on correlated assets and a strong focus on secondary markets for tokenized locks as NFTs.',
+  },
+  stkBNB: {
+    name: 'Staked BNB',
+    symbol: 'stkBNB',
+    address: '0xc2E9d07F66A89c44062459A47a0D2Dc038E4fb16',
+    chainId: 56,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0xc2E9d07F66A89c44062459A47a0D2Dc038E4fb16.svg',
+    website: 'https://pstake.finance/',
+    description:
+      'pSTAKE’s BNB liquid staking product allows holders of BNB to stake their assets using the BNB staking interface. Users are issued stkBNB which follows an exchange rate model, (inspired by the Compound’s cToken model). stkBNB value keeps increasing against BNB as it accrues staking rewards in the background.',
+  },
+  PSTAKE: {
+    name: 'pStake Finance',
+    symbol: 'PSTAKE',
+    address: '0x4C882ec256823eE773B25b414d36F92ef58a7c0C',
+    chainId: 56,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x4C882ec256823eE773B25b414d36F92ef58a7c0C.svg',
+    website: 'https://pstake.finance/',
+    description:
+      'pSTAKE is a liquid staking protocol unlocking the liquidity of staked assets. Stakers of PoS tokens can now stake their assets while maintaining the liquidity of these assets. On staking with pSTAKE, users earn staking rewards and also receive staked representative tokens (stkASSETs) which can be used in DeFi to generate additional yield (yield on top of staking rewards).',
+  },
   MIX: {
     name: 'MixMarvel Token',
     symbol: 'MIX',
@@ -47,6 +272,17 @@ const _tokens = {
     website: 'https://brztoken.io/',
     description:
       'BRZ is the first Brazilian stablecoin in circulation. It will allow Brazilians to directly ramp up investments in foreign exchanges and to trade a Brazilian Real (BRL) pegged stablecoin in global scale.',
+    logoURI: 'https://bscscan.com/token/images/brztoken_32.png',
+  },
+  BRZw: {
+    name: 'BRZ (Wormhole) Token',
+    symbol: 'BRZw',
+    address: '0x5b1a9850f55d9282a7C4Bf23A2a21B050e3Beb2f',
+    chainId: 56,
+    decimals: 4,
+    website: 'https://brztoken.io/',
+    description:
+      'BRZw is the Wormhole bridged verison of BRZ. It will allow Brazilians to directly ramp up investments in foreign exchanges and to trade a Brazilian Real (BRL) pegged stablecoin in global scale.',
     logoURI: 'https://bscscan.com/token/images/brztoken_32.png',
   },
   SOL: {
@@ -138,6 +374,16 @@ const _tokens = {
     description:
       'BOMB is pegged via algorithm to a 10,000:1 ratio to BTC. $100k BTC = $10 BOMB PEG',
   },
+  ankrBNB: {
+    name: 'Ankr Staked BNB',
+    symbol: 'ankrBNB',
+    address: '0x52F24a5e03aee338Da5fd9Df68D2b6FAe1178827',
+    chainId: 56,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://www.ankr.com/',
+    description: 'Decentralized Infrastructure to Build and Earn in Web3',
+  },
   aBNBc: {
     name: 'Ankr BNB Reward Bearing Certificate',
     symbol: 'aBNBc',
@@ -187,6 +433,7 @@ const _tokens = {
     symbol: 'sbBUSD',
     logoURI:
       'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xaEb044650278731Ef3DC244692AB9F64C78FfaEA/logo.png',
+    documentation: 'https://stargateprotocol.gitbook.io/stargate/v/user-docs/',
   },
   sbUSDT: {
     name: 'Stargate Tether USD LP',
@@ -199,6 +446,7 @@ const _tokens = {
     website: 'https://tether.to/',
     description:
       'Tether is a stablecoin pegged to the US Dollar. A stablecoin is a type of cryptocurrency whose value is pegged to another fiat currency like the US Dollar or to a commodity like Gold.Tether is the first stablecoin to be created and it is the most popular stablecoin used in the ecosystem.',
+    documentation: 'https://stargateprotocol.gitbook.io/stargate/v/user-docs/',
   },
   STG: {
     name: 'Stargate',
@@ -211,6 +459,7 @@ const _tokens = {
     website: 'https://stargate.finance/',
     description:
       'Stargate is a community-driven organization building the first fully composable native asset bridge, and the first dApp built on LayerZero.',
+    documentation: 'https://stargateprotocol.gitbook.io/stargate/v/user-docs/',
   },
   EMP: {
     name: 'EMP.Money',
@@ -1412,7 +1661,7 @@ const _tokens = {
     website: 'https://ethereumclassic.org/',
     description:
       'Ethereum Classic is a decentralized computing platform that executes smart contracts. Applications are ran exactly as programmed without the possibility of censorship, downtime, or third-party interference.',
-    logoURI: 'https://dex.apeswap.finance/images/coins/ETC.svg',
+    logoURI: 'https://assets.coingecko.com/coins/images/453/small/ethereum-classic-logo.png',
   },
   COTI: {
     name: 'Coti',
@@ -2073,6 +2322,7 @@ const _tokens = {
       'Ankr originates as a solution that utilizes shared resources in order to provide easy and affordable blockchain node hosting solutions.',
     logoURI:
       'https://tokens.pancakeswap.finance/images/0xf307910a4c7bbc79691fd374889b36d8531b08e3.png',
+    documentation: 'https://www.ankr.com/about-network/token/',
   },
   LINK: {
     name: 'ChainLink Token',
@@ -2139,11 +2389,11 @@ const _tokens = {
     address: '0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63',
     chainId: 56,
     decimals: 18,
-    website: 'https://trustwallet.com/',
+    website: 'https://venus.io/',
     description:
-      'Trust Wallet Token, or TWT, is a simple BEP-20 utility token that provides a range of benefits and incentives to Trust Wallet users.',
+      'Venus is an algorithmic money market and synthetic stablecoin protocol launched exclusively on BNB Chain.',
     logoURI:
-      'https://tokens.pancakeswap.finance/images/0xcf6bb5389c92bdda8a3747ddb454cb7a64626c63.png',
+      'https://tokens.pancakeswap.finance/images/0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63.png',
   },
   Beer: {
     name: 'Beer Garden',
@@ -2177,6 +2427,7 @@ const _tokens = {
       'Beefy.Finance (BIFI), is a yield optimization tool on the Binance Smart Chain that helps maximize the return from yield farming.',
     logoURI:
       'https://tokens.pancakeswap.finance/images/0xCa3F508B8e4Dd382eE878A314789373D80A5190A.png',
+    documentation: 'https://docs.beefy.finance/',
   },
   YFI: {
     name: 'yearn.finance',
@@ -2292,6 +2543,7 @@ const _tokens = {
     chainId: 56,
     decimals: 18,
     website: 'https://www.circle.com/usdc',
+    documentation: 'https://developers.circle.com/docs',
     description:
       'USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
     logoURI:
@@ -3626,6 +3878,77 @@ const _tokens = {
     website: 'https://openleverage.finance/',
     description:
       'OpenLeverage is a permissionless margin trading protocol that enables traders or other applications to long or short any trading pair on DEXs efficiently and securely.',
+  },
+  BLID: {
+    name: 'Bolide',
+    symbol: 'BLID',
+    address: '0x766AFcf83Fd5eaf884B3d529b432CA27A6d84617',
+    chainId: 56,
+    decimals: 18,
+    logoURI: 'https://invest.bolide.fi/img/token_logo_255x255.png',
+    website: 'https://bolide.fi/',
+    description:
+      'Bolide is a next-generation decentralized yield aggregator that optimizes the deployment of digital assets across multiple DeFi investment platforms to save investors time, money and earn them the highest possible yields.',
+  },
+  HEC: {
+    name: 'Hector Network',
+    symbol: 'HEC',
+    address: '0x638EEBe886B0e9e7C6929E69490064a6C94d204d',
+    chainId: 56,
+    decimals: 9,
+    logoURI:
+      'https://raw.githubusercontent.com/ApeSwapFinance/apeswap-token-lists/main/assets/HEC.svg',
+    website: 'https://hector.network/',
+    description:
+      'Hector Network is an expansive decentralized ecosystem run by a utility token, HEC, and complemented by the TOR stablecoin. The company is committed to developing the future of web3 by pioneering decentralized offerings ranging from Tokenomics to Defi Gaming. Hector Network believes that crosschain expansion, lowering the barrier to entry and providing trusted sources for information are key in mass adoption of this technology.',
+  },
+  TOR: {
+    name: 'TOR Stablecoin',
+    symbol: 'TOR',
+    address: '0x1d6Cbdc6b29C6afBae65444a1f65bA9252b8CA83',
+    chainId: 56,
+    decimals: 18,
+    logoURI:
+      'https://raw.githubusercontent.com/ApeSwapFinance/apeswap-token-lists/main/assets/TOR.svg',
+    website: 'https://tor.hector.network/',
+    description:
+      'TOR is a fully collateralized stablecoin which acts as a foundational pillar within the Hector Network Ecosystem. Its unique smart contracts made it the first of its kind, creating positive price action for the HEC token each time a TOR coin is minted and empowering Hector Network to become deflationary.',
+  },
+  'USD+': {
+    name: 'USD+ Stablecoin',
+    symbol: 'USD+',
+    address: '0xe80772Eaf6e2E18B651F160Bc9158b2A5caFCA65',
+    chainId: 56,
+    decimals: 6,
+    website: 'https://overnight.fi/',
+    description:
+      'USD+ is USDC that pays you yield daily via rebase. It is 100% collateralized with assets immediately convertible into USDC. Yield is generated via strategies such as lending and stable-to-stable pools. Initial strategies include Aave, Rubicon, and Pika.',
+    logoURI: '',
+    documentation: 'https://docs.overnight.fi/',
+  },
+  USDD: {
+    name: 'Decentralized USD',
+    symbol: 'USDD',
+    address: '0xd17479997F34dd9156Deef8F95A52D81D265be9c',
+    chainId: 56,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://usdd.io/',
+    description:
+      'The USDD protocol aims to provide the blockchain industry with the most stable, decentralized, tamper-proof, and freeze-free stablecoin system, a perpetual system independent from any centralized entity.',
+    documentation: 'https://usdd.io/docs/',
+  },
+  frxETH: {
+    name: 'Frax Ether',
+    symbol: 'frxETH',
+    address: '0x64048A7eEcF3a2F1BA9e144aAc3D7dB6e58F555e',
+    chainId: 56,
+    decimals: 18,
+    website: 'https://app.frax.finance/frxeth/mint',
+    description:
+      'frxETH acts as a stablecoin loosely pegged to ETH, so that 1 frxETH always represents 1 ETH and the amount of frxETH in circulation matches the amount of ETH in the Frax ETH system. When ETH is sent to the frxETHMinter, an equivalent amount of frxETH is minted. Holding frxETH on its own is not eligible for staking yield and should be thought of as analogous as holding ETH.',
+    logoURI: '',
+    documentation: 'https://docs.frax.finance/frax-ether/frxeth-and-sfrxeth',
   },
 } as const;
 export const tokens: ConstRecord<typeof _tokens, Token> = _tokens;

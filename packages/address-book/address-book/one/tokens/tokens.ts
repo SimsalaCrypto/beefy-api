@@ -41,6 +41,7 @@ const _tokens = {
       'Beefy Finance is a Decentralized, Multi-Chain Yield Optimizer platform that allows its users to earn compound interest on their crypto holdings.',
     logoURI:
       'https://raw.githubusercontent.com/beefyfinance/beefy-app/prod/src/images/single-assets/BIFI.png',
+    documentation: 'https://docs.beefy.finance/',
   },
   CRV: {
     chainId: 1666600000,
@@ -83,6 +84,7 @@ const _tokens = {
     symbol: 'USDC',
     decimals: 6,
     website: 'https://www.circle.com/usdc',
+    documentation: 'https://developers.circle.com/docs',
     description:
       'USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
     chainId: 1666600000,
@@ -209,6 +211,17 @@ const _tokens = {
     website: 'https://wbtc.network/',
     description:
       'Wrapped Bitcoin (WBTC) is the first ERC20 token backed 1:1 with Bitcoin. Completely transparent. 100% verifiable. Community led.',
+  },
+  'BIFI-WONE LP': {
+    name: 'BIFI-WONE LP',
+    symbol: 'BIFI-WONE LP',
+    address: '0x0f9602B7E7146a9BaE16dB948281BebDb7C2D095',
+    chainId: 1666600000,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://app.beefy.com/',
+    oracleId: 'sushi-one-bifi-wone',
+    oracle: 'lps',
   },
 } as const;
 

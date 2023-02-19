@@ -11,6 +11,7 @@ const ETH = {
   description:
     'The native currency that flows within the Ethereum economy is called Ether (ETH). Ether is typically used to pay for transaction fees called Gas, and it is the base currency of the network.',
   logoURI: 'https://ftmscan.com/token/images/wETH_32.png',
+  documentation: 'https://ethereum.org/en/developers/docs/',
 } as const;
 
 const BTC = {
@@ -38,6 +39,63 @@ const FTM = {
 } as const;
 
 const _tokens = {
+  'bb-yv-FTM': {
+    name: 'Beets Yearn Boosted FTM Linear Pool',
+    symbol: 'bb-yv-FTM',
+    address: '0xC3BF643799237588b7a6B407B3fc028Dd4e037d2',
+    chainId: 250,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://beets.fi/#/',
+    description: 'Balancer linear pool that consist of yvWFTM and WFTM.',
+    documentation: 'https://docs.beets.fi/balancer-v2-1/pools#boosted-pools',
+  },
+  yvWFTM: {
+    name: 'WFTM yVault',
+    symbol: 'yvWFTM',
+    address: '0x0DEC85e74A92c52b7F708c4B10207D9560CEFaf0',
+    chainId: 250,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://yearn.finance/',
+    description:
+      "yVault tokens represent a user's share in a yVault. These vaults contain a pool of underlying assets, such as WFTM, that generate profits for the users. The more profit the yVault generates, the higher the value of the user's yVault Token. When a user withdraws their liquidity from the yVault, their yVault Token is burned, and they receive the equivalent value in the underlying asset.",
+    documentation: 'https://docs.yearn.finance/',
+  },
+  SYN: {
+    name: 'Synapse Protocol',
+    symbol: 'SYN',
+    address: '0xE55e19Fb4F2D85af758950957714292DAC1e25B2',
+    chainId: 250,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://synapseprotocol.com/',
+    description:
+      'Synapse is a cross-chain layer ∞ protocol powering frictionless interoperability between blockchains. By providing decentralized, permissionless transactions between any L1, sidechain, or L2 ecosystem, Synapse powers integral blockchain activities such as asset transfers, swaps, and generalized messaging with cross-chain functionality - and in so doing enables new primitives based off of its cross-chain architecture.',
+  },
+  alUSD: {
+    name: 'Alchemix USD',
+    symbol: 'alUSD',
+    address: '0xB67FA6deFCe4042070Eb1ae1511Dcd6dcc6a532E',
+    chainId: 250,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://alchemix.fi/',
+    description:
+      'Alchemix Self-Repaying Loans allow you to leverage a range of tokens without risk of liquidation.',
+  },
+  POTS: {
+    name: 'Moonpot',
+    symbol: 'POTS',
+    address: '0xF7554D17d1c3F09899dCc8B404beCAE6dFA584Fa',
+    chainId: 250,
+    decimals: 18,
+    logoURI:
+      'https://assets.trustwalletapp.com/blockchains/smartchain/assets/0x3Fcca8648651E5b974DD6d3e50F61567779772A8/logo.png',
+    website: 'https://moonpot.com/',
+    description:
+      'Stake Crypto, Earn Interest and Win Prizes. The greatest win-win savings game this side of the galaxy, where even the smallest of stakes wins the biggest prizes.',
+  },
   COMB: {
     name: 'Comb Finance',
     symbol: 'COMB',
@@ -143,7 +201,8 @@ const _tokens = {
     decimals: 18,
     logoURI: 'https://assets.spookyswap.finance/tokens/sFTMX.png',
     website: 'https://fantom.staderlabs.com/liquid-staking/pools',
-    description: 'sFTMX is a liquid token that users get when they stake FTM with Stader.',
+    description:
+      'sFTMX is a liquid staking derivative token that gains value relative to FTM as staking rewards accrue. sFTMX offers 4.7% APY and maximum DeFi interoperability. Staking with Stader results in a decentralized distribution of assets across a curated pool of validators, while liquidity options are maintained through DEX liquidity pools.',
   },
   SD: {
     name: 'Stader SD',
@@ -221,6 +280,7 @@ const _tokens = {
     website: 'https://stargate.finance/',
     description:
       'Stargate is a community-driven organization building the first fully composable native asset bridge, and the first dApp built on LayerZero.',
+    documentation: 'https://stargateprotocol.gitbook.io/stargate/v/user-docs/',
   },
   APE: {
     name: 'ApeCoin APE',
@@ -307,16 +367,29 @@ const _tokens = {
       'The worlds first & only decentralized Web3 content marketing agency DAO. Massively scalable. Fueled by DeFi.',
     logoURI: 'https://app.spiritswap.finance/images/tokens/CRE8R.png',
   },
-  DEI: {
-    name: 'DEI',
-    symbol: 'DEI',
+  DEI_OLD: {
+    name: 'DEI_OLD',
+    symbol: 'DEI_OLD',
     address: '0xDE12c7959E1a72bbe8a5f7A1dc8f8EeF9Ab011B3',
     chainId: 250,
     decimals: 18,
     website: 'https://deus.finance/',
     description:
-      'DEUS Finance Evolution is a marketplace of decentralized financial services. We provide the infrastructure for others to build financial instruments, such as synthetic stock trading platforms, options and futures trading, and more.',
+      'DEI is an advanced algorithmic cross-chain fractional-reserve stablecoin, with one native bridge that will connect to all chains within the DEUS ecosystem. The collateral ratio of DEI is constantly monitored and adjusted via arbitrage bots.',
     logoURI: 'https://app.deus.finance/tokens/dei.svg',
+    documentation: 'https://docs.deus.finance/',
+  },
+  DEI: {
+    name: 'DEI',
+    symbol: 'DEI',
+    address: '0xDE1E704dae0B4051e80DAbB26ab6ad6c12262DA0',
+    chainId: 250,
+    decimals: 18,
+    website: 'https://deus.finance/',
+    description:
+      'DEI is an advanced algorithmic cross-chain fractional-reserve stablecoin, with one native bridge that will connect to all chains within the DEUS ecosystem. The collateral ratio of DEI is constantly monitored and adjusted via arbitrage bots.',
+    logoURI: 'https://app.deus.finance/tokens/dei.svg',
+    documentation: 'https://docs.deus.finance/',
   },
   DEUS: {
     name: 'DEUS',
@@ -328,6 +401,7 @@ const _tokens = {
     description:
       'DEUS Finance Evolution is a marketplace of decentralized financial services. We provide the infrastructure for others to build financial instruments, such as synthetic stock trading platforms, options and futures trading, and more.',
     logoURI: 'https://app.deus.finance/tokens/deus.svg',
+    documentation: 'https://docs.deus.finance/',
   },
   WIGO: {
     name: 'WigoSwap',
@@ -688,8 +762,9 @@ const _tokens = {
     decimals: 18,
     website: 'https://www.mai.finance/',
     description:
-      "MAI is a stable coin collateralized by assets. It's powered by Qi Dao, a protocol that enables any cryptocurrency community to create stablecoins backed by their native tokens.",
+      "MAI is a stablecoin collateralized by your crypto holdings. It's powered by Qi Dao, a protocol that enables any cryptocurrency community to create stablecoins backed by their native tokens.",
     logoURI: 'https://raw.githubusercontent.com/0xlaozi/qidao/main/images/mimatic-red.png',
+    documentation: 'https://docs.mai.finance/',
   },
   BEETS: {
     name: 'Beethoven X Token',
@@ -768,7 +843,7 @@ const _tokens = {
     logoURI: 'https://s2.coinmarketcap.com/static/img/coins/200x200/9007.png',
   },
   MIM: {
-    name: 'albracabra',
+    name: 'Magic Internet Money',
     address: '0x82f0B8B456c1A451378467398982d4834b6829c1',
     symbol: 'MIM',
     decimals: 18,
@@ -777,6 +852,7 @@ const _tokens = {
     description:
       'You, the Spellcaster, can provide collateral in the form of various interest bearing crypto assets such as yvYFI, yvUSDT, yvUSDC, xSUSHI and more. With this, you can borrow magic internet money (MIM) which is a stable coin that you can swap for any other traditional stable coin.',
     logoURI: '',
+    documentation: 'https://docs.abracadabra.money/',
   },
   DIS: {
     name: 'TosDis',
@@ -985,6 +1061,7 @@ const _tokens = {
     symbol: 'USDC',
     decimals: 6,
     website: 'https://www.circle.com/usdc',
+    documentation: 'https://developers.circle.com/docs',
     description:
       'USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
     chainId: 250,
@@ -1107,6 +1184,19 @@ const _tokens = {
     description:
       'The Frax Protocol introduced the world to the concept of a cryptocurrency being partially backed by collateral and partially stabilized algorithmically.',
     logoURI: 'https://ftmscan.com/token/images/fraxfinance_32.png',
+    documentation: 'https://docs.frax.finance/',
+  },
+  FXS: {
+    name: 'Frax Share',
+    symbol: 'FXS',
+    address: '0x7d016eec9c25232b01F23EF992D98ca97fc2AF5a',
+    chainId: 250,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://frax.finance/',
+    description:
+      'The Frax Protocol introduced the world to the concept of a cryptocurrency being partially backed by collateral and partially stabilized algorithmically.',
+    documentation: 'https://docs.frax.finance/',
   },
   COVER: {
     name: 'Cover',
@@ -1213,6 +1303,7 @@ const _tokens = {
       'Beefy Finance is a Decentralized, Multi-Chain Yield Optimizer platform that allows its users to earn compound interest on their crypto holdings.',
     logoURI:
       'https://raw.githubusercontent.com/beefyfinance/beefy-app/prod/src/images/single-assets/BIFI.png',
+    documentation: 'https://docs.beefy.finance/',
   },
   ANY: {
     name: 'AnySwap',
@@ -1332,6 +1423,7 @@ const _tokens = {
     website: 'https://abracadabra.money/',
     description: 'SPELL is the incentivation token of Abracadabra.money',
     logoURI: 'https://app.spiritswap.finance/images/tokens/SPELL.png',
+    documentation: 'https://docs.abracadabra.money/',
   },
   sSPELL: {
     name: 'Staked Spell Token',
@@ -1454,6 +1546,7 @@ const _tokens = {
     symbol: 'asUSDC',
     decimals: 18,
     website: 'https://www.circle.com/usdc',
+    documentation: 'https://developers.circle.com/docs',
     description:
       'USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
     chainId: 250,
@@ -1510,6 +1603,7 @@ const _tokens = {
     symbol: 'sfUSDC',
     decimals: 6,
     website: 'https://www.circle.com/usdc',
+    documentation: 'https://stargateprotocol.gitbook.io/stargate/v/user-docs/',
     description:
       'USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
     chainId: 250,
@@ -1526,6 +1620,31 @@ const _tokens = {
       'RenBTC is an ERC-20 token built on the Ethereum network, pegged to Bitcoin. This means that each RenBTC can be always redeemed for one Bitcoin, and hence tends to maintain its value at close to the Bitcoin market rate.',
     logoURI:
       'https://tokens.pancakeswap.finance/images/0xfCe146bF3146100cfe5dB4129cf6C82b0eF4Ad8c.png',
+  },
+  EQUAL: {
+    name: 'Equalizer',
+    symbol: 'EQUAL',
+    address: '0x3Fd3A0c85B70754eFc07aC9Ac0cbBDCe664865A6',
+    chainId: 250,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://equalizer.exchange/home',
+    description:
+      'Equalizer was derived from the initial concept of Andre Cronje. The mechanism that was used to create a perpetual decentralized exchange was unique and ingenious. The launch of this platform is to take the concept and apply it to a more natural style DEX. Equalizer will become the trading mechanism for the Fantom network, utilizing the Solidly perpetual model with some tweaks to fee structures and emissions.',
+    documentation:
+      'https://equalizer0x.gitbook.io/equalizer-exchange-docs/guides/equalizer-exchange',
+  },
+  ANKR: {
+    name: 'Ankr',
+    symbol: 'ANKR',
+    address: '0x0615Dbba33Fe61a31c7eD131BDA6655Ed76748B1',
+    chainId: 250,
+    decimals: 18,
+    website: 'https://www.ankr.com/',
+    description:
+      'Ankr originates as a solution that utilizes shared resources in order to provide easy and affordable blockchain node hosting solutions.',
+    logoURI: '',
+    documentation: 'https://www.ankr.com/about-network/token/',
   },
 } as const;
 

@@ -36,14 +36,14 @@ const BSC_RPC_ENDPOINTS = CUSTOM_BSC_RPC_ENDPOINTS.length
 
 const BSC_RPC = process.env.BSC_RPC || BSC_RPC_ENDPOINTS[0];
 const HECO_RPC = process.env.HECO_RPC || 'https://http-mainnet.hecochain.com';
-const AVAX_RPC = process.env.AVAX_RPC || 'https://api.avax.network/ext/bc/C/rpc';
+const AVAX_RPC = process.env.AVAX_RPC || 'https://rpc.ankr.com/avalanche';
 const POLYGON_RPC = process.env.POLYGON_RPC || 'https://polygon-rpc.com/';
-const FANTOM_RPC = process.env.FANTOM_RPC || 'https://rpc.ftm.tools';
+const FANTOM_RPC = process.env.FANTOM_RPC || 'https://rpc.ankr.com/fantom';
 const ONE_RPC = process.env.ONE_RPC || 'https://api.harmony.one/';
 const ARBITRUM_RPC = process.env.ARBITRUM_RPC || 'https://arb1.arbitrum.io/rpc';
 const CELO_RPC = process.env.CELO_RPC || 'https://forno.celo.org';
-const MOONRIVER_RPC = process.env.MOONRIVER_RPC || 'https://moonriver.api.onfinality.io/public';
-const CRONOS_RPC = process.env.CRONOS_RPC || 'https://rpc.vvs.finance';
+const MOONRIVER_RPC = process.env.MOONRIVER_RPC || 'https://rpc.api.moonriver.moonbeam.network';
+const CRONOS_RPC = process.env.CRONOS_RPC || 'https://cronosrpc-2.xstaking.sg';
 const AURORA_RPC =
   process.env.AURORA_RPC ||
   'https://mainnet.aurora.dev/Fon6fPMs5rCdJc4mxX4kiSK1vsKdzc3D8k6UF8aruek';
@@ -52,7 +52,10 @@ const METIS_RPC = process.env.METIS_RPC || 'https://andromeda.metis.io/?owner=10
 const MOONBEAM_RPC = process.env.MOONBEAM_RPC || 'https://rpc.api.moonbeam.network';
 const SYS_RPC = process.env.SYS_RPC || 'https://rpc.syscoin.org/';
 const EMERALD_RPC = process.env.EMERALD_RPC || 'https://emerald.oasis.dev';
-const OPTIMISM_RPC = process.env.OPTIMISM_RPC || 'https://mainnet.optimism.io';
+const OPTIMISM_RPC = process.env.OPTIMISM_RPC || 'https://rpc.ankr.com/optimism';
+const KAVA_RPC = process.env.KAVA_RPC || 'https://evm.kava.io';
+const ETH_RPC = process.env.ETH_RPC || 'https://rpc.ankr.com/eth';
+const CANTO_RPC = process.env.CANTO_RPC || 'https://canto.slingshot.finance';
 
 const BSC_CHAIN_ID = ChainId.bsc;
 const HECO_CHAIN_ID = ChainId.heco;
@@ -71,6 +74,9 @@ const MOONBEAM_CHAIN_ID = ChainId.moonbeam;
 const SYS_CHAIN_ID = ChainId.sys;
 const EMERALD_CHAIN_ID = ChainId.emerald;
 const OPTIMISM_CHAIN_ID = ChainId.optimism;
+const KAVA_CHAIN_ID = ChainId.kava;
+const ETH_CHAIN_ID = ChainId.ethereum;
+const CANTO_CHAIN_ID = ChainId.canto;
 
 const DFYN_LPF = 0.003;
 const SUSHI_LPF = 0.003;
@@ -91,6 +97,7 @@ const TETHYS_LPF = 0.002;
 const BEAMSWAP_LPF = 0.0017;
 const TOMBSWAP_LPF = 0.005;
 const BISWAP_LPF = 0.0005;
+const HOP_LPF = 0.0004;
 
 const MULTICHAIN_RPC: Record<ChainId, string> = {
   [ChainId.bsc]: BSC_RPC,
@@ -110,6 +117,9 @@ const MULTICHAIN_RPC: Record<ChainId, string> = {
   [ChainId.sys]: SYS_RPC,
   [ChainId.emerald]: EMERALD_RPC,
   [ChainId.optimism]: OPTIMISM_RPC,
+  [ChainId.kava]: KAVA_RPC,
+  [ChainId.ethereum]: ETH_RPC,
+  [ChainId.canto]: CANTO_RPC,
 };
 
 const BSC_VAULTS_ENDPOINT =
@@ -146,6 +156,12 @@ const EMERALD_VAULTS_ENDPOINT =
   'https://raw.githubusercontent.com/beefyfinance/beefy-v2/prod/src/config/vault/emerald.json';
 const OPTIMISM_VAULTS_ENDPOINT =
   'https://raw.githubusercontent.com/beefyfinance/beefy-v2/prod/src/config/vault/optimism.json';
+const KAVA_VAULTS_ENDPOINT =
+  'https://raw.githubusercontent.com/beefyfinance/beefy-v2/prod/src/config/vault/kava.json';
+const ETHEREUM_VAULTS_ENDPOINT =
+  'https://raw.githubusercontent.com/beefyfinance/beefy-v2/prod/src/config/vault/ethereum.json';
+//const CANTO_VAULTS_ENDPOINT =
+//  'https://raw.githubusercontent.com/beefyfinance/beefy-v2/prod/src/config/vault/canto.json';
 
 const MULTICHAIN_ENDPOINTS = {
   bsc: BSC_VAULTS_ENDPOINT,
@@ -165,10 +181,10 @@ const MULTICHAIN_ENDPOINTS = {
   emerald: EMERALD_VAULTS_ENDPOINT,
   optimism: OPTIMISM_VAULTS_ENDPOINT,
   heco: HECO_VAULTS_ENDPOINT,
+  kava: KAVA_VAULTS_ENDPOINT,
+  ethereum: ETHEREUM_VAULTS_ENDPOINT,
+  //canto: CANTO_VAULTS_ENDPOINT,
 };
-
-const BEEFY_PERFORMANCE_FEE = 0.045;
-const SHARE_AFTER_PERFORMANCE_FEE = 1 - BEEFY_PERFORMANCE_FEE;
 
 const EXCLUDED_IDS_FROM_TVL = ['venus-wbnb'];
 
@@ -226,6 +242,15 @@ export {
   OPTIMISM_RPC,
   OPTIMISM_CHAIN_ID,
   OPTIMISM_VAULTS_ENDPOINT,
+  KAVA_RPC,
+  KAVA_CHAIN_ID,
+  KAVA_VAULTS_ENDPOINT,
+  ETH_RPC,
+  ETH_CHAIN_ID,
+  ETHEREUM_VAULTS_ENDPOINT,
+  CANTO_RPC,
+  CANTO_CHAIN_ID,
+  //CANTO_VAULTS_ENDPOINT,
   BASE_HPY,
   MINUTELY_HPY,
   HOURLY_HPY,
@@ -255,7 +280,6 @@ export {
   BISWAP_LPF,
   TOMBSWAP_LPF,
   PEGASYS_LPF,
-  BEEFY_PERFORMANCE_FEE,
-  SHARE_AFTER_PERFORMANCE_FEE,
+  HOP_LPF,
   EXCLUDED_IDS_FROM_TVL,
 };

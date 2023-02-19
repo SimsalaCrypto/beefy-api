@@ -1,19 +1,19 @@
 import { ChainId } from '../packages/address-book/address-book';
 
-const yargs = require('yargs');
-const fs = require('fs');
-const path = require('path');
+import yargs from 'yargs';
+import fs from 'fs';
+import path from 'path';
 
-const { ethers } = require('ethers');
-const { MULTICHAIN_RPC } = require('../src/constants');
+import { ethers } from 'ethers';
+import { MULTICHAIN_RPC } from '../src/constants';
 
-const voterABI = require('../src/abis/Voter.json');
-const LPPairABI = require('../src/abis/ISolidlyPair.json');
-const ERC20ABI = require('../src/abis/ERC20.json');
+import voterABI from '../src/abis/Voter.json';
+import LPPairABI from '../src/abis/ISolidlyPair.json';
+import ERC20ABI from '../src/abis/ERC20.json';
 import { addressBook } from '../packages/address-book/address-book';
 const {
   fantom: {
-    platforms: { solidly },
+    platforms: { spiritswap, equalizer },
   },
   optimism: {
     platforms: { velodrome },
@@ -21,14 +21,15 @@ const {
   polygon: {
     platforms: { dystopia },
   },
+  bsc: {
+    platforms: { cone, thena },
+  },
+  ethereum: {
+    platforms: { solidly },
+  },
 } = addressBook;
 
 const projects = {
-  solidly: {
-    prefix: 'solidly',
-    volatileFile: '../src/data/fantom/solidlyLpPools.json',
-    voter: solidly.voter,
-  },
   velodrome: {
     prefix: 'velodrome',
     stableFile: '../src/data/optimism/velodromeStableLpPools.json',
@@ -40,6 +41,40 @@ const projects = {
     stableFile: '../src/data/matic/dystopiaStableLpPools.json',
     volatileFile: '../src/data/matic/dystopiaLpPools.json',
     voter: dystopia.voter,
+  },
+  cone: {
+    prefix: 'cone',
+    stableFile: '../src/data/coneStableLpPools.json',
+    volatileFile: '../src/data/coneLpPools.json',
+    voter: cone.voter,
+  },
+  thena: {
+    prefix: 'thena',
+    stableFile: '../src/data/degens/thenaStableLpPools.json',
+    volatileFile: '../src/data/degens/thenaLpPools.json',
+    voter: thena.voter,
+  },
+  spiritVolatile: {
+    prefix: 'spiritV2',
+    volatileFile: '../src/data/fantom/spiritVolatileLpPools.json',
+    voter: spiritswap.volatileVoter,
+  },
+  spiritStable: {
+    prefix: 'spiritV2',
+    stableFile: '../src/data/fantom/spiritStableLpPools.json',
+    voter: spiritswap.stableVoter,
+  },
+  equalizer: {
+    prefix: 'equalizer',
+    stableFile: '../src/data/fantom/equalizerStableLpPools.json',
+    volatileFile: '../src/data/fantom/equalizerLpPools.json',
+    voter: equalizer.voter,
+  },
+  solidly: {
+    prefix: 'monolith',
+    stableFile: '../src/data/ethereum/solidlyStableLpPools.json',
+    volatileFile: '../src/data/ethereum/solidlyLpPools.json',
+    voter: solidly.voter,
   },
 };
 
@@ -60,6 +95,11 @@ const args = yargs.options({
     type: 'string',
     demandOption: true,
     describe: 'provide the solidly LP for gauge',
+  },
+  newFee: {
+    type: 'bool',
+    demandOption: true,
+    describe: 'If the beefy fee is 9.5% use true else use false',
   },
 }).argv;
 
@@ -103,6 +143,7 @@ async function fetchToken(tokenAddress) {
     logoURI: ``,
     website: '',
     description: '',
+    documentation: '',
   };
   console.log({ [token.symbol]: token }); // Prepare token data for address-book
   return token;
@@ -126,6 +167,7 @@ async function main() {
     gauge: farm.newGauge,
     decimals: `1e${lp.decimals}`,
     chainId: chainId,
+    beefyFee: args['newFee'] ? 0.095 : 0.045,
     lp0: {
       address: token0.address,
       oracle: 'tokens',

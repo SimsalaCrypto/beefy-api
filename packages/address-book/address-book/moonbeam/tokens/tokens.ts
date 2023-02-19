@@ -28,6 +28,114 @@ const _tokens = {
       'Beefy Finance is a Decentralized, Multi-Chain Yield Optimizer platform that allows its users to earn compound interest on their crypto holdings.',
     logoURI:
       'https://raw.githubusercontent.com/beefyfinance/beefy-app/prod/src/images/single-assets/BIFI.png',
+    documentation: 'https://docs.beefy.finance/',
+  },
+  STELLA4POOL: {
+    name: 'Stellaswap 4Pool',
+    symbol: 'stella4pool',
+    address: '0xB326b5189AA42Acaa3C649B120f084Ed8F4dCaA6',
+    chainId: 1284,
+    decimals: 18,
+    website: 'https://app.stellaswap.com/exchange/pool/stable',
+    description:
+      'Stellaswap Base4Pool is a Stable Pool consisting of USDC.wh, USDt.xc, BUSD.wh, and FRAX tokens.',
+    logoURI: '',
+  },
+  wstDOT: {
+    name: 'Wrapped liquid staked DOT',
+    symbol: 'wstDOT',
+    address: '0x191cf2602Ca2e534c5Ccae7BCBF4C46a704bb949',
+    chainId: 1284,
+    decimals: 10,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080.svg',
+    website: 'https://polkadot.lido.fi/',
+    description:
+      'Lido for Polkadot is a liquid staking solution for DOT backed by industry-leading staking providers. wstDOT is wrapped version of stDOT',
+    documentation: 'https://docs.polkadot.lido.fi/',
+  },
+  WBTCwh: {
+    name: 'Wrapped BTC',
+    symbol: 'WBTC',
+    address: '0xE57eBd2d67B462E9926e04a8e33f01cD0D64346D',
+    chainId: 1284,
+    decimals: 8,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x1DC78Acda13a8BC4408B207c9E48CDBc096D95e0.svg',
+    website: 'https://www.portalbridge.com/#/transfer',
+    description:
+      'WBTCwh is a bridged version of WBTC from the Wormhole(Portal) portal. Wrapped Bitcoin (WBTC) is the first ERC20 token backed 1:1 with Bitcoin. Completely transparent. 100% verifiable. Community led.',
+    documentation: 'https://docs.wormhole.com/wormhole/',
+  },
+  WETHwh: {
+    name: 'Wrapped Ether',
+    symbol: 'WETH',
+    address: '0xab3f0245B83feB11d15AAffeFD7AD465a59817eD',
+    chainId: 1284,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0xfA9343C3897324496A05fC75abeD6bAC29f8A40f.svg',
+    website: 'https://www.portalbridge.com/#/transfer',
+    description:
+      'WETHwh is a bridged version of native ETH from the Wormhole(Portal) portal. ETH is the native currency that flows within the Ethereum ecosystem.',
+    documentation: 'https://docs.wormhole.com/wormhole/',
+  },
+  USDCwh: {
+    name: 'USD Coin',
+    symbol: 'USDC',
+    address: '0x931715FEE2d06333043d11F658C8CE934aC61D0c',
+    chainId: 1284,
+    decimals: 6,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x818ec0A7Fe18Ff94269904fCED6AE3DaE6d6dC0b.svg',
+    website: 'https://www.portalbridge.com/#/transfer',
+    description:
+      'USDC bridged by Wormhole(Portal). USDC is a fully collateralized US dollar stablecoin. Native USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
+    documentation: 'https://docs.wormhole.com/wormhole/',
+  },
+  POOP: {
+    name: 'Raresama',
+    symbol: 'POOP',
+    address: '0xFFfffFFecB45aFD30a637967995394Cc88C0c194',
+    chainId: 1284,
+    decimals: 18,
+    logoURI:
+      'https://app.stellaswap.com/_next/image?url=https%3A%2F%2Fraw.githubusercontent.com%2Fstellaswap%2Fassets%2Fmain%2Fbridge%2FPOOP.png&w=64&q=50',
+    website: 'https://raresama.com/',
+    description:
+      'Raresama is an artist and community focused NFT marketplace with great ambitions to quickly become the leading marketplace on Moonbeam. POOP is the Raresama.com (NFT Marketplace) governance token.',
+  },
+  xcACA: {
+    name: 'Acala xcACA',
+    symbol: 'xcACA',
+    address: '0xffffFFffa922Fef94566104a6e5A35a4fCDDAA9f',
+    chainId: 1284,
+    decimals: 12,
+    logoURI: '',
+    website: 'https://acala.network/',
+    description: 'The decentralized Stablecoin of Polkadot',
+  },
+  xciBTC: {
+    name: 'Interlay BTC',
+    symbol: 'xciBTC',
+    address: '0xFFFFFfFf5AC1f9A51A93F5C527385edF7Fe98A52',
+    chainId: 1284,
+    decimals: 8,
+    logoURI: '',
+    website: 'https://interlay.io/',
+    description:
+      'Use your Bitcoin. Anywhere. Anytime. Interlay is a decentralized bridge that allows you to use your Bitcoin on Ethereum and Polkadot.',
+  },
+  xcINTR: {
+    name: 'Interlay INTR',
+    symbol: 'xcINTR',
+    address: '0xFffFFFFF4C1cbCd97597339702436d4F18a375Ab',
+    chainId: 1284,
+    decimals: 10,
+    logoURI: '',
+    website: 'https://interlay.io/',
+    description:
+      'Use your Bitcoin. Anywhere. Anytime. Interlay is a decentralized bridge that allows you to use your Bitcoin on Ethereum and Polkadot.',
   },
   WELL: {
     name: 'WELL',
@@ -49,9 +157,9 @@ const _tokens = {
     logoURI:
       'https://tokens.pancakeswap.finance/images/0xdFA46478F9e5EA86d57387849598dbFB2e964b02.svg',
     website: 'https://app.mai.finance/',
-    description: 'MAI is a stablecoin collateralized by your crypto assets',
+    description:
+      "MAI is a stablecoin collateralized by your crypto assets. It's powered by Qi Dao, a protocol that enables any cryptocurrency community to create stablecoins backed by their native tokens.",
   },
-
   APE: {
     name: 'ApeCoin APE',
     symbol: 'APE',
@@ -84,6 +192,7 @@ const _tokens = {
     logoURI:
       'https://tokens.pancakeswap.finance/images/0x818ec0A7Fe18Ff94269904fCED6AE3DaE6d6dC0b.svg',
     website: 'https://www.circle.com/usdc',
+    documentation: 'https://developers.circle.com/docs',
     description:
       'USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
   },
@@ -123,7 +232,7 @@ const _tokens = {
     description:
       'bridged DAI by Nomad. Multi-Collateral Dai, brings a lot of new and exciting features, such as support for new CDP collateral types and Dai Savings Rate.',
   },
-  FRAXs: {
+  FRAX: {
     name: 'Frax',
     symbol: 'FRAX',
     address: '0x322E86852e492a7Ee17f28a78c663da38FB33bfb',
@@ -134,6 +243,7 @@ const _tokens = {
     website: 'https://frax.finance/',
     description:
       'The Frax Protocol introduced the world to the concept of a cryptocurrency being partially backed by collateral and partially stabilized algorithmically.',
+    documentation: 'https://docs.frax.finance/',
   },
   BUSD: {
     name: 'Binance-Peg BUSD Token',
@@ -158,6 +268,19 @@ const _tokens = {
     website: 'https://www.binance.com/en/busd',
     description:
       'Binance USD (BUSD) is a 1:1 USD-backed stable coin issued by Binance (in partnership with Paxos). BUSD is approved and regulated by the New York State Department of Financial Services (NYDFS). The BUSD Monthly Audit Report can be viewed from the official website.',
+  },
+  BUSDwh: {
+    name: 'Binance-Peg BUSD Token (Wormhole)',
+    symbol: 'BUSD',
+    address: '0x692C57641fc054c2Ad6551Ccc6566EbA599de1BA',
+    chainId: 1284,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0xA649325Aa7C5093d12D6F98EB4378deAe68CE23F.svg',
+    website: 'https://www.binance.com/en/busd',
+    description:
+      'BUSD bridged by Wormhole(Portal). Binance USD (BUSD) is a 1:1 USD-backed stable coin issued by Binance (in partnership with Paxos). BUSD is approved and regulated by the New York State Department of Financial Services (NYDFS). The BUSD Monthly Audit Report can be viewed from the official website.',
+    documentation: 'https://docs.wormhole.com/wormhole/',
   },
   BNB: {
     name: 'Binance',
@@ -204,7 +327,7 @@ const _tokens = {
       'https://tokens.pancakeswap.finance/images/0xfA9343C3897324496A05fC75abeD6bAC29f8A40f.svg',
     website: 'https://www.nomad.xyz/',
     description:
-      'bridged ETH by Nomad. The native currency that flows within the Ethereum economy is called Ether (ETH). Ether is typically used to pay for transaction fees called Gas, and it is the base currency of the network.',
+      'Bridged ETH by Nomad. The native currency that flows within the Ethereum economy is called Ether (ETH). Ether is typically used to pay for transaction fees called Gas, and it is the base currency of the network.',
   },
   USDT: {
     name: 'Tether USD',
@@ -229,6 +352,19 @@ const _tokens = {
     website: 'https://tether.to/',
     description:
       'Tether is a stablecoin pegged to the US Dollar. A stablecoin is a type of cryptocurrency whose value is pegged to another fiat currency like the US Dollar or to a commodity like Gold.Tether is the first stablecoin to be created and it is the most popular stablecoin used in the ecosystem.',
+  },
+  USDTxc: {
+    name: 'Tether USD (XCM)',
+    symbol: 'USDTxc',
+    address: '0xFFFFFFfFea09FB06d082fd1275CD48b191cbCD1d',
+    chainId: 1284,
+    decimals: 6,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0xeFAeeE334F0Fd1712f9a8cc375f427D9Cdd40d73.svg',
+    website: 'https://tether.to/',
+    description:
+      'Bridged by XCM from Kusama. Tether is a stablecoin pegged to the US Dollar. A stablecoin is a type of cryptocurrency whose value is pegged to another fiat currency like the US Dollar or to a commodity like Gold.Tether is the first stablecoin to be created and it is the most popular stablecoin used in the ecosystem.',
+    documentation: 'https://moonbeam.network/announcements/usdt-on-moonbeam/',
   },
   DAI: {
     name: 'Dai Stablecoin',
@@ -348,6 +484,18 @@ const _tokens = {
     description:
       'Polkadot is an open-source sharding multichain protocol that facilitates the cross-chain transfer of any data or asset types, not just tokens, thereby making a wide range of blockchains interoperable with each other.',
   },
+  stDOT: {
+    name: 'Liquid staked DOT',
+    symbol: 'stDOT',
+    address: '0xFA36Fe1dA08C89eC72Ea1F0143a35bFd5DAea108',
+    chainId: 1284,
+    decimals: 10,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080.svg',
+    website: 'https://polkadot.lido.fi/',
+    description:
+      'Lido for Polkadot is a liquid staking solution for DOT backed by industry-leading staking providers.',
+  },
   veFLARE: {
     name: 'Vested Flare Token',
     symbol: 'veFLARE',
@@ -431,6 +579,42 @@ const _tokens = {
     website: 'https://www.terra.money/',
     description:
       'Terra stablecoins offer instant settlements, low fees and seamless cross-border exchange - loved by millions of users and merchants.',
+  },
+  xcaUSD: {
+    name: 'xcaUSD',
+    symbol: 'xcaUSD',
+    address: '0xfFfFFFFF52C56A9257bB97f4B2b6F7B2D624ecda',
+    chainId: 1284,
+    decimals: 12,
+    logoURI:
+      'https://raw.githubusercontent.com/BeamSwap/beamswap-tokenlist/main/assets/chains/moonbeam/0xfFfFFFFF52C56A9257bB97f4B2b6F7B2D624ecda/logo.png',
+    website: 'https://acala.network/ausd',
+    description: 'Acala USD (aUSD). The native decentralized stablecoin of Polkadot.',
+  },
+  LDO: {
+    name: 'Lido DAO',
+    symbol: 'LDO',
+    address: '0x9Fda7cEeC4c18008096C2fE2B85F05dc300F94d0',
+    chainId: 1284,
+    decimals: 18,
+    logoURI: 'https://assets.coingecko.com/coins/images/13573/large/Lido_DAO.png?1609873644',
+    website: 'https://stake.lido.fi/',
+    documentation: 'https://docs.lido.fi/',
+    description:
+      'Lido is a liquid staking solution for ETH 2.0 backed by industry-leading staking providers.',
+  },
+  stellaBase4pool: {
+    name: 'stellaBase4pool',
+    symbol: 'stellaswap-base4pool',
+    address: '0xdA782836B65edC4E6811c7702C5E21786203Ba9d',
+    chainId: 1284,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://stellaswap.com/',
+    description:
+      'Stellaswap is a decentralized exchange, providing liquidity and enabling peer-to-peer transactions on the Moonbeam Network. The 4pool is a stable-swap LP consisting of USDC, USDT, DAI & FRAX.',
+    documentation:
+      'https://docs.stellaswap.com/how-to-guides/swap-pool-and-farm/how-to-add-liquidity-in-stable-amm',
   },
 } as const;
 

@@ -15,6 +15,29 @@ const AVAX = {
 } as const;
 
 const _tokens = {
+  'USD+': {
+    name: 'USD+ Stablecoin',
+    symbol: 'USD+',
+    address: '0xe80772Eaf6e2E18B651F160Bc9158b2A5caFCA65',
+    chainId: 43114,
+    decimals: 6,
+    website: 'https://overnight.fi/',
+    description:
+      'USD+ is USDC that pays you yield daily via rebase.  It is 100% collateralized with assets immediately convertible into USDC.  Yield is generated via strategies such as lending and stable-to-stable pools. Initial strategies include Aave, Rubicon, and Pika.',
+    logoURI: '',
+    documentation: 'https://docs.overnight.fi/',
+  },
+  CAI: {
+    name: 'Colony Avalanche Index CAI',
+    symbol: 'CAI',
+    address: '0x48f88A3fE843ccb0b5003e70B4192c1d7448bEf0',
+    chainId: 43114,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://www.colonylab.io/cai.html',
+    description:
+      "Colony Avalanche Index - The easist way to invest in Avalanche. CAI is an index token investing in Avalanche's AVAX token and other ecosystem projects including BENQI and Trader Joe. The index excludes any rebasing or deflationary tokens.",
+  },
   POPS: {
     name: 'Swapsicle',
     symbol: 'POPS',
@@ -163,6 +186,7 @@ const _tokens = {
       'USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
     chainId: 43114,
     logoURI: 'https://ftmscan.com/token/images/USDC_32.png',
+    documentation: 'https://developers.circle.com/docs',
   },
   saUSDT: {
     name: 'Stargate Tether USD LP',
@@ -476,17 +500,6 @@ const _tokens = {
     description:
       'Moremoney is a lending protocol for opening interest-free collateralised debt positions (CDP) using liquidity pool tokens, interest-bearing tokens (ibTKNs) and other major tokens as collateral. Borrowers mint MONEY, a USD softly pegged stablecoin backed by an over-collateralised debt position as well as the yield earned by the collateral.  After minting MONEY, borrowers can use it across the DeFi landscape, for interest free leverage, or simply use it to farm MORE. Moremoney is designed to support the further conversion of base tokens like ETH, AVAX, USDT into ibTKNs. Upon depositing, collateral assets are forwarded to trusted partner protocols where these tokens earn yield, which is either compounded into collateral token or into $MONEY to automatically repay debts owed by a vault.',
   },
-  GMX: {
-    name: 'GMX',
-    symbol: 'GMX',
-    address: '0x62edc0692BD897D2295872a9FFCac5425011c661',
-    chainId: 43114,
-    decimals: 18,
-    logoURI:
-      'https://tokens.pancakeswap.finance/images/0x62edc0692BD897D2295872a9FFCac5425011c661.svg',
-    website: 'https://gmx.io/buy',
-    description: 'Swaps and leverage trading of up to 30x is now live on Avalanche!',
-  },
   FRM: {
     name: 'Ferrum Network Token',
     symbol: 'FRM',
@@ -530,8 +543,9 @@ const _tokens = {
     symbol: 'QI',
     website: 'https://www.mai.finance/',
     description:
-      'Qi (pronounced CHEE) is the governance token of the QiDao Protocol. It allows those who hold it to vote on changes to the QiDao Protocol.',
+      'QiDao is a self-sustaining, community-governed protocol that allows you to borrow stablecoins interest-free against your crypto assets used as collateral. Loans are paid out and repaid in miTokens (stablecoin soft pegged to the USD).',
     logoURI: 'https://raw.githubusercontent.com/0xlaozi/qidao/main/images/qi.png',
+    documentation: 'https://docs.mai.finance/',
   },
   BOO: {
     chainId: 43114,
@@ -630,8 +644,9 @@ const _tokens = {
     symbol: 'MAI',
     website: 'https://www.mai.finance/',
     description:
-      "MAI is a stable coin collateralized by your MATIC holdings. It's powered by Qi Dao, a protocol that enables any cryptocurrency community to create stablecoins backed by their native tokens.",
+      "MAI is a stablecoin collateralized by your crypto holdings. It's powered by Qi Dao, a protocol that enables any cryptocurrency community to create stablecoins backed by their native tokens.",
     logoURI: 'https://raw.githubusercontent.com/0xlaozi/qidao/main/images/mimatic-red.png',
+    documentation: 'https://docs.mai.finance/',
   },
   miMatic: {
     chainId: 43114,
@@ -641,8 +656,9 @@ const _tokens = {
     symbol: 'MAI',
     website: 'https://www.mai.finance/',
     description:
-      "MAI is a stable coin collateralized by your MATIC holdings. It's powered by Qi Dao, a protocol that enables any cryptocurrency community to create stablecoins backed by their native tokens.",
+      "MAI is a stablecoin collateralized by your crypto holdings. It's powered by Qi Dao, a protocol that enables any cryptocurrency community to create stablecoins backed by their native tokens.",
     logoURI: 'https://raw.githubusercontent.com/0xlaozi/qidao/main/images/mimatic-red.png',
+    documentation: 'https://docs.mai.finance/',
   },
   aQI: {
     chainId: 43114,
@@ -666,6 +682,7 @@ const _tokens = {
       'Beefy Finance is a Decentralized, Multi-Chain Yield Optimizer platform that allows its users to earn compound interest on their crypto holdings.',
     logoURI:
       'https://raw.githubusercontent.com/beefyfinance/beefy-app/prod/src/images/single-assets/BIFI.png',
+    documentation: 'https://docs.beefy.finance/',
   },
   BNB: {
     chainId: 43114,
@@ -717,6 +734,7 @@ const _tokens = {
       'The native currency that flows within the Ethereum economy is called Ether (ETH). Ether is typically used to pay for transaction fees called Gas, and it is the base currency of the network.',
     logoURI:
       'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15/logo.png',
+    documentation: 'https://ethereum.org/en/developers/docs/',
   },
   POOLZ: {
     chainId: 43114,
@@ -1113,10 +1131,12 @@ const _tokens = {
   },
   BUSD: {
     chainId: 43114,
-    address: '0xaEb044650278731Ef3DC244692AB9F64C78FfaEA',
+    address: '0x9C9e5fD8bbc25984B178FdCE6117Defa39d2db39',
     decimals: 18,
     name: 'Binance USD',
     symbol: 'BUSD',
+    description:
+      'Binance USD (BUSD) is a 1:1 USD-backed stable coin issued by Binance (in partnership with Paxos), Approved and regulated by the New York State Department of Financial Services (NYDFS), The BUSD Monthly Audit Report can be viewed from the official website.',
     logoURI:
       'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xaEb044650278731Ef3DC244692AB9F64C78FfaEA/logo.png',
   },
@@ -1311,8 +1331,11 @@ const _tokens = {
     chainId: 43114,
     address: '0xc69Eba65e87889f0805dB717Af06797055A0BA07',
     decimals: 18,
-    name: 'NCash is the native cryptocurrency and protocol token of the Nitro Network. Nitro Network is building a world of private communication networks powered by IoT together with LoRaWAN/3G/4G and 5G.',
+    name: 'Nitro Network',
     symbol: 'NCASH',
+    website: 'https://nitro.network/',
+    description:
+      'NCash is the native cryptocurrency and protocol token of the Nitro Network. Nitro Network is building a world of private communication networks powered by IoT together with LoRaWAN/3G/4G and 5G.',
     logoURI:
       'https://raw.githubusercontent.com/pangolindex/tokens/main/assets/0xc69Eba65e87889f0805dB717Af06797055A0BA07/logo_48.png',
   },
@@ -3914,14 +3937,25 @@ const _tokens = {
     address: '0x50b7545627a5162F82A992c33b87aDc75187B218',
     decimals: 8,
     name: 'Wrapped BTC',
-    symbol: 'WBTC',
+    symbol: 'WBTCe',
     website: 'https://wbtc.network/',
     description:
       'Wrapped Bitcoin (WBTC) is the first ERC20 token backed 1:1 with Bitcoin. Completely transparent. 100% verifiable. Community led.',
     logoURI:
       'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x408D4cD0ADb7ceBd1F1A1C33A0Ba2098E1295bAB/logo.png',
   },
-
+  renBTC: {
+    chainId: 43114,
+    address: '0xDBf31dF14B66535aF65AaC99C32e9eA844e14501',
+    decimals: 8,
+    name: 'renBTC',
+    symbol: 'RENBTC',
+    website: 'https://renproject.io/',
+    description:
+      'renBTC is a synthetic asset that represents the value of bitcoin and it is created by the Ren protocol. renBTC allows for bitcoin transfers to be conducted quicker on the Ethereum blockchain and opens up the possibility for bitcoin to be used in the Ethereum ecosystem. Bitcoin is held in custody by a network of decentralized nodes; it can be converted to renBTC and vice versa easily.',
+    logoURI:
+      'https://raw.githubusercontent.com/renproject/bridge-v2/master/src/assets/icons/tokens/bitcoin-dashed-icon.svg',
+  },
   wNXM: {
     chainId: 43114,
     address: '0x3585E1f43Af5A0E5a9429A8058BDf999ED67f81d',
@@ -4311,7 +4345,7 @@ const _tokens = {
     chainId: 43114,
     address: '0xc7198437980c041c805A1EDcbA50c1Ce5db95118',
     decimals: 6,
-    name: 'Tether USD (eth bridged)',
+    name: 'Tether USD',
     symbol: 'USDTe',
     website: 'https://tether.to/',
     description:
@@ -4407,6 +4441,7 @@ const _tokens = {
       'USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
     logoURI:
       'https://tokens.pancakeswap.finance/images/0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d.png',
+    documentation: 'https://developers.circle.com/docs',
   },
   MIM: {
     name: 'Magic Internet Money',
@@ -4418,9 +4453,10 @@ const _tokens = {
     description:
       'You, the Spellcaster, can provide collateral in the form of various interest bearing crypto assets such as yvYFI, yvUSDT, yvUSDC, xSUSHI and more. With this, you can borrow magic internet money (MIM) which is a stable coin that you can swap for any other traditional stable coin.',
     logoURI: '',
+    documentation: 'https://docs.abracadabra.money/',
   },
   SPELL: {
-    name: 'albracabra',
+    name: 'Spell Token',
     address: '0xCE1bFFBD5374Dac86a2893119683F4911a2F7814',
     symbol: 'SPELL',
     decimals: 18,
@@ -4429,6 +4465,7 @@ const _tokens = {
     description:
       'You, the Spellcaster, can provide collateral in the form of various interest bearing crypto assets such as yvYFI, yvUSDT, yvUSDC, xSUSHI and more. With this, you can borrow magic internet money (MIM) which is a stable coin that you can swap for any other traditional stable coin.',
     logoURI: '',
+    documentation: 'https://docs.abracadabra.money/',
   },
   CRA: {
     name: 'CRA',
@@ -4530,6 +4567,7 @@ const _tokens = {
     name: 'USD Coin',
     symbol: 'USDC',
     website: 'https://www.circle.com/usdc',
+    documentation: 'https://developers.circle.com/docs',
     description:
       'USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
     logoURI:
@@ -4569,6 +4607,30 @@ const _tokens = {
 
     logoURI:
       'https://assets.coingecko.com/coins/images/25015/small/801485424e1f49bc8d0facff9287eb9b_photo.png?1649827972',
+  },
+  GLP: {
+    name: 'GLP',
+    symbol: 'GLP',
+    address: '0xaE64d55a6f09E4263421737397D1fdFA71896a69',
+    chainId: 43114,
+    decimals: 18,
+    website: 'https://app.gmx.io/#/trade/?ref=beefy',
+    description:
+      'GLP consists of an index of assets used for swaps and leverage trading on GMX. GLP holders will make a profit when leverage traders make a loss and vice versa. Staked GLP also earns escrowed GMX rewards and 70% of platform fees distributed in ETH.',
+    logoURI: 'https://github.com/gmx-io/gmx-assets/blob/main/GMX-Assets/SVG/GLP_LOGO%20ONLY.svg',
+    documentation: 'https://gmxio.gitbook.io/gmx/glp',
+  },
+  GMX: {
+    name: 'GMX',
+    symbol: 'GMX',
+    address: '0x62edc0692BD897D2295872a9FFCac5425011c661',
+    chainId: 43114,
+    decimals: 18,
+    website: 'https://app.gmx.io/#/trade/?ref=beefy',
+    description:
+      'GMX is the utility and governance token of the GMX decentralized spot and perpetual exchange that supports low swap fees, zero price impact trades and up to 30x leverage. Staked GMX earns escrowed GMX and 30% of platform fees in the form of ETH.',
+    logoURI: 'https://github.com/gmx-io/gmx-assets/blob/main/GMX-Assets/SVG/GMX_LOGO%20ONLY.svg',
+    documentation: 'https://gmxio.gitbook.io/',
   },
 } as const;
 

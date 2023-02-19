@@ -14,10 +14,10 @@ export const etherscanApiUrlMap = {
     url: 'https://api.ftmscan.com',
     apiToken: 'HT3241A1K3ZVN4368JGHAFJXRR36VD8NCC',
   },
-  heco: {
-    url: 'https://api.hecoinfo.com',
-    apiToken: '6XRRGTTB5ZQWXV55IDQJWYNF2F4GK7I1KK',
-  },
+  // heco: {
+  //   url: 'https://api.hecoinfo.com',
+  //   apiToken: '6XRRGTTB5ZQWXV55IDQJWYNF2F4GK7I1KK',
+  // },
   avax: {
     url: 'https://api.snowtrace.io',
     apiToken: 'RAQVQ1H9766QWV3JYF49CCYCB6WAK8STVB',
@@ -33,5 +33,13 @@ export const etherscanApiUrlMap = {
   cronos: {
     url: 'https://api.cronoscan.com',
     apiToken: 'YPA7TM6IBEYHVVG9S5WQZT7URDNFVNTRDJ',
+  },
+  moonbeam: {
+    url: 'https://api-moonbeam.moonscan.io/',
+    apiToken: '8THZGIQCVDJ86DTNDBZ8WB5G4F4DH9NZCQ',
+  },
+  optimism: {
+    url: 'https://api-optimistic.etherscan.io',
+    apiToken: 'PZ2NFPV2XVNMAP5A6ZMZ92U7SXYJNCIGQX',
   },
 } as const;

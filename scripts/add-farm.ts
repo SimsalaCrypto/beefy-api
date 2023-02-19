@@ -1,4 +1,15 @@
 import { ChainId, addressBook } from '../packages/address-book/address-book';
+import yargs from 'yargs';
+import fs from 'fs';
+import path from 'path';
+
+import { ethers } from 'ethers';
+import { MULTICHAIN_RPC } from '../src/constants';
+
+import masterchefABI from '../src/abis/MasterChef.json';
+import LPPairABI from '../src/abis/LPPair.json';
+import ERC20ABI from '../src/abis/ERC20.json';
+
 const {
   fantom: {
     platforms: { spookyswap },
@@ -10,7 +21,7 @@ const {
     platforms: { trisolaris },
   },
   bsc: {
-    platforms: { biswap, babyswap },
+    platforms: { biswap, babyswap, swapfish: swapfishBsc },
   },
   metis: {
     platforms: { netswap, tethys },
@@ -24,24 +35,19 @@ const {
   emerald: {
     platforms: { yuzu },
   },
+  arbitrum: {
+    platforms: { swapfish: swapfishArb },
+  },
+  ethereum: {
+    platforms: { sushi },
+  },
 } = addressBook;
-
-const yargs = require('yargs');
-const fs = require('fs');
-const path = require('path');
-
-const { ethers } = require('ethers');
-const { MULTICHAIN_RPC } = require('../src/constants');
-
-const masterchefABI = require('../src/abis/MasterChef.json');
-const LPPairABI = require('../src/abis/LPPair.json');
-const ERC20ABI = require('../src/abis/ERC20.json');
 
 const projects = {
   pancake: {
     prefix: 'cakev2',
-    file: '../src/data/cakeLpPools.json',
-    masterchef: '0x73feaa1eE314F8c655E354234017bE2193C9E24E',
+    file: '../src/data/cakeLpPoolsV2.json',
+    masterchef: '0xa5f8C5Dbd5F286960b9d90548680aE5ebFf07652',
   },
   wault: {
     prefix: 'wex',
@@ -128,6 +134,21 @@ const projects = {
     file: '../src/data/emerald/yuzuDualLpPools.json',
     masterchef: yuzu.masterchefExt,
   },
+  swapfishArb: {
+    prefix: 'swapfish',
+    file: '../src/data/arbitrum/swapFishLpPools.json',
+    masterchef: swapfishArb.minichef,
+  },
+  swapfishBsc: {
+    prefix: 'swapfish-bsc',
+    file: '../src/data/swapFishLpPools.json',
+    masterchef: swapfishBsc.minichef,
+  },
+  sushi: {
+    prefix: 'sushi-mainnet',
+    file: '../src/data/ethereum/sushiLpPools.json',
+    masterchef: sushi.masterchef,
+  },
 };
 
 const args = yargs.options({
@@ -147,6 +168,11 @@ const args = yargs.options({
     type: 'integer',
     demandOption: true,
     describe: 'poolId from respective masterchef contract',
+  },
+  newFee: {
+    type: 'bool',
+    demandOption: true,
+    describe: 'If the beefy fee is 9.5% use true else use false',
   },
 }).argv;
 
@@ -195,6 +221,7 @@ async function fetchToken(tokenAddress) {
     logoURI: `https://tokens.pancakeswap.finance/images/${checksummedTokenAddress}.svg`,
     website: '',
     description: '',
+    documentation: '',
   };
   console.log({ [token.symbol]: token }); // Prepare token data for address-book
   return token;
@@ -211,6 +238,7 @@ async function main() {
     name: newPoolName,
     address: lp.address,
     decimals: `1e${lp.decimals}`,
+    beefyFee: args['newFee'] ? 0.095 : 0.045,
     poolId: poolId,
     chainId: chainId,
     lp0: {

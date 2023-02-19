@@ -22,21 +22,59 @@ const MAI = {
   chainId: 137,
   website: 'https://www.mai.finance/',
   description:
-    "MAI is a stable coin collateralized by your MATIC holdings. It's powered by Qi Dao, a protocol that enables any cryptocurrency community to create stablecoins backed by their native tokens.",
+    "MAI is a stablecoin collateralized by your crypto holdings. It's powered by Qi Dao, a protocol that enables any cryptocurrency community to create stablecoins backed by their native tokens.",
   logoURI: 'https://raw.githubusercontent.com/0xlaozi/qidao/main/images/mimatic-red.png',
+  documentation: 'https://docs.mai.finance/',
 } as const;
 
 const _tokens = {
+  MVX: {
+    name: 'MVX',
+    address: '0x2760E46d9BB43dafCbEcaad1F64b93207f9f0eD7',
+    symbol: 'MVX',
+    decimals: 18,
+    website: 'https://metavault.trade/',
+    documentation: 'https://docs.metavault.trade/',
+    description:
+      "MVX is the Metavault.Trade's governance and utility token. 30% of swap and leverage trading fees are converted to $MATIC and distributed to the accounts staking MVX.",
+    chainId: 137,
+    logoURI: '',
+  },
+  BUSD: {
+    name: 'Binance USD',
+    address: '0x9C9e5fD8bbc25984B178FdCE6117Defa39d2db39',
+    symbol: 'BUSD',
+    decimals: 18,
+    website: 'https://www.binance.com/en/busd/',
+    documentation: 'https://www.binance.com/en/busd',
+    description:
+      'These are digitised US Dollars and are always purchased and redeemed at 1 BUSD for 1 US dollar.',
+    chainId: 137,
+    logoURI: '',
+  },
   spUSDC: {
     name: 'Stargate USD Coin LP',
     address: '0x1205f31718499dBf1fCa446663B532Ef87481fe1',
     symbol: 'spUSDC',
     decimals: 6,
     website: 'https://www.circle.com/usdc',
+    documentation: 'https://stargateprotocol.gitbook.io/stargate/v/user-docs/',
     description:
       'USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
     chainId: 137,
     logoURI: 'https://ftmscan.com/token/images/USDC_32.png',
+  },
+  'USD+': {
+    name: 'USD+ Stablecoin',
+    symbol: 'USD+',
+    address: '0x236eeC6359fb44CCe8f97E99387aa7F8cd5cdE1f',
+    chainId: 137,
+    decimals: 6,
+    website: 'https://overnight.fi/',
+    description:
+      'USD+ is USDC that pays you yield daily via rebase.  It is 100% collateralized with assets immediately convertible into USDC.  Yield is generated via strategies such as lending and stable-to-stable pools. Initial strategies include Aave, Rubicon, and Pika.',
+    logoURI: '',
+    documentation: 'https://docs.overnight.fi/',
   },
   spUSDT: {
     name: 'Stargate Tether USD LP',
@@ -49,6 +87,7 @@ const _tokens = {
     website: 'https://tether.to/',
     description:
       'Tether is a stablecoin pegged to the US Dollar. A stablecoin is a type of cryptocurrency whose value is pegged to another fiat currency like the US Dollar or to a commodity like Gold.Tether is the first stablecoin to be created and it is the most popular stablecoin used in the ecosystem.',
+    documentation: 'https://stargateprotocol.gitbook.io/stargate/v/user-docs/',
   },
   DYST: {
     name: 'Dystopia token',
@@ -114,6 +153,7 @@ const _tokens = {
     decimals: 18,
     chainId: 137,
     website: 'https://stake.lido.fi/',
+    documentation: 'https://docs.lido.fi/',
     description:
       'Lido is a liquid staking solution for ETH 2.0 backed by industry-leading staking providers.',
     logoURI: 'https://assets.coingecko.com/coins/images/13573/large/Lido_DAO.png?1609873644',
@@ -275,7 +315,7 @@ const _tokens = {
   PAR: {
     name: 'PAR Stablecoin',
     symbol: 'PAR',
-    address: '0x7b367a058f370c0057762280547d0b974cf3ac10',
+    address: '0xE2Aa7db6dA1dAE97C5f5C6914d285fBfCC32A128',
     chainId: 137,
     decimals: 18,
     website: 'https://mimo.capital/',
@@ -340,6 +380,7 @@ const _tokens = {
     website: 'https://stargate.finance/',
     description:
       'Stargate is a community-driven organization building the first fully composable native asset bridge, and the first dApp built on LayerZero.',
+    documentation: 'https://stargateprotocol.gitbook.io/stargate/v/user-docs/',
   },
   XSGD: {
     name: 'StraitsX Singapore Dollar',
@@ -500,7 +541,7 @@ const _tokens = {
     decimals: 18,
     website: 'https://jarvis.network/',
     description:
-      'jCHF is a multi-collateralized synthetic token tracking the price of the Canadian Dollar. It is built on the top of UMA and Chainlink.',
+      'jCAD is a multi-collateralized synthetic token tracking the price of the Canadian Dollar. It is built on the top of UMA and Chainlink.',
     logoURI: 'https://yield.jarvis.network/static/media/jCAD.832ff304.png',
   },
   USTw: {
@@ -787,6 +828,7 @@ const _tokens = {
       'Beefy Finance is a Decentralized, Multi-Chain Yield Optimizer platform that allows its users to earn compound interest on their crypto holdings.',
     logoURI:
       'https://raw.githubusercontent.com/beefyfinance/beefy-app/prod/src/images/single-assets/BIFI.png',
+    documentation: 'https://docs.beefy.finance/',
   },
   DAI: {
     name: 'Dai Stablecoin',
@@ -875,9 +917,10 @@ const _tokens = {
     decimals: 18,
     chainId: 137,
     website: 'https://gainsnetwork.io/',
-    description: 'Decentralized leverage trading platform on Polygon.',
+    description: 'Decentralized leverage trading platform on Polygon and Arbitrum.',
     logoURI:
       'https://raw.githubusercontent.com/beefyfinance/beefy-app/prod/src/images/single-assets/GNS.png',
+    documentation: 'https://gains-network.gitbook.io/docs-home/',
   },
   LINK: {
     name: 'ChainLink Token',
@@ -921,8 +964,9 @@ const _tokens = {
     chainId: 137,
     website: 'https://www.mai.finance/',
     description:
-      'Qi (pronounced CHEE) is the governance token of the QiDao Protocol. It allows those who hold it to vote on changes to the QiDao Protocol. ',
+      'QiDao is a self-sustaining, community-governed protocol that allows you to borrow stablecoins interest-free against your crypto assets used as collateral. Loans are paid out and repaid in miTokens (stablecoin soft pegged to the USD).',
     logoURI: 'https://raw.githubusercontent.com/0xlaozi/qidao/main/images/qi.png',
+    documentation: 'https://docs.mai.finance/',
   },
   QUICK: {
     name: 'Quickswap',
@@ -1460,6 +1504,254 @@ const _tokens = {
     description:
       'Kirobos decentralized applications remove the risk of losing funds enabling you to use blockchain technology to its fullest potential from one consolidated platform.',
     logoURI: '',
+  },
+  GIDDY: {
+    name: 'Giddy',
+    symbol: 'GIDDY',
+    address: '0x67eB41A14C0fe5CD701FC9d5A3D6597A72F641a6',
+    chainId: 137,
+    decimals: 18,
+    website: 'https://www.giddy.co/',
+    description:
+      'Giddy is an in-development app that simplifies sophisticated DeFi processes into a one-tap investing experience. The app will allow users to earn passive income with crypto assets using a multi-identity, self-custody, private key solution. The fully doxxed Giddy team focuses on security, compliance, and ease of use. Its mission is simple: to grow and adapt to the ever-changing regulatory landscape. This goal will keep investors and their funds within the bounds of current financial regulation. The Giddy token standard allows smart contracts to communicate effectively with compliant tokens. Its method involves encoding contract approval data into a meta-transaction, which removes the need for standalone and infinite contract approvals. GIDDY has a max capped supply of 1 billion tokens and began trading on April 6, 2022',
+    logoURI: '',
+  },
+  EURe: {
+    name: 'Monerium EURe emoney',
+    symbol: 'EURe',
+    address: '0x18ec0A6E18E5bc3784fDd3a3634b31245ab704F6',
+    chainId: 137,
+    decimals: 18,
+    logoURI: 'https://assets.coingecko.com/coins/images/23354/small/eur.png?1643926562',
+    website: 'https://monerium.com/',
+    description:
+      'EURe is a Euro stable-coin from Monerium. Monerium is the first company authorized to issue money on blockchains under European financial regulation. They have issued EUR, USD, GBP, and ISK as e-money tokens on Ethereum and EUR on Algorand. Monerium also operates a gateway for instant transfers of EUR between bank accounts and blockchain wallets/smart contracts.',
+  },
+  HOP: {
+    name: 'HOP Protocol',
+    symbol: 'HOP',
+    address: '0xc5102fE9359FD9a28f877a67E36B0F050d81a3CC',
+    chainId: 137,
+    decimals: 18,
+    website: 'https://app.hop.exchange',
+    description:
+      'Hop Protocol is a blockchain bridge protocol that allows users to move tokens from one chain to another without having to wait for a challenge period.',
+    logoURI: 'https://docs.velodrome.finance/tokens/HOP.svg',
+    documentation: 'https://docs.hop.exchange/',
+  },
+  hETH: {
+    name: 'ETH Hop Token',
+    symbol: 'hETH',
+    address: '0x1fDeAF938267ca43388eD1FdB879eaF91e920c7A',
+    chainId: 137,
+    decimals: 18,
+    website: 'https://app.hop.exchange',
+    description:
+      'hETH is the bridge token for transferring ETH via the Hop Protocol. Hop Protocol is a blockchain bridge protocol that allows users to move tokens from one chain to another without having to wait for a challenge period.',
+    logoURI: '',
+    documentation: 'https://docs.hop.exchange/',
+  },
+  hUSDC: {
+    name: 'USDC Hop Token',
+    symbol: 'hUSDC',
+    address: '0x9ec9551d4A1a1593b0ee8124D98590CC71b3B09D',
+    chainId: 137,
+    decimals: 6,
+    website: 'https://app.hop.exchange',
+    description:
+      'hUSDC is the bridge token for transferring USDC via the Hop Protocol. Hop Protocol is a blockchain bridge protocol that allows users to move tokens from one chain to another without having to wait for a challenge period.',
+    logoURI: '',
+    documentation: 'https://docs.hop.exchange/',
+  },
+  hUSDT: {
+    name: 'USDT Hop Token',
+    symbol: 'hUSDT',
+    address: '0x9F93ACA246F457916E49Ec923B8ed099e313f763',
+    chainId: 137,
+    decimals: 6,
+    website: 'https://app.hop.exchange',
+    description:
+      'hUSDT is the bridge token for transferring USDT via the Hop Protocol. Hop Protocol is a blockchain bridge protocol that allows users to move tokens from one chain to another without having to wait for a challenge period.',
+    logoURI: '',
+    documentation: 'https://docs.hop.exchange/',
+  },
+  hDAI: {
+    name: 'DAI Hop Token',
+    symbol: 'hDAI',
+    address: '0xb8901acB165ed027E32754E0FFe830802919727f',
+    chainId: 137,
+    decimals: 18,
+    website: 'https://app.hop.exchange',
+    description:
+      'hDAI is the bridge token for transferring DAI via the Hop Protocol. Hop Protocol is a blockchain bridge protocol that allows users to move tokens from one chain to another without having to wait for a challenge period.',
+    logoURI: '',
+    documentation: 'https://docs.hop.exchange/',
+  },
+  amUSDT: {
+    name: 'Aave Tether USD',
+    symbol: 'amUSDT',
+    address: '0x60D55F02A771d515e077c9C2403a1ef324885CeC',
+    chainId: 137,
+    decimals: 6,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x4988a896b1227218e4A686fdE5EabdcAbd91571f.svg',
+    website: 'https://tether.to/',
+    description:
+      'Aave interest bearing USDT. Tether is a stablecoin pegged to the US Dollar. A stablecoin is a type of cryptocurrency whose value is pegged to another fiat currency like the US Dollar or to a commodity like Gold.Tether is the first stablecoin to be created and it is the most popular stablecoin used in the ecosystem.',
+    documentation: 'https://docs.aave.com/developers/v/2.0/the-core-protocol/atokens',
+  },
+  wamUSDT: {
+    name: 'Wrapped Aave Tether USD',
+    symbol: 'wamUSDT',
+    address: '0x19C60a251e525fa88Cd6f3768416a8024e98fC19',
+    chainId: 137,
+    decimals: 6,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x4988a896b1227218e4A686fdE5EabdcAbd91571f.svg',
+    website: 'https://tether.to/',
+    documentation: 'https://docs.aave.com/developers/v/2.0/the-core-protocol/atokens',
+    description:
+      'Wrapped Aave interest bearing USDT. Tether is a stablecoin pegged to the US Dollar. A stablecoin is a type of cryptocurrency whose value is pegged to another fiat currency like the US Dollar or to a commodity like Gold.Tether is the first stablecoin to be created and it is the most popular stablecoin used in the ecosystem.',
+  },
+  bbamUSDT: {
+    name: 'Balancer Aave USDT Linear Pool',
+    symbol: 'bbamUSDT',
+    address: '0xFf4ce5AAAb5a627bf82f4A571AB1cE94Aa365eA6',
+    chainId: 137,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x4988a896b1227218e4A686fdE5EabdcAbd91571f.svg',
+    website: 'https://app.balancer.fi/#/',
+    documentation: 'https://docs.balancer.fi/products/balancer-pools/boosted-pools',
+    description:
+      'Balancer linear pool that consist of 50/50 USDT and wrapped Aave Interest Bearing USDT.',
+  },
+  amUSDC: {
+    name: 'Aave USDC',
+    symbol: 'amUSDC',
+    address: '0x1a13F4Ca1d028320A707D99520AbFefca3998b7F',
+    chainId: 137,
+    decimals: 6,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x4988a896b1227218e4A686fdE5EabdcAbd91571f.svg',
+    website: 'https://www.circle.com/usdc',
+    documentation: 'https://docs.aave.com/developers/v/2.0/the-core-protocol/atokens',
+    description:
+      'Aave interest bearing USDC. USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
+  },
+  wamUSDC: {
+    name: 'Wrapped Aave Tether USD',
+    symbol: 'wamUSDC',
+    address: '0x221836a597948Dce8F3568E044fF123108aCc42A',
+    chainId: 137,
+    decimals: 6,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x4988a896b1227218e4A686fdE5EabdcAbd91571f.svg',
+    website: 'https://www.circle.com/usdc',
+    documentation: 'https://docs.aave.com/developers/v/2.0/the-core-protocol/atokens',
+    description:
+      'Wrapped Aave interest bearing USDC. USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
+  },
+  bbamUSDC: {
+    name: 'Balancer Aave USDC Linear Pool',
+    symbol: 'bbamUSDC',
+    address: '0xF93579002DBE8046c43FEfE86ec78b1112247BB8',
+    chainId: 137,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x4988a896b1227218e4A686fdE5EabdcAbd91571f.svg',
+    website: 'https://app.balancer.fi/#/',
+    documentation: 'https://docs.balancer.fi/products/balancer-pools/boosted-pools',
+    description:
+      'Balancer linear pool that consist of 50/50 USDC and wrapped Aave Interest Bearing USDC.',
+  },
+  amDAI: {
+    name: 'Aave DAI',
+    symbol: 'amDAI',
+    address: '0x27F8D03b3a2196956ED754baDc28D73be8830A6e',
+    chainId: 137,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x4988a896b1227218e4A686fdE5EabdcAbd91571f.svg',
+    website: 'https://makerdao.com/en/',
+    documentation: 'https://docs.aave.com/developers/v/2.0/the-core-protocol/atokens',
+    description:
+      'Aave interest bearing DAI. Dai is a stablecoin cryptocurrency which aims to keep its value as close to one United States dollar as possible through an automated system of smart contracts on the Ethereum blockchain.',
+  },
+  wamDAI: {
+    name: 'Wrapped Aave Tether DAI',
+    symbol: 'wamDAI',
+    address: '0xEE029120c72b0607344f35B17cdD90025e647B00',
+    chainId: 137,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x4988a896b1227218e4A686fdE5EabdcAbd91571f.svg',
+    website: 'https://makerdao.com/en/',
+    documentation: 'https://docs.aave.com/developers/v/2.0/the-core-protocol/atokens',
+    description:
+      'Wrapped Aave interest bearing DAI. Dai is a stablecoin cryptocurrency which aims to keep its value as close to one United States dollar as possible through an automated system of smart contracts on the Ethereum blockchain.',
+  },
+  bbamDAI: {
+    name: 'Balancer Aave DAI Linear Pool',
+    symbol: 'bbamDAI',
+    address: '0x178E029173417b1F9C8bC16DCeC6f697bC323746',
+    chainId: 137,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x4988a896b1227218e4A686fdE5EabdcAbd91571f.svg',
+    website: 'https://app.balancer.fi/#/',
+    documentation: 'https://docs.balancer.fi/products/balancer-pools/boosted-pools',
+    description:
+      'Balancer linear pool that consist of 50/50 DAI and wrapped Aave Interest Bearing DAI.',
+  },
+  bbamUSD: {
+    name: 'Balancer Aave Stable Composable Pool',
+    symbol: 'bbamUSD',
+    address: '0x48e6B98ef6329f8f0A30eBB8c7C960330d648085',
+    chainId: 137,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x4988a896b1227218e4A686fdE5EabdcAbd91571f.svg',
+    website: 'https://app.balancer.fi/#/',
+    documentation: 'https://docs.balancer.fi/products/balancer-pools/boosted-pools',
+    description:
+      'Balancer composable pool that consist of bbaUSDT, bbaUSDC, and bbaDAI. bbTokens are Aave boosted linear pools.',
+  },
+  '2BRZ': {
+    name: 'Balancer 2BRZ Pool',
+    symbol: '2BRZ',
+    address: '0xE22483774bd8611bE2Ad2F4194078DaC9159F4bA',
+    chainId: 137,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x4988a896b1227218e4A686fdE5EabdcAbd91571f.svg',
+    website: 'https://app.balancer.fi/#/',
+    documentation: 'https://docs.balancer.fi/products/balancer-pools/',
+    description: 'Balancer composable pool that consist of BRZ and jBRL',
+  },
+  jBRL: {
+    name: 'Jarvis Synthetic Brazilian Real',
+    symbol: 'jBRL',
+    address: '0xf2f77FE7b8e66571E0fca7104c4d670BF1C8d722',
+    chainId: 137,
+    decimals: 18,
+    website: 'https://jarvis.network/',
+    description:
+      'jBRL is a multi-collateralized synthetic token tracking the price of Brazilian Real. It is built on the top of UMA and Chainlink.',
+    logoURI: 'https://jarvis.network/images/jBRL.svg',
+    documentation: 'https://learn.jarvis.network/',
+  },
+  BRZ: {
+    name: 'BRZ Token',
+    symbol: 'BRZ',
+    address: '0x491a4eB4f1FC3BfF8E1d2FC856a6A46663aD556f',
+    chainId: 137,
+    decimals: 4,
+    website: 'https://brztoken.io/',
+    description:
+      'BRZ is the first Brazilian stablecoin in circulation. It will allow Brazilians to directly ramp up investments in foreign exchanges and to trade a Brazilian Real (BRL) pegged stablecoin in global scale.',
+    logoURI: 'https://bscscan.com/token/images/brztoken_32.png',
+    documentation: 'https://brztoken.io/files/white_paper_BRZ_2023.pdf',
   },
 } as const;
 

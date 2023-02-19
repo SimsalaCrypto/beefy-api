@@ -17,6 +17,17 @@ const _tokens = {
   ROSE,
   WROSE: ROSE,
   WNATIVE: ROSE,
+  WBTC: {
+    name: 'Multichain Wrapped BTC',
+    symbol: 'WBTC',
+    address: '0x5D9ab5522c64E1F6ef5e3627ECCc093f56167818',
+    chainId: 42262,
+    decimals: 8,
+    description:
+      'Wrapped Bitcoin (WBTC) is the first ERC20 token backed 1:1 with Bitcoin. Completely transparent. 100% verifiable. Community led.',
+    logoURI:
+      'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x408D4cD0ADb7ceBd1F1A1C33A0Ba2098E1295bAB/logo.png',
+  },
   BIFI: {
     name: 'Beefy.Finance',
     symbol: 'BIFI',
@@ -28,6 +39,7 @@ const _tokens = {
       'Beefy Finance is a Decentralized, Multi-Chain Yield Optimizer platform that allows its users to earn compound interest on their crypto holdings.',
     logoURI:
       'https://raw.githubusercontent.com/beefyfinance/beefy-app/prod/src/images/single-assets/BIFI.png',
+    documentation: 'https://docs.beefy.finance/',
   },
   ceUSDC: {
     name: 'USD Coin (Celer)',
@@ -38,6 +50,7 @@ const _tokens = {
     logoURI:
       'https://tokens.pancakeswap.finance/images/0x81ECac0D6Be0550A00FF064a4f9dd2400585FE9c.svg',
     website: 'https://www.circle.com/usdc',
+    documentation: 'https://developers.circle.com/docs',
     description:
       'USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
   },
@@ -98,6 +111,7 @@ const _tokens = {
     website: 'https://ethereum.org/',
     description:
       'The native currency that flows within the Ethereum economy is called Ether (ETH). Ether is typically used to pay for transaction fees called Gas, and it is the base currency of the network.',
+    documentation: 'https://ethereum.org/en/developers/docs/',
   },
   VS: {
     name: 'ValleySwap Token',

@@ -13,6 +13,8 @@ import getCurveArbitrumPrices from './arbitrum/getCurvePrices';
 import getCurveAvaxPrices from './avax/getCurvePrices';
 import getCurveHarmonyPrices from './one/getCurvePrices';
 import getCurveOptimismPrices from './optimism/getCurvePrices';
+import getCurveMoonbeamPrices from './moonbeam/getCurvePrices';
+import { getCurveEthereumPrices } from './ethereum/getCurvePrices';
 import getBeethovenxPrices from './fantom/getBeethovenxPrices';
 import { getSynapsePrices } from './avax/getSynapsePrices';
 import getJarvisPrices from './matic/getJarvisPrices';
@@ -24,18 +26,84 @@ import getBalancerArbPrices from './arbitrum/getBalancerArbPrices';
 import getBalancerPolyPrices from './matic/getBalancerPolyPrices';
 import getVelodromeStablePrices from './optimism/getVelodromeStablePrices';
 import getDystopiaStablePrices from './matic/getDystopiaStablePrices';
+import getSolidlyV1StablePrices from './fantom/getSolidlyV1StablePrices';
 import getVoltagePrices from './fuse/getVoltagePrices';
 import getBeamswapPrices from './moonbeam/getBeamswapPrices';
 import getTrisolarisPrices from './aurora/getTrisolarisPrices';
+import getConeStablePrices from './bsc/getConeStablePrices';
+import getSpiritStablePrices from './fantom/getSpiritStablePrices';
+import getHermesStablePrices from './metis/getHermesStablePrices';
+import getCakeStablePrices from './bsc/pancake/getCakeStablePrices';
+import getUniV3PolygonPrices from './matic/getUniV3PolygonPrices';
+import getCurveKavaPrices from './kava/getCurvePrices';
+import getSushiKavaPrices from './kava/getSushiPrices';
+import getGmxArbitrumPrices from './arbitrum/getGmxPrices';
+import getGmxAvalanchePrices from './avax/getGmxPrices';
+import getAuraBalancerPrices from './ethereum/getAuraBalancerPrices';
+import getFerroPrices from './cronos/getFerroPrices';
+import getHopArbPrices from './arbitrum/getHopArbPrices';
+import getHopOpPrices from './optimism/getHopOpPrices';
+import getHopPolyPrices from './matic/getHopPolyPrices';
+import getStargateEthPrices from './ethereum/getStargateEthPrices';
+import getStargateArbPrices from './arbitrum/getStargateArbPrices';
+import getStargateAvaxPrices from './avax/getStargateAvaxPrices';
+import getStargateBscPrices from './bsc/stargate/getStargateBscPrices';
+import getStargateFantomPrices from './fantom/getStargateFantomPrices';
+import getStargatePolygonPrices from './matic/getStargatePolygonPrices';
+import getStargateOpPrices from './optimism/getStargateOpPrices';
+import getStargateMetisPrices from './metis/getStargateMetisPrices';
+import getOlpPrices from './optimism/getOlpPrices';
+import getEqualizerStablePrices from './fantom/getEqualizerStablePrices';
+import getThenaStablePrices from './bsc/getThenaStablePrices';
+import getSolidlyEthStablePrices from './ethereum/getSolidlyStablePrices';
+import getMvxPrices from './matic/getMvxPrices';
+import getCantoStablePrices from './canto/getCantoStablePrices';
+import { getKyberPolygonPrices } from './matic/getKyberPolygonPrices';
+import { getKyberArbitrumPrices } from './arbitrum/getKyberArbitrumPrices';
+import { getKyberAvaxPrices } from './avax/getKyberAvaxPrices';
+import { getKyberOptimismPrices } from './optimism/getKyberOptimismPrices';
 
 const getNonAmmPrices = async tokenPrices => {
   let prices = {};
   let breakdown = {};
 
   const promises = [
+    getCantoStablePrices(tokenPrices),
+    getKyberArbitrumPrices(tokenPrices),
+    getKyberAvaxPrices(tokenPrices),
+    getKyberOptimismPrices(tokenPrices),
+    getKyberPolygonPrices(tokenPrices),
+    getSolidlyEthStablePrices(tokenPrices),
+    getThenaStablePrices(tokenPrices),
+    getMvxPrices(tokenPrices),
+    getEqualizerStablePrices(tokenPrices),
+    getOlpPrices(),
+    getStargateMetisPrices(tokenPrices),
+    getStargateOpPrices(tokenPrices),
+    getStargatePolygonPrices(tokenPrices),
+    getStargateFantomPrices(tokenPrices),
+    getStargateBscPrices(tokenPrices),
+    getStargateAvaxPrices(tokenPrices),
+    getStargateArbPrices(tokenPrices),
+    getStargateEthPrices(tokenPrices),
+    getHopPolyPrices(tokenPrices),
+    getHopOpPrices(tokenPrices),
+    getHopArbPrices(tokenPrices),
+    getFerroPrices(tokenPrices),
+    getCurveEthereumPrices(tokenPrices),
+    getAuraBalancerPrices(tokenPrices),
+    getGmxAvalanchePrices(tokenPrices),
+    getGmxArbitrumPrices(tokenPrices),
+    getSushiKavaPrices(tokenPrices),
+    getUniV3PolygonPrices(tokenPrices),
+    getHermesStablePrices(tokenPrices),
+    getCakeStablePrices(tokenPrices),
+    getSpiritStablePrices(tokenPrices),
+    getConeStablePrices(tokenPrices),
     getTrisolarisPrices(tokenPrices),
     getBeamswapPrices(tokenPrices),
     getVoltagePrices(tokenPrices),
+    getSolidlyV1StablePrices(tokenPrices),
     getDystopiaStablePrices(tokenPrices),
     getVelodromeStablePrices(tokenPrices),
     getBalancerPolyPrices(tokenPrices),
@@ -54,6 +122,8 @@ const getNonAmmPrices = async tokenPrices => {
     getCurveAvaxPrices(tokenPrices),
     getCurveHarmonyPrices(tokenPrices),
     getCurveOptimismPrices(tokenPrices),
+    getCurveMoonbeamPrices(tokenPrices),
+    getCurveKavaPrices(tokenPrices),
     getRosePrices(tokenPrices),
     getDopplePrices(),
     getIronSwapPrices(),

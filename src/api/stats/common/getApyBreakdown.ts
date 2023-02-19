@@ -3,7 +3,8 @@ import BigNumber from 'bignumber.js';
 import { getFarmWithTradingFeesApy } from '../../../utils/getFarmWithTradingFeesApy';
 import { compound } from '../../../utils/compound';
 
-import { BASE_HPY, BEEFY_PERFORMANCE_FEE, SHARE_AFTER_PERFORMANCE_FEE } from '../../../constants';
+import { BASE_HPY } from '../../../constants';
+import { getTotalPerformanceFeeForVault } from '../../vaults/getVaultFees';
 
 export interface ApyBreakdown {
   vaultApr?: number;
@@ -13,6 +14,8 @@ export interface ApyBreakdown {
   lpFee?: number;
   tradingApr?: number;
   totalApy?: number;
+  liquidStakingApr?: number;
+  composablePoolApr?: number;
 }
 
 export interface ApyBreakdownResult {
@@ -21,11 +24,12 @@ export interface ApyBreakdownResult {
 }
 
 export const getApyBreakdown = (
-  pools: { name: string; address: string }[],
+  pools: { name: string; address: string; beefyFee?: number }[],
   tradingAprs: Record<string, BigNumber>,
   farmAprs: BigNumber[],
-  providerFee: number,
-  performanceFee: number = BEEFY_PERFORMANCE_FEE
+  providerFee: number | BigNumber[],
+  liquidStakingAprs?: number,
+  composablePoolAprs?: number
 ): ApyBreakdownResult => {
   const result: ApyBreakdownResult = {
     apys: {},
@@ -33,31 +37,51 @@ export const getApyBreakdown = (
   };
 
   pools.forEach((pool, i) => {
+    const liquidStakingApr: number | undefined = liquidStakingAprs
+      ? liquidStakingAprs[i]
+      : undefined;
+
+    const composablePoolApr: number | undefined = composablePoolAprs
+      ? composablePoolAprs[i]
+      : undefined;
+
+    const extraApr =
+      liquidStakingAprs && composablePoolAprs
+        ? liquidStakingApr + composablePoolApr
+        : liquidStakingAprs
+        ? liquidStakingApr
+        : composablePoolAprs
+        ? composablePoolApr
+        : 0;
+
+    const provFee = providerFee[i] == undefined ? providerFee : providerFee[i];
     const simpleApr = farmAprs[i]?.toNumber();
-    const vaultApr = simpleApr * SHARE_AFTER_PERFORMANCE_FEE;
-    const vaultApy = compound(simpleApr, BASE_HPY, 1, SHARE_AFTER_PERFORMANCE_FEE);
+    const beefyPerformanceFee = getTotalPerformanceFeeForVault(pool.name);
+    const shareAfterBeefyPerformanceFee = 1 - beefyPerformanceFee;
+    const vaultApr = simpleApr * shareAfterBeefyPerformanceFee;
+    let vaultApy = compound(simpleApr, BASE_HPY, 1, shareAfterBeefyPerformanceFee);
+
     const tradingApr: number | undefined = (
       (tradingAprs[pool.address.toLowerCase()] ?? new BigNumber(0)).isFinite()
         ? tradingAprs[pool.address.toLowerCase()]
         : new BigNumber(0)
     )?.toNumber();
-    const totalApy = getFarmWithTradingFeesApy(
-      simpleApr,
-      tradingApr,
-      BASE_HPY,
-      1,
-      SHARE_AFTER_PERFORMANCE_FEE
-    );
+
+    const totalApy =
+      getFarmWithTradingFeesApy(simpleApr, tradingApr, BASE_HPY, 1, shareAfterBeefyPerformanceFee) +
+      extraApr;
 
     // Add token to APYs object
     result.apys[pool.name] = totalApy;
     result.apyBreakdowns[pool.name] = {
       vaultApr: vaultApr,
       compoundingsPerYear: BASE_HPY,
-      beefyPerformanceFee: performanceFee,
+      beefyPerformanceFee: beefyPerformanceFee,
       vaultApy: vaultApy,
-      lpFee: providerFee,
+      lpFee: provFee,
       tradingApr: tradingApr,
+      liquidStakingApr: liquidStakingApr,
+      composablePoolApr: composablePoolApr,
       totalApy: totalApy,
     };
   });

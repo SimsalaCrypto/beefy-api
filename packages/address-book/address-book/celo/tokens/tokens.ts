@@ -92,6 +92,7 @@ const _tokens = {
     website: 'https://ethereum.org/',
     description:
       'The native currency that flows within the Ethereum economy is called Ether (ETH). Ether is typically used to pay for transaction fees called Gas, and it is the base currency of the network.',
+    documentation: 'https://ethereum.org/en/developers/docs/',
   },
   DAIV1: {
     name: 'Dai Stablecoin',
@@ -137,6 +138,7 @@ const _tokens = {
     logoURI:
       'https://tokens.pancakeswap.finance/images/0xef4229c8c3250C675F21BCefa42f58EfbfF6002a.svg',
     website: 'https://www.circle.com/usdc',
+    documentation: 'https://developers.circle.com/docs',
     description:
       'USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
   },
@@ -167,6 +169,28 @@ const _tokens = {
   cSUSHI: {
     ...SUSHIV1,
     symbol: 'cSUSHI',
+  },
+  'BIFI-CELO LP': {
+    name: 'BIFI-CELO LP',
+    symbol: 'BIFI-CELO LP',
+    address: '0xa9FcF373b6bc717223d9464e8c481c9AfAe3f861',
+    chainId: 42220,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://app.beefy.com/',
+    oracleId: 'sushi-celo-bifi-weth',
+    oracle: 'lps',
+  },
+  'CSUSHI-CELO LP': {
+    name: 'CSUSHI-CELO LP',
+    symbol: 'CSUSHI-CELO LP',
+    address: '0x7072a1c2c9A0cb20ae0B3C0C9023a42a49542e8B',
+    chainId: 42220,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://app.beefy.com/',
+    oracleId: 'sushi-celo-csushi-celo',
+    oracle: 'lps',
   },
 } as const;
 

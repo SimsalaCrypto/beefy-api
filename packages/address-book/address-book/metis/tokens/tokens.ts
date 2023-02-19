@@ -28,6 +28,7 @@ const _tokens = {
       'Beefy Finance is a Decentralized, Multi-Chain Yield Optimizer platform that allows its users to earn compound interest on their crypto holdings.',
     logoURI:
       'https://raw.githubusercontent.com/beefyfinance/beefy-app/prod/src/images/single-assets/BIFI.png',
+    documentation: 'https://docs.beefy.finance/',
   },
   WBTC: {
     name: 'Wrapped BTC',
@@ -73,8 +74,22 @@ const _tokens = {
     logoURI:
       'https://tokens.pancakeswap.finance/images/0xEA32A96608495e54156Ae48931A7c20f0dcc1a21.svg',
     website: 'https://www.circle.com/usdc',
+    documentation: 'https://developers.circle.com/docs',
     description:
       'USDC is a fully collateralized US dollar stablecoin. USDC is issued by regulated financial institutions, backed by fully reserved assets, redeemable on a 1:1 basis for US dollars.',
+    oracleId: 'USDC',
+  },
+  mDAI: {
+    name: 'Dai Stablecoin',
+    symbol: 'm.DAI',
+    address: '0x4c078361FC9BbB78DF910800A991C7c3DD2F6ce0',
+    chainId: 1088,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x4651B38e7ec14BB3db731369BFE5B08F2466Bd0A.svg',
+    website: 'https://makerdao.com/en/',
+    description:
+      'Dai is a stablecoin cryptocurrency which aims to keep its value as close to one United States dollar as possible through an automated system of smart contracts on the Ethereum blockchain',
   },
   WETH: {
     name: 'Ether',
@@ -171,6 +186,52 @@ const _tokens = {
       'https://pancakeswap.finance/images/tokens/0x4aAC94985cD83be30164DfE7e9AF7C054D7d2121.svg',
     website: 'https://www.hummus.exchange/',
     description: 'Next Gen Decentralized AMM for Stableswaps',
+  },
+  MAIA: {
+    name: 'Maia',
+    symbol: 'MAIA',
+    address: '0x72c232D56542Ba082592DEE7C77b1C6CFA758BCD',
+    chainId: 1088,
+    decimals: 9,
+    logoURI: 'https://s2.coinmarketcap.com/static/img/coins/64x64/17181.png',
+    website: 'https://app.maiadao.io/',
+    description:
+      'MAIA is the governance token of Maia DAO, the yield powerhouse of Metis which launched the Solidly-fork Hermes. With a 100% fair launch Maia DAO is a truly community owned.',
+  },
+  HERMES: {
+    name: 'Hermes',
+    symbol: 'HERMES',
+    address: '0xb27BbeaACA2C00d6258C3118BAB6b5B6975161c8',
+    chainId: 1088,
+    decimals: 18,
+    logoURI: 'https://s2.coinmarketcap.com/static/img/coins/64x64/21272.png',
+    website: 'https://hermes.maiadao.io/',
+    description:
+      'HERMES is the governance token of the Solidly-fork Hermes Protocol on Metis. The token is emitted as a farming reward to liquidity providers and can be locked for a period to gain voting rights.',
+  },
+  'BIFI-METIS LP': {
+    name: 'BIFI-METIS LP',
+    symbol: 'BIFI-METIS LP',
+    address: '0x89D433e8cCC871B3f12EA17b651ff3633DFb5DC0',
+    chainId: 1088,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://app.beefy.com/',
+    oracleId: 'netswap-bifi-metis',
+    oracle: 'lps',
+  },
+  smUSDT: {
+    name: 'Stargate Tether USD LP',
+    symbol: 'smUSDT',
+    address: '0x2b60473a7C41Deb80EDdaafD5560e963440eb632',
+    chainId: 1088,
+    decimals: 6,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x4988a896b1227218e4A686fdE5EabdcAbd91571f.svg',
+    website: 'https://tether.to/',
+    description:
+      'Tether is a stablecoin pegged to the US Dollar. A stablecoin is a type of cryptocurrency whose value is pegged to another fiat currency like the US Dollar or to a commodity like Gold.Tether is the first stablecoin to be created and it is the most popular stablecoin used in the ecosystem.',
+    documentation: 'https://stargateprotocol.gitbook.io/stargate/v/user-docs/',
   },
 } as const;
 

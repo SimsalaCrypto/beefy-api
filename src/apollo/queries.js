@@ -47,6 +47,26 @@ const pairDayDataSushiQuery = (pairs, startTimestamp, endTimestamp) => {
   return gql(queryString);
 };
 
+const pairDayDataSushiTridentQuery = (pairs, startTimestamp, endTimestamp) => {
+  let pairsString = `[`;
+  pairs.map(pair => {
+    return (pairsString += `"${pair}"`);
+  });
+  pairsString += ']';
+  const queryString = `
+    query days {
+      pairDaySnapshots( first: 1000, orderBy: date, orderDirection: asc, where: { pair_in: ${pairsString} date_gt: ${startTimestamp}, date_lt: ${endTimestamp}}) {
+          id
+          volumeToken0
+          volumeToken1
+          volumeUSD
+          liquidityUSD
+        }
+      }
+`;
+  return gql(queryString);
+};
+
 const poolsDataQuery = (pairs, block) => {
   let pairsString = `[`;
   pairs.map(pair => {
@@ -122,13 +142,40 @@ const balancerDataQuery = block => {
   return gql(queryString);
 };
 
+const uniswapPositionQuery = (strategy, block) => {
+  const queryString = `
+    query positionData {
+      positions(where: {owner: "${strategy}", _change_block: {number_gte: ${block}}}) {
+        id
+        collectedFeesToken0
+        collectedFeesToken1
+      }
+    }
+`;
+  return gql(queryString);
+};
+
+const hopQuery = (address, startTimestamp, endTimestamp) => {
+  const queryString = `
+  query hop {
+    tokenSwaps(first: 1000, orderBy: tokensSold, orderDirection: desc, where: { tokenEntity_: { address:"${address}" } , timestamp_gt: ${startTimestamp}, timestamp_lt: ${endTimestamp} }) {
+      tokensSold
+    }
+  }
+`;
+  return gql(queryString);
+};
+
 module.exports = {
   pairDayDataQuery,
   pairDayDataSushiQuery,
+  pairDayDataSushiTridentQuery,
   poolsDataQuery,
   dayDataQuery,
   joeDayDataQuery,
   joeDayDataRangeQuery,
   balancerDataQuery,
   protocolDayDataRangeQuery,
+  uniswapPositionQuery,
+  hopQuery,
 };

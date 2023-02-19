@@ -5,5 +5,8 @@ interface Token {
   chainId: number;
   decimals: number;
   logoURI?: string;
+  documentation?: string;
+  oracleId?: string;
+  oracle?: 'tokens' | 'lps';
 }
 export default Token;
