@@ -28,6 +28,30 @@ const MAI = {
 } as const;
 
 const _tokens = {
+  frxETH: {
+    name: 'Frax Ether',
+    symbol: 'frxETH',
+    address: '0xEe327F889d5947c1dc1934Bb208a1E792F953E96',
+    chainId: 137,
+    decimals: 18,
+    website: 'https://app.frax.finance/frxeth/mint',
+    description:
+      'frxETH acts as a stablecoin loosely pegged to ETH, so that 1 frxETH always represents 1 ETH and the amount of frxETH in circulation matches the amount of ETH in the Frax ETH system. When ETH is sent to the frxETHMinter, an equivalent amount of frxETH is minted. Holding frxETH on its own is not eligible for staking yield and should be thought of as analogous as holding ETH.',
+    logoURI: '',
+    documentation: 'https://docs.frax.finance/frax-ether/frxeth-and-sfrxeth',
+  },
+  wstETH: {
+    name: 'Lido Wrapped Staked ETH',
+    symbol: 'wstETH',
+    address: '0x03b54A6e9a984069379fae1a4fC4dBAE93B3bCCD',
+    chainId: 137,
+    decimals: 18,
+    website: 'https://lido.fi/',
+    description:
+      'Lido is a liquid staking solution for ETH backed by industry-leading staking providers. Lido lets users stake their ETH - without locking assets or maintaining infrastructure - whilst participating in on-chain activities, e.g. lending. Lido attempts to solve the problems associated with initial ETH staking - illiquidity, immovability and accessibility - making staked ETH liquid and allowing for participation with any amount of ETH to improve security of the Ethereum network.',
+    logoURI: '',
+    documentation: 'https://docs.lido.fi/',
+  },
   MVX: {
     name: 'MVX',
     address: '0x2760E46d9BB43dafCbEcaad1F64b93207f9f0eD7',
@@ -630,6 +654,7 @@ const _tokens = {
     description:
       'jEUR is a multi-collateralized synthetic token tracking the price of Euro. It is built on the top of UMA and Chainlink.',
     logoURI: 'https://i.imgur.com/ZvP634G.png',
+    documentation: 'https://learn.jarvis.network/',
   },
   jGBP: {
     name: 'Jarvis Synthetic British Pound',
@@ -924,7 +949,7 @@ const _tokens = {
   },
   LINK: {
     name: 'ChainLink Token',
-    address: '0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39',
+    address: '0xb0897686c545045aFc77CF20eC7A532E3120E0F1',
     symbol: 'LINK',
     decimals: 18,
     website: 'https://chain.link/',
@@ -1752,6 +1777,114 @@ const _tokens = {
       'BRZ is the first Brazilian stablecoin in circulation. It will allow Brazilians to directly ramp up investments in foreign exchanges and to trade a Brazilian Real (BRL) pegged stablecoin in global scale.',
     logoURI: 'https://bscscan.com/token/images/brztoken_32.png',
     documentation: 'https://brztoken.io/files/white_paper_BRZ_2023.pdf',
+  },
+  wUSDR: {
+    name: 'Real USD',
+    symbol: 'wUSDR',
+    address: '0xAF0D9D65fC54de245cdA37af3d18cbEc860A4D4b',
+    chainId: 137,
+    decimals: 9,
+    website: 'https://www.tangible.store/realusd',
+    documentation: 'https://docs.tangible.store/',
+    description:
+      'Real USD (USDR) is the world’s first stablecoin collateralized by tokenized, yield-producing real estate. USDR has a value accrual system built into its design. Using a consistent stream of dependable yield derived from rental revenue, Real USD delivers a native yield to holders.',
+    logoURI: '',
+  },
+  USDR: {
+    name: 'Real USD',
+    symbol: 'USDR',
+    address: '0xb5DFABd7fF7F83BAB83995E72A52B97ABb7bcf63',
+    chainId: 137,
+    decimals: 9,
+    website: 'https://www.tangible.store/realusd',
+    documentation: 'https://docs.tangible.store/',
+    description:
+      'Real USD (USDR) is the world’s first stablecoin collateralized by tokenized, yield-producing real estate. USDR has a value accrual system built into its design. Using a consistent stream of dependable yield derived from rental revenue, Real USD delivers a native yield to holders.',
+    logoURI: '',
+  },
+  amWBTC: {
+    name: 'Aave WBTC',
+    symbol: 'amWBTC',
+    address: '0x5c2ed810328349100A66B82b78a1791B101C9D61',
+    chainId: 137,
+    decimals: 8,
+    logoURI: '',
+    website: 'https://wbtc.network/',
+    documentation: 'https://docs.aave.com/developers/v/2.0/the-core-protocol/atokens',
+    description:
+      'Wrapped Bitcoin (WBTC) is the first ERC20 token backed 1:1 with Bitcoin. Completely transparent. 100% verifiable. Community led.',
+  },
+  aWMATIC: {
+    name: 'Aave WMATIC',
+    symbol: 'aWMATIC',
+    address: '0x6d80113e533a2C0fe82EaBD35f1875DcEA89Ea97',
+    chainId: 137,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x4988a896b1227218e4A686fdE5EabdcAbd91571f.svg',
+    website: 'https://polygon.technology/',
+    description:
+      'Aave interest bearing MATIC. Polygon is a protocol and a framework for building and connecting Ethereum-compatible blockchain networks. Aggregating scalable solutions on Ethereum supporting a multi-chain Ethereum ecosystem.',
+  },
+  waWMATIC: {
+    name: 'Wrapped Aave WMATIC',
+    symbol: 'waWMATIC',
+    address: '0x0D6135b2cFBAE3b1c58368a93b855fa54FA5aae1',
+    chainId: 137,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x4988a896b1227218e4A686fdE5EabdcAbd91571f.svg',
+    website: 'https://polygon.technology/',
+    description:
+      'Wrapped Aave interest bearing MATIC. Polygon is a protocol and a framework for building and connecting Ethereum-compatible blockchain networks. Aggregating scalable solutions on Ethereum supporting a multi-chain Ethereum ecosystem.',
+  },
+  bbaWMATIC: {
+    name: 'Balancer Aave WMATIC Linear Pool',
+    symbol: 'bbaWMATIC',
+    address: '0xE4885Ed2818Cc9E840A25f94F9b2A28169D1AEA7',
+    chainId: 137,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x4988a896b1227218e4A686fdE5EabdcAbd91571f.svg',
+    website: 'https://polygon.technology/',
+    description:
+      'Balancer Boosted Aave interest bearing MATIC. Polygon is a protocol and a framework for building and connecting Ethereum-compatible blockchain networks. Aggregating scalable solutions on Ethereum supporting a multi-chain Ethereum ecosystem.',
+  },
+  aWETH: {
+    name: 'Aave WETH',
+    symbol: 'aWETH',
+    address: '0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8',
+    chainId: 137,
+    decimals: 18,
+    website: 'https://weth.io/',
+    description:
+      'Aave interest bearing WETH. Ether or ETH is the native currency built on the Ethereum blockchain.',
+    logoURI: '',
+    documentation: 'https://ethereum.org/en/developers/docs/',
+  },
+  waWETH: {
+    name: 'Wrapped Aave WETH',
+    symbol: 'waWETH',
+    address: '0xa5bBf0f46B9dc8a43147862ba35c8134eB45f1F5',
+    chainId: 137,
+    decimals: 18,
+    website: 'https://weth.io/',
+    description:
+      'Wrapped Aave Interest Bearing ETH. Ether or ETH is the native currency built on the Ethereum blockchain.',
+    logoURI: '',
+    documentation: 'https://ethereum.org/en/developers/docs/',
+  },
+  bbaWETH: {
+    name: 'Balancer Aave WETH Linear Pool',
+    symbol: 'bbaWETH',
+    address: '0x43894DE14462B421372bCFe445fA51b1b4A0Ff3D',
+    chainId: 137,
+    decimals: 18,
+    website: 'https://weth.io/',
+    description:
+      'Balancer Boosted Aave ETH. Ether or ETH is the native currency built on the Ethereum blockchain.',
+    logoURI: '',
+    documentation: 'https://ethereum.org/en/developers/docs/',
   },
 } as const;
 

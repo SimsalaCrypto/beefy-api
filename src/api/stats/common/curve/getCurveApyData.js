@@ -158,11 +158,17 @@ const getYearlyRewardsInUsd = async (web3, multicall, pool) => {
 
   for (const rewards of pool.rewards ?? []) {
     let periodFinish, rewardRate;
-    if (pool.boosted) {
+    if (pool.boosted || rewards.rewardToken) {
+      let token = rewards.rewardToken ? rewards.rewardToken : rewards.token;
       const rewardStream = getContractWithProvider(ICurveGauge, pool.gauge, web3);
-      let { period_finish, rate } = await rewardStream.methods.reward_data(rewards.token).call();
+      let { period_finish, rate } = await rewardStream.methods.reward_data(token).call();
       periodFinish = Number(period_finish);
       rewardRate = new BigNumber(rate);
+    } else if (rewards.newGauge) {
+      const weekEpoch = Math.floor(Date.now() / 1000 / (86400 * 7));
+      const rewardStream = getContractWithProvider(ICurveGauge, rewards.stream, web3);
+      periodFinish = (weekEpoch + 1) * (86400 * 7) + 86400;
+      rewardRate = new BigNumber(await rewardStream.methods.inflation_rate(weekEpoch).call());
     } else if (rewards.token) {
       const rewardStream = getContractWithProvider(ICurveRewards, rewards.stream, web3);
       let { period_finish, rate } = await rewardStream.methods.reward_data(rewards.token).call();

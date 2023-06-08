@@ -27,9 +27,33 @@ const {
   ethereum: {
     platforms: { solidly },
   },
+  arbitrum: {
+    platforms: { solidlizard },
+  },
+  canto: {
+    platforms: { velocimeter },
+  },
+  kava: {
+    platforms: { equilibre },
+  },
+  zksync: {
+    platforms: { velocore },
+  },
+  avax: {
+    platforms: { solisnek },
+  },
+  arbitrum: {
+    platforms: { ramses },
+  },
 } = addressBook;
 
 const projects = {
+  equilibre: {
+    prefix: 'equilibre',
+    stableFile: '../src/data/kava/equilibreStableLpPools.json',
+    volatileFile: '../src/data/kava/equilibreLpPools.json',
+    voter: equilibre.voter,
+  },
   velodrome: {
     prefix: 'velodrome',
     stableFile: '../src/data/optimism/velodromeStableLpPools.json',
@@ -66,8 +90,8 @@ const projects = {
   },
   equalizer: {
     prefix: 'equalizer',
-    stableFile: '../src/data/fantom/equalizerStableLpPools.json',
-    volatileFile: '../src/data/fantom/equalizerLpPools.json',
+    stableFile: '../src/data/fantom/equalizerV2StableLpPools.json',
+    volatileFile: '../src/data/fantom/equalizerV2LpPools.json',
     voter: equalizer.voter,
   },
   solidly: {
@@ -75,6 +99,36 @@ const projects = {
     stableFile: '../src/data/ethereum/solidlyStableLpPools.json',
     volatileFile: '../src/data/ethereum/solidlyLpPools.json',
     voter: solidly.voter,
+  },
+  solidlizard: {
+    prefix: 'solidlizard',
+    stableFile: '../src/data/arbitrum/solidlizardStableLpPools.json',
+    volatileFile: '../src/data/arbitrum/solidlizardLpPools.json',
+    voter: solidlizard.voter,
+  },
+  velocimeter: {
+    prefix: 'velocimeterv2',
+    stableFile: '../src/data/canto/velocimeterV2StableLpPools.json',
+    volatileFile: '../src/data/canto/velocimeterV2LpPools.json',
+    voter: velocimeter.voter,
+  },
+  velocore: {
+    prefix: 'velocore',
+    stableFile: '../src/data/zksync/velocoreStableLpPools.json',
+    volatileFile: '../src/data/zksync/velocoreLpPools.json',
+    voter: velocore.voter,
+  },
+  solisnek: {
+    prefix: 'solisnek',
+    stableFile: '../src/data/avax/soliSnekStableLpPools.json',
+    volatileFile: '../src/data/avax/soliSnekLpPools.json',
+    voter: solisnek.voter,
+  },
+  ramses: {
+    prefix: 'ramses',
+    stableFile: '../src/data/arbitrum/ramsesStableLpPools.json',
+    volatileFile: '../src/data/arbitrum/ramsesLpPools.json',
+    voter: ramses.voter,
   },
 };
 

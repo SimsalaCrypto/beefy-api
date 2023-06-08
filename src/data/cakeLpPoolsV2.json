@@ -1,5 +1,45 @@
 [
   {
+    "name": "cakev2-id-usdt",
+    "address": "0x9Ed9E9aA51670A3210fD6078024c21ec6c1d61d9",
+    "decimals": "1e18",
+    "beefyFee": 0.095,
+    "poolId": 158,
+    "chainId": 56,
+    "lp0": {
+      "address": "0x2dfF88A56767223A5529eA5960Da7A3F5f766406",
+      "oracle": "tokens",
+      "oracleId": "ID",
+      "decimals": "1e18"
+    },
+    "lp1": {
+      "address": "0x55d398326f99059fF775485246999027B3197955",
+      "oracle": "tokens",
+      "oracleId": "USDT",
+      "decimals": "1e18"
+    }
+  },
+  {
+    "name": "cakev2-csix-cake",
+    "address": "0x43C2aBe5e3bceC619072D8668Ac83Ad825da707f",
+    "decimals": "1e18",
+    "beefyFee": 0.095,
+    "poolId": 148,
+    "chainId": 56,
+    "lp0": {
+      "address": "0x04756126F044634C9a0f0E985e60c88a51ACC206",
+      "oracle": "tokens",
+      "oracleId": "CSIX",
+      "decimals": "1e18"
+    },
+    "lp1": {
+      "address": "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82",
+      "oracle": "tokens",
+      "oracleId": "Cake",
+      "decimals": "1e18"
+    }
+  },
+  {
     "name": "cakev2-mgp-busd",
     "address": "0x76B0d10A4540B6743aa086EA31DC48E8AB691c4d",
     "decimals": "1e18",
@@ -1086,7 +1126,7 @@
     "lp1": {
       "address": "0xf9CeC8d50f6c8ad3Fb6dcCEC577e05aA32B224FE",
       "oracle": "tokens",
-      "oracleId": "CHR",
+      "oracleId": "CHROMA",
       "decimals": "1e6"
     }
   },

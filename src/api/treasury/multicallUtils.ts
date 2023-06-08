@@ -26,7 +26,7 @@ export const mapAssetToCall = (
         reference: asset.address.toLowerCase(),
         contractAddress: asset.address,
         abi: ERC20_ABI,
-        calls: treasuryAddressesForChain.map((treasuryData: any) => ({
+        calls: treasuryAddressesForChain.map(treasuryData => ({
           reference: treasuryData.address.toLowerCase(),
           methodName: 'balanceOf',
           methodParameters: [treasuryData.address],
@@ -42,7 +42,7 @@ export const mapAssetToCall = (
         reference: asset.address.toLowerCase(),
         contractAddress: multicallContractAddress,
         abi: multicallAbi,
-        calls: treasuryAddressesForChain.map((treasuryData: any) => ({
+        calls: treasuryAddressesForChain.map(treasuryData => ({
           reference: treasuryData.address.toLowerCase(),
           methodName: 'getEthBalance',
           methodParameters: [treasuryData.address],
@@ -134,7 +134,7 @@ export const extractBalancesFromTreasuryApiCallResults = (
 export const fetchAPIBalance = async (apiAsset: ValidatorAsset): Promise<TreasuryApiResult> => {
   let balance: number = await fetch(apiAsset.methodPath)
     .then(res => res.json())
-    .then(res => res.data.balance);
+    .then(res => ((res.data.length ?? 0) > 0 ? res.data[0].balance : res.data.balance));
   return {
     apiAsset,
     balance: new BigNumber(balance).shiftedBy(9),

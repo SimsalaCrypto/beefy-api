@@ -22,11 +22,17 @@ const {
   fantom: {
     platforms: { sushiFtm: sushiFtm },
   },
+  arbitrum: {
+    platforms: { sushi: sushiArb },
+  },
   fuse: {
     platforms: { sushiFuse: sushiFuse },
   },
   aurora: {
     platforms: { trisolaris: tri },
+  },
+  celo: {
+    platforms: { sushiCelo: sushiCelo },
   },
   sys: {
     platforms: { pegasys: pegasys },
@@ -42,12 +48,12 @@ const projects = {
   sushiArb: {
     prefix: 'sushi-arb',
     file: '../src/data/arbitrum/sushiLpPools.json',
-    masterchef: '0xF4d73326C13a4Fc5FD7A064217e12780e9Bd62c3',
+    masterchef: sushiArb.minichef,
   },
   sushiCelo: {
     prefix: 'sushi-celo',
     file: '../src/data/celo/sushiv2LpPools.json',
-    masterchef: '0x8084936982D089130e001b470eDf58faCA445008',
+    masterchef: sushiCelo.minichef,
   },
   sushiPoly: {
     prefix: 'sushi',

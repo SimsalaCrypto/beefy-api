@@ -15,6 +15,85 @@ const BNB = {
 } as const;
 
 const _tokens = {
+  multiBTC: {
+    name: 'Multichain BTC',
+    symbol: 'multiBTC',
+    address: '0xD9907fcDa91aC644F70477B8fC1607ad15b2D7A8',
+    chainId: 56,
+    decimals: 8,
+    logoURI: '',
+    website: 'https://app.multichain.org/',
+    description: 'Multichain supports to swap BTC to MultiBTC (Multichain BTC) 1:1.',
+    documentation: 'https://docs.multichain.org/getting-started/introduction',
+  },
+  wUSDR: {
+    name: 'Real USD',
+    symbol: 'wUSDR',
+    address: '0x2952beb1326acCbB5243725bd4Da2fC937BCa087',
+    chainId: 56,
+    decimals: 9,
+    website: 'https://www.tangible.store/realusd',
+    documentation: 'https://docs.tangible.store/',
+    description:
+      'Real USD (USDR) is the world’s first stablecoin collateralized by tokenized, yield-producing real estate. USDR has a value accrual system built into its design. Using a consistent stream of dependable yield derived from rental revenue, Real USD delivers a native yield to holders. The token on BNB Chain is bridged via Multichain from Polygon.',
+    logoURI: '',
+  },
+  PRIMAL: {
+    name: 'Primal',
+    symbol: 'PRIMAL',
+    address: '0xCb5327Ed4649548e0d73E70b633cdfd99aF6Da87',
+    chainId: 56,
+    decimals: 18,
+    website: 'https://www.getprimal.com/',
+    description:
+      'Primal is the utility token of a Move2Earn ecosystem featuring fan tokens for chosen athletes and team.',
+    logoURI:
+      'https://assets.coingecko.com/coins/images/28435/small/PRIMAL_ICON_200px.jpg?1670567426',
+  },
+  FS: {
+    name: 'FantomStarter',
+    symbol: 'FS',
+    address: '0x1935C03bB7DbC3623bD992CE599bC26bD30A43EB',
+    chainId: 56,
+    decimals: 18,
+    website: 'https://fantomstarter.io/',
+    description:
+      'With FantomStarter, you can raise and invest capital on any blockchain while the decentralized investment app manages all the regulatory, compliance, and multi network responsibilities.',
+    logoURI: 'https://assets.spookyswap.finance/tokens/FS.png',
+  },
+  ankrETH: {
+    name: 'Ankr Staked ETH',
+    symbol: 'ankrETH',
+    address: '0xe05A08226c49b636ACf99c40Da8DC6aF83CE5bB3',
+    chainId: 56,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://www.ankr.com/',
+    description: 'Decentralized Infrastructure to Build and Earn in Web3',
+  },
+  DOLA: {
+    name: 'Dola USD Stablecoin',
+    symbol: 'DOLA',
+    address: '0x2F29Bc0FFAF9bff337b31CBe6CB5Fb3bf12e5840',
+    chainId: 56,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://www.inverse.finance/',
+    documentation: 'https://docs.inverse.finance/inverse-finance/using-dola/how-to-acquire-dola',
+    description:
+      'Inverse.finance is a suite of permissionless decentralized finance tools governed by Inverse DAO, a decentralized autonomous organization running on the Ethereum blockchain.',
+  },
+  MULTI: {
+    name: 'Multichain',
+    symbol: 'MULTI',
+    address: '0x9Fb9a33956351cf4fa040f65A13b835A3C8764E3',
+    chainId: 56,
+    decimals: 18,
+    website: 'https://multichain.org/',
+    description:
+      'Multichain is the ultimate Router for web3. It is an infrastructure developed for arbitrary cross-chain interactions.',
+    logoURI: 'https://s2.coinmarketcap.com/static/img/coins/64x64/17050.png',
+  },
   DEI: {
     name: 'DEI',
     symbol: 'DEI',
@@ -378,6 +457,16 @@ const _tokens = {
     name: 'Ankr Staked BNB',
     symbol: 'ankrBNB',
     address: '0x52F24a5e03aee338Da5fd9Df68D2b6FAe1178827',
+    chainId: 56,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://www.ankr.com/',
+    description: 'Decentralized Infrastructure to Build and Earn in Web3',
+  },
+  ankrMATIC: {
+    name: 'Ankr Staked MATIC',
+    symbol: 'ankrMATIC',
+    address: '0x738d96Caf7096659DB4C1aFbf1E1BDFD281f388C',
     chainId: 56,
     decimals: 18,
     logoURI: '',
@@ -3914,6 +4003,17 @@ const _tokens = {
     description:
       'TOR is a fully collateralized stablecoin which acts as a foundational pillar within the Hector Network Ecosystem. Its unique smart contracts made it the first of its kind, creating positive price action for the HEC token each time a TOR coin is minted and empowering Hector Network to become deflationary.',
   },
+  CSIX: {
+    name: 'Carbon',
+    symbol: 'CSIX',
+    address: '0x04756126F044634C9a0f0E985e60c88a51ACC206',
+    chainId: 56,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://carbon.website/',
+    description:
+      'Carbon is a Decentralized browser with AdBlock, VPN, Crypto Wallet, 100% Privacy and many other features.',
+  },
   'USD+': {
     name: 'USD+ Stablecoin',
     symbol: 'USD+',
@@ -3923,6 +4023,18 @@ const _tokens = {
     website: 'https://overnight.fi/',
     description:
       'USD+ is USDC that pays you yield daily via rebase. It is 100% collateralized with assets immediately convertible into USDC. Yield is generated via strategies such as lending and stable-to-stable pools. Initial strategies include Aave, Rubicon, and Pika.',
+    logoURI: '',
+    documentation: 'https://docs.overnight.fi/',
+  },
+  'USDT+': {
+    name: 'USDT+ Stablecoin',
+    symbol: 'USDT+',
+    address: '0x5335E87930b410b8C5BB4D43c3360ACa15ec0C8C',
+    chainId: 56,
+    decimals: 18,
+    website: 'https://overnight.fi/',
+    description:
+      'USDT+ is USDT that pays you yield daily via rebase. It is 100% collateralized with assets immediately convertible into USDT. Yield is generated via strategies such as lending and stable-to-stable pools. Initial strategies include Aave, Rubicon, and Pika.',
     logoURI: '',
     documentation: 'https://docs.overnight.fi/',
   },
@@ -3949,6 +4061,51 @@ const _tokens = {
       'frxETH acts as a stablecoin loosely pegged to ETH, so that 1 frxETH always represents 1 ETH and the amount of frxETH in circulation matches the amount of ETH in the Frax ETH system. When ETH is sent to the frxETHMinter, an equivalent amount of frxETH is minted. Holding frxETH on its own is not eligible for staking yield and should be thought of as analogous as holding ETH.',
     logoURI: '',
     documentation: 'https://docs.frax.finance/frax-ether/frxeth-and-sfrxeth',
+  },
+  sfrxETH: {
+    name: 'Staked Frax Ether',
+    symbol: 'sfrxETH',
+    address: '0x3Cd55356433C89E50DC51aB07EE0fa0A95623D53',
+    chainId: 56,
+    decimals: 18,
+    website: 'https://app.frax.finance/frxeth/mint',
+    description:
+      'sfrxETH is a ERC-4626 vault designed to accrue the staking yield of the Frax ETH validators. At any time, frxETH can be exchanged for sfrxETH by depositing it into the sfrxETH vault, which allows users to earn staking yield on their frxETH. Over time, as validators accrue staking yield, an equivalent amount of frxETH is minted and added to the vault, allowing users to redeem their sfrxETH for an greater amount of frxETH than they deposited. ',
+    logoURI: '',
+    documentation: 'https://docs.frax.finance/frax-ether/frxeth-and-sfrxeth',
+  },
+  ID: {
+    name: 'SPACE ID',
+    symbol: 'ID',
+    address: '0x2dfF88A56767223A5529eA5960Da7A3F5f766406',
+    chainId: 56,
+    decimals: 18,
+    logoURI: 'https://thena.fi/images/tokens/ID.png',
+    website: 'https://space.id/',
+    description:
+      'SPACE ID is building a universal name service network with a one-stop identity platform to discover, register, trade, manage web3 domains.',
+    documentation: 'https://docs.space.id/',
+  },
+  APECOIN: {
+    name: 'ApeCoin',
+    symbol: 'APE',
+    address: '0xa9eA4b786ee5b7A733c035564Bfd9341A4c9FC1e',
+    chainId: 56,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://apecoin.dev/',
+    description: 'APE is a BEP-20 token celebrating the "ape" crypto meme.',
+  },
+  vUSDT: {
+    name: 'Venus USDT',
+    symbol: 'vUSDT',
+    address: '0xfD5840Cd36d94D7229439859C0112a4185BC0255',
+    chainId: 56,
+    decimals: 8,
+    website: 'https://venus.io/',
+    description:
+      'Venus wrapped USDT. Venus is an algorithmic money market and synthetic stablecoin protocol launched exclusively on BNB Chain.',
+    logoURI: '',
   },
 } as const;
 export const tokens: ConstRecord<typeof _tokens, Token> = _tokens;

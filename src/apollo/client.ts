@@ -47,14 +47,12 @@ const sushiKavaClient = client('https://pvt.graph.kava.io/subgraphs/name/sushi-0
 const comethClient = client('https://api.thegraph.com/subgraphs/name/cometh-game/comethswap');
 const quickClient = client('https://api.fura.org/subgraphs/name/quickswap');
 const polyzapClient = client('https://api.thegraph.com/subgraphs/name/polyzap/exchange');
-const spookyClient = client('https://api.fura.org/subgraphs/name/spookyswap');
+const spookyClient = client('https://api.thegraph.com/subgraphs/name/eerieeight/spookyswap');
 const spiritClient = client(
   'https://api.thegraph.com/subgraphs/name/layer3org/spiritswap-analytics'
 );
 const wigoClient = client('https://api.thegraph.com/subgraphs/name/wigoswap/exchange2');
-const cakeClient = client(
-  `https://data-platform.nodereal.io/graph/v1/${process.env.PCS_API_KEY}/projects/pancakeswap`
-);
+const cakeClient = client(process.env.PCS_GRAPHQL_KEY);
 const apeClient = client('https://bnb.apeswapgraphs.com/subgraphs/name/ape-swap/apeswap-subgraph');
 const wexpolyClient = client(
   'https://polyinfo.wault.finance/subgraphs/name/WaultFinance/waultswap-subgraph'
@@ -121,6 +119,7 @@ const isSushiTridentClient = (client: ApolloClient<NormalizedCacheObject>) => {
 const hopArbClient = client('https://api.thegraph.com/subgraphs/name/hop-protocol/hop-arbitrum');
 const hopOpClient = client('https://api.thegraph.com/subgraphs/name/hop-protocol/hop-optimism');
 const hopPolyClient = client('https://api.thegraph.com/subgraphs/name/hop-protocol/hop-polygon');
+const exactlyClient = client('https://api.thegraph.com/subgraphs/name/exactly/exactly-optimism');
 
 const isSushiClient = (client: ApolloClient<NormalizedCacheObject>) => {
   return (
@@ -200,4 +199,5 @@ export {
   hopArbClient,
   hopOpClient,
   hopPolyClient,
+  exactlyClient,
 };

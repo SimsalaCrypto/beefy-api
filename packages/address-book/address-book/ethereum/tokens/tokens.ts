@@ -42,6 +42,51 @@ const _tokens = {
     logoURI: 'https://ftmscan.com/token/images/USDC_32.png',
     documentation: 'https://developers.circle.com/docs',
   },
+  STG: {
+    name: 'Stargate',
+    symbol: 'STG',
+    address: '0xAf5191B0De278C7286d6C7CC6ab6BB8A73bA2Cd6',
+    chainId: 1,
+    decimals: 18,
+    logoURI:
+      'https://raw.githubusercontent.com/traderjoe-xyz/joe-tokenlists/main/logos/0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590/logo.png',
+    website: 'https://stargate.finance/',
+    description:
+      'Stargate is a community-driven organization building the first fully composable native asset bridge, and the first dApp built on LayerZero.',
+    documentation: 'https://stargateprotocol.gitbook.io/stargate/v/user-docs/',
+  },
+  CNC: {
+    name: 'Conic Finance Token',
+    symbol: 'CNC',
+    address: '0x9aE380F0272E2162340a5bB646c354271c0F5cFC',
+    chainId: 1,
+    decimals: 18,
+    website: 'https://conic.finance/',
+    description:
+      'Conic Finance is an easy-to-use platform built for liquidity providers to easily diversify their exposure to multiple Curve pools. Any user can provide liquidity into a Conic Omnipool which allocates funds across Curve in proportion to protocol controlled pool weights.',
+    documentation: 'https://docs.conic.finance/conic-finance/',
+  },
+  CTR: {
+    name: 'Concentrator Token',
+    symbol: 'CTR',
+    address: '0xb3Ad645dB386D7F6D753B2b9C3F4B853DA6890B8',
+    chainId: 1,
+    decimals: 18,
+    website: 'https://concentrator.aladdin.club/',
+    description:
+      'Concentrator by Aladdin DAO maximizes Convex APYs and earns yield in the best DeFi tokens. Concentrator is a yield enhancer that boosts yields on Convex vaults by concentrating all rewards into auto-compounding top-tier tokens like aCRV (cvxCRV) and aFXS (cvxFXS/FXS).',
+    documentation: 'https://docs.aladdin.club/concentrator',
+  },
+  MATIC: {
+    name: 'Matic Token',
+    symbol: 'MATIC',
+    address: '0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0',
+    chainId: 1,
+    decimals: 18,
+    website: 'https://polygon.technology/',
+    description:
+      'Polygon is a protocol and a framework for building and connecting Ethereum-compatible blockchain networks. Aggregating scalable solutions on Ethereum supporting a multi-chain Ethereum ecosystem.',
+  },
   wstETH: {
     name: 'Lido Wrapped Staked ETH',
     symbol: 'wstETH',
@@ -121,6 +166,7 @@ const _tokens = {
     symbol: 'multiBTC',
     website: 'https://app.multichain.org/',
     description: 'Multichain supports to swap BTC to MultiBTC (Multichain BTC) 1:1.',
+    documentation: 'https://docs.multichain.org/getting-started/introduction',
   },
   alETH: {
     name: 'Alchemix ETH',
@@ -205,6 +251,50 @@ const _tokens = {
     description:
       'MAI is a stable coin collateralized by your MATIC holdings. Its powered by Qi Dao, a protocol that enables any cryptocurrency community to create stablecoins backed by their native tokens.',
   },
+  tBTC: {
+    name: 'tBTC v2',
+    symbol: 'tBTC',
+    address: '0x18084fbA666a33d37592fA2633fD49a74DD93a88',
+    chainId: 1,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://threshold.network/',
+    description:
+      'Threshold is the first ever on-chain merge between two existing networks and communities, Keep and NuCypher. Threshold provides a suite of threshold cryptography services that power user sovereignty on the blockchain.',
+  },
+  T: {
+    name: 'Threshold Network Token',
+    symbol: 'T',
+    address: '0xCdF7028ceAB81fA0C6971208e83fa7872994beE5',
+    chainId: 1,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://threshold.network/',
+    description:
+      'Threshold is the first ever on-chain merge between two existing networks and communities, Keep and NuCypher. Threshold provides a suite of threshold cryptography services that power user sovereignty on the blockchain.',
+  },
+  eCFX: {
+    name: 'ethereum Conflux',
+    symbol: 'eCFX',
+    address: '0xA1f82E14bc09A1b42710dF1A8a999B62f294e592',
+    chainId: 1,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://confluxnetwork.org/',
+    description:
+      'Conflux’s token economy is built around the $CFX token, a unit of value on the platform that enables token holders to pay transaction fees, earn rewards through staking, rent storage, and participate in network governance. CFX also incentivizes and rewards miners, who ensure the secure operation of the Network.',
+  },
+  USDP: {
+    name: 'Pax Dollar',
+    symbol: 'USDP',
+    address: '0x8E870D67F660D95d5be530380D0eC0bd388289E1',
+    chainId: 1,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://paxos.com/usdp/',
+    description:
+      'Pax Dollar (USDP) is a stablecoin created by Paxos, a licenced trust firm and financial institution that ensures the backing of the tokens with US dollar deposits. With the USDP, Paxos created a token that combines the confidence and stability of fiat money with the usefulness and immediacy of digital assets.',
+  },
   CRV: {
     name: 'CRV',
     address: '0xD533a949740bb3306d119CC777fa900bA034cd52',
@@ -242,7 +332,7 @@ const _tokens = {
     logoURI: '',
   },
   cvxFXS: {
-    name: 'cvxFXS',
+    name: 'Convex FXS',
     address: '0xFEEf77d3f69374f66429C91d732A244f074bdf74',
     symbol: 'cvxFXS',
     decimals: 18,
@@ -251,6 +341,18 @@ const _tokens = {
     documentation: 'https://docs.convexfinance.com/',
     description:
       'Convex Finance has expanded to optimize opportunities for liquidity providers on Frax the same way it has done so for Curve.fi LPs.',
+    logoURI: '',
+  },
+  cvxFPIS: {
+    name: 'Convex FPIS',
+    address: '0xa2847348b58CEd0cA58d23c7e9106A49f1427Df6',
+    symbol: 'cvxFPIS',
+    decimals: 18,
+    chainId: 1,
+    website: 'https://frax.convexfinance.com/',
+    documentation: 'https://docs.convexfinance.com/',
+    description:
+      "Convex also now supports Frax Finance's FPIS token, the governance token for the FPI stablecoin launched by Frax. Frax documentation explains the mechanisms behind the FPI stablecoin and the FPIS governance token in detail.",
     logoURI: '',
   },
   sethUSDC: {
@@ -746,6 +848,30 @@ const _tokens = {
     logoURI: '',
     documentation: 'https://docs.yearn.finance/getting-started/products/ycrv/overview',
   },
+  eUSD: {
+    name: 'Electronic USD',
+    symbol: 'eUSD',
+    address: '0xA0d69E286B938e21CBf7E51D71F6A4c8918f482F',
+    chainId: 1,
+    decimals: 18,
+    website: 'https://register.app/',
+    description:
+      'The Reserve Protocol is the first platform that allows for the permissionless creation of asset-backed, yield-bearing & overcollateralized stablecoins on Ethereum. The end goal of the Reserve Protocol is to provide highly scalable, decentralized, stable money in contrast to volatile cryptocurrencies such as Bitcoin and Ether.',
+    logoURI: '',
+    documentation: 'https://reserve.org/protocol/',
+  },
+  msETH: {
+    name: 'Metronome Synth ETH',
+    symbol: 'msETH',
+    address: '0x64351fC9810aDAd17A690E4e1717Df5e7e085160',
+    chainId: 1,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://app.metronome.io/',
+    description:
+      'A complete synthetic protocol that enables users to generate a variety of synthetics using crypto assets as collateral',
+    documentation: 'https://docs.metronome.io/metronome-2.0/master',
+  },
   BLUR: {
     name: 'Blur',
     symbol: 'BLUR',
@@ -756,6 +882,43 @@ const _tokens = {
     website: 'https://blur.io/',
     description:
       'Sweep NFTs across multiple marketplaces, snipe reveals faster than others, and manage your portfolio with advanced analytics. Zero fees.',
+  },
+  msUSD: {
+    name: 'Metronome Synth USD',
+    symbol: 'msUSD',
+    address: '0xab5eB14c09D416F0aC63661E57EDB7AEcDb9BEfA',
+    chainId: 1,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://app.metronome.io/',
+    description:
+      'A complete synthetic protocol that enables users to generate a variety of synthetics using crypto assets as collateral',
+    documentation: 'https://docs.metronome.io/metronome-2.0/master',
+  },
+  UZD: {
+    name: 'UZD Zunami Stable',
+    symbol: 'UZD',
+    address: '0xb40b6608B2743E691C9B54DdBDEe7bf03cd79f1c',
+    chainId: 1,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://www.zunami.io/',
+    description:
+      'UZD is a rebase token that increases in value in proportion to the APY of the Zunami Protocol. It is over-collateralized by stablecoins allocated in Curve Finance pools and minted using ZLP. UZD is secure from depeg as it can be redeemed with USDT, USDC, or DAI at any time. Users can receive UZD by minting it through the Zunami interface or by swapping it in the Curve.',
+    documentation: 'https://zunamilab.gitbook.io/product-docs/',
+  },
+  lvUSD: {
+    name: 'lvUSD',
+    symbol: 'lvUSD',
+    address: '0x94A18d9FE00bab617fAD8B49b11e9F1f64Db6b36',
+    chainId: 1,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://archimedesfi.com/',
+    description:
+      'The stablecoin lvUSD is pegged to the USD and is used for lending and repaying loans.\n' +
+      'When liquidity providers (LPs) deposit 3CRV, Archimedes borrows lvUSD on behalf of leverage takers (LTs) and uses it to enter a strategy. Investing in the 3CRV/lvUSD pool gives LPs exposure to both 3CRV and the collateral provided by LTs. This allows the market to decide on the best investment strategy.',
+    documentation: 'https://docs.archimedesfi.com/',
   },
   eUSDT: {
     name: 'Euler Tether USD',
@@ -839,6 +1002,123 @@ const _tokens = {
     documentation: 'https://docs.balancer.fi/products/balancer-pools/boosted-pools',
     description:
       'Balancer composable pool that consist of bbeUSDT, bbeUSDC, and bbeDAI. bbTokens are Euler boosted linear pools.',
+  },
+  VERSE: {
+    name: 'Verse',
+    symbol: 'VERSE',
+    address: '0x249cA82617eC3DfB2589c4c17ab7EC9765350a18',
+    chainId: 1,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://verse.bitcoin.com/',
+    description:
+      'At Bitcoin.com our mission is to create more economic freedom in the world. We define economic freedom as the ability to make choices with respect to one’s personal resources, unencumbered by trusted third parties or borders or lack of access. We believe economic freedom is the foundation of peace and prosperity, and by creating more of it for people, we are reducing suffering in the world. We strive to help everyone, everywhere be more economically free.',
+    documentation: 'https://www.getverse.com/verse-whitepaper.pdf',
+  },
+  APE: {
+    name: 'ApeCoin',
+    address: '0x4d224452801ACEd8B2F0aebE155379bb5D594381',
+    symbol: 'APE',
+    decimals: 18,
+    chainId: 1,
+    website: 'https://apecoin.com/',
+    description:
+      'ApeCoin is the APE Ecosystems governance token, allowing token holders to participate in ApeCoin DAO and giving its participants a shared and open currency that can be used without centralized intermediaries.',
+    logoURI: '',
+  },
+  OHM: {
+    name: 'Olympus',
+    address: '0x64aa3364F17a4D01c6f1751Fd97C2BD3D7e7f1D5',
+    symbol: 'OHM',
+    decimals: 9,
+    chainId: 1,
+    website: 'https://www.olympusdao.finance/',
+    description:
+      'Olympus is building OHM, a community-owned, decentralized and censorship-resistant reserve currency that is asset-backed, deeply liquid and used widely across Web3.',
+    logoURI: '',
+    documentation: 'https://docs.olympusdao.finance/',
+  },
+  SD: {
+    name: 'Stader',
+    symbol: 'SD',
+    address: '0x30D20208d987713f46DFD34EF128Bb16C404D10f',
+    chainId: 1,
+    decimals: 18,
+    logoURI:
+      'https://tokens.pancakeswap.finance/images/0x3BC5AC0dFdC871B365d159f728dd1B9A0B5481E8.svg',
+    website: 'https://staderlabs.com/',
+    description: 'Stader (SD) token is the native governance and value accrual token for Stader.',
+    documentation: 'https://docs-new.staderlabs.com/intro',
+  },
+  FXS: {
+    name: 'Frax Share',
+    symbol: 'FXS',
+    address: '0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0',
+    chainId: 1,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://frax.finance/',
+    description:
+      'The Frax Protocol introduced the world to the concept of a cryptocurrency being partially backed by collateral and partially stabilized algorithmically.',
+  },
+  wBETH: {
+    name: 'Wrapped Binance Beacon ETH',
+    symbol: 'wBETH',
+    address: '0xa2E3356610840701BDf5611a53974510Ae27E2e1',
+    chainId: 1,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://www.binance.com/en',
+    documentation: 'https://www.binance.com/en/wbeth',
+    description:
+      'Wrapped Beacon ETH ("WBETH") is a wrapped version of BETH. Wrapped, WBETH is reward-bearing in nature. It accumulates ETH2.0 staking rewards not by growing in number, but by growing in value in relation to BETH. Unlike BETH, the value of WBETH will increase despite not being held in Binance Spot Wallet. That means WBETH provides you with double yield potential by (i) holding it to earn staking rewards, and (ii) moving it on-chain and exploring exciting DeFi and other dapps opportunities.',
+  },
+  OETH: {
+    name: 'Origin Ether',
+    symbol: 'OETH',
+    address: '0x856c4Efb76C1D1AE02e20CEB03A2A6a08b0b8dC3',
+    chainId: 1,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://www.oeth.com/',
+    documentation: 'https://docs.oeth.com/',
+    description:
+      'OETH is a yield-bearing, ether-pegged token, offering an easy way to maximize yield from ETH staking using protocols, such as Curve Finance.',
+  },
+  crvUSD: {
+    name: 'Curve.Fi USD Stablecoin',
+    symbol: 'crvUSD',
+    address: '0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E',
+    chainId: 1,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://crvusd.curve.fi/',
+    description:
+      'crvUSD is a collateralized-debt-position (CDP) stablecoin pegged to the US Dollar',
+  },
+  '3CRV': {
+    name: 'Curve.fi DAI/USDC/USDT',
+    symbol: '3CRV',
+    address: '0x6c3F90f043a72FA612cbac8115EE7e52BDe6E490',
+    chainId: 1,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://curve.fi/',
+    oracle: 'lps',
+    oracleId: 'convex-3pool',
+    description: 'Curve base 3pool consisting of DAI, USDC and USDT',
+  },
+  R: {
+    name: 'R Stablecoin',
+    symbol: 'R',
+    address: '0x183015a9bA6fF60230fdEaDc3F43b3D788b13e21',
+    chainId: 1,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://raft.fi',
+    documentation: 'https://docs.raft.fi/',
+    description:
+      'Raft is a governance-minimized, decentralized protocol that allows people to generate R (a USD stablecoin) by depositing  capital-efficient collateral.',
   },
 } as const;
 

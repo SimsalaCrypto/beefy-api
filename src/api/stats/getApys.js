@@ -18,7 +18,8 @@ const { getOptimismApys } = require('./optimism');
 const { getKavaApys } = require('./kava');
 const { getCantoApys } = require('./canto');
 const { getEthereumApys } = require('./ethereum');
-const { getKey, setKey } = require('../../utils/redisHelper');
+const { getZkSyncApys, getZksyncApys } = require('./zksync');
+const { getKey, setKey } = require('../../utils/cache');
 const { fetchBoostAprs } = require('./getBoostAprs');
 
 const INIT_DELAY = process.env.INIT_DELAY || 60 * 1000;
@@ -58,12 +59,13 @@ const updateApys = async () => {
       getFuseApys(),
       getMetisApys(),
       getMoonbeamApys(),
-      getSysApys(),
+      //getSysApys(),
       getEmeraldApys(),
       getOptimismApys(),
       getKavaApys(),
       getEthereumApys(),
       getCantoApys(),
+      getZksyncApys(),
     ]);
 
     for (const result of results) {

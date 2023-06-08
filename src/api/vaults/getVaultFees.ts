@@ -2,8 +2,11 @@ import BigNumber from 'bignumber.js';
 import { ContractCallContext, ContractCallResults, Multicall } from 'ethereum-multicall';
 import { addressBookByChainId, ChainId } from '../../../packages/address-book/address-book';
 import { getContractWithProvider } from '../../utils/contractHelper';
-import { getKey, setKey } from '../../utils/redisHelper';
+import { getKey, setKey } from '../../utils/cache';
 import { web3Factory } from '../../utils/web3';
+import { ApiChain, fromChainId } from '../../utils/chain';
+import { MULTICALL_V3 } from '../../utils/web3Helpers';
+
 const FeeABI = require('../../abis/FeeABI.json');
 const { getMultichainVaults } = require('../stats/getMultichainVaults');
 
@@ -20,10 +23,18 @@ const feeBatchTreasurySplitMethodABI = [
 const INIT_DELAY = 15000;
 const REFRESH_INTERVAL = 5 * 60 * 1000;
 const CACHE_EXPIRY = 1000 * 60 * 60 * 12;
-const MULTICALL_BATCH_SIZE = 128;
+const MULTICALL_BATCH_SIZES: Partial<Record<ApiChain, number>> = {
+  polygon: 25,
+};
+
+const DEFAULT_MULTICALL_BATCH_SIZE = 100;
 
 const VAULT_FEES_KEY = 'VAULT_FEES';
 const FEE_BATCH_KEY = 'FEE_BATCHES';
+
+const batchSizeForChain = (chain: ApiChain) => {
+  return MULTICALL_BATCH_SIZES[chain] ?? DEFAULT_MULTICALL_BATCH_SIZE;
+};
 
 interface PerformanceFee {
   total: number;
@@ -84,7 +95,7 @@ interface StrategyCallResponse {
   paused?: boolean;
 }
 
-let feeBatches: Record<ChainId, FeeBatchDetail>;
+let feeBatches: Partial<Record<ChainId, FeeBatchDetail>>;
 let vaultFees: Record<string, VaultFeeBreakdown>;
 
 const updateFeeBatches = async () => {
@@ -106,8 +117,17 @@ const updateFeeBatches = async () => {
       //If reverted, method isn't available on contract so must be older split
       if (err.message.includes('revert') || err.message.includes('correct ABI')) {
         treasurySplit = 140;
+      } else if (
+        Number(chainId) === ChainId.zksync &&
+        err.message.includes('cannot estimate gas')
+      ) {
+        // TODO: remove once we have feebatch
+        treasurySplit = 640;
+        console.warn(
+          `> feeBatch.treasuryFee() failed on chain ${chainId} - using new default treasury split of 640/1000`
+        );
       } else {
-        console.log(' > Error updating feeBatch on chain ' + chainId);
+        console.log(` > Error updating feeBatch on chain ${chainId}`);
         console.log(err.message);
       }
     }
@@ -136,7 +156,7 @@ const updateVaultFees = async () => {
     const chainVaults = vaults
       .filter(vault => vault.chain === ChainId[chain])
       .filter(v => !vaultFees[v.id] || Date.now() - vaultFees[v.id].lastUpdated > CACHE_EXPIRY);
-    promises.push(getChainFees(chainVaults, chain, feeBatches[chain]));
+    promises.push(getChainFees(chainVaults, chain, feeBatches[chain])); // can throw if no feeBatch (e.g. due to rpc error)
   }
 
   await Promise.allSettled(promises);
@@ -150,16 +170,19 @@ const saveToRedis = async () => {
   await setKey(VAULT_FEES_KEY, vaultFees);
 };
 
-const getChainFees = async (vaults, chainId, feeBatch: FeeBatchDetail) => {
+const getChainFees = async (vaults, chainId: number, feeBatch: FeeBatchDetail) => {
   try {
     const web3 = web3Factory(chainId);
+    const multicallAddress = MULTICALL_V3[chainId];
+    if (!multicallAddress) {
+      console.warn(`> Fees: Skipping chain ${chainId} as no multicall address found`);
+      return;
+    }
+
     const multicall = new Multicall({
       web3Instance: web3,
       tryAggregate: true,
-      multicallCustomContractAddress:
-        chainId === 2222
-          ? '0xdAaD0085e5D301Cb5721466e600606AB5158862b'
-          : '0xcA11bde05977b3631167028862bE2a173976CA11',
+      multicallCustomContractAddress: multicallAddress,
     });
     const contractCallContext: ContractCallContext[] = [];
 
@@ -196,9 +219,10 @@ const getChainFees = async (vaults, chainId, feeBatch: FeeBatchDetail) => {
     });
 
     let promises: Promise<ContractCallResults>[] = [];
+    const batchSize = batchSizeForChain(fromChainId(chainId));
 
-    for (let i = 0; i < contractCallContext.length; i += MULTICALL_BATCH_SIZE) {
-      let batch = contractCallContext.slice(i, i + MULTICALL_BATCH_SIZE);
+    for (let i = 0; i < contractCallContext.length; i += batchSize) {
+      let batch = contractCallContext.slice(i, i + batchSize);
       promises.push(multicall.call(batch));
     }
 
@@ -519,8 +543,8 @@ const performanceForMaxi = (contractCalls: StrategyCallResponse): PerformanceFee
 };
 
 export const initVaultFeeService = async () => {
-  const cachedVaultFees = await getKey(VAULT_FEES_KEY);
-  const cachedFeeBatches = await getKey(FEE_BATCH_KEY);
+  const cachedVaultFees = await getKey<Record<string, VaultFeeBreakdown>>(VAULT_FEES_KEY);
+  const cachedFeeBatches = await getKey<Record<ChainId, FeeBatchDetail>>(FEE_BATCH_KEY);
 
   feeBatches = cachedFeeBatches ?? {};
   vaultFees = cachedVaultFees ?? {};

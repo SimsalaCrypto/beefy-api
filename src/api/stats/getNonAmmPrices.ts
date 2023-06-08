@@ -1,14 +1,8 @@
 import getBeltPrices from './bsc/belt/getBeltPrices';
 import getEllipsisPricesOld from './bsc/ellipsis/getEllipsisPricesOld';
 import { getEllipsisPrices } from './bsc/getEllipsisPrices';
-import getSnob3PoolPrice from './avax/getSnob3PoolPrice';
-import getFroyoPrices from './fantom/getFroyoPrices';
-import getGondolaPrices from './avax/getGondolaPrices';
 import getCurvePolygonPrices from './matic/getCurvePrices';
 import getCurveFantomPrices from './fantom/getCurvePrices';
-import getDopplePrices from './bsc/dopple/getDopplePrices';
-import { getIronSwapPrices } from './matic/getIronSwapPrices';
-import getAlpacaIbPrices from './bsc/alpaca/getAlpacaIbPrices';
 import getCurveArbitrumPrices from './arbitrum/getCurvePrices';
 import getCurveAvaxPrices from './avax/getCurvePrices';
 import getCurveHarmonyPrices from './one/getCurvePrices';
@@ -25,6 +19,7 @@ import getBeetsOPPrices from './optimism/getBeetsOPPrices';
 import getBalancerArbPrices from './arbitrum/getBalancerArbPrices';
 import getBalancerPolyPrices from './matic/getBalancerPolyPrices';
 import getVelodromeStablePrices from './optimism/getVelodromeStablePrices';
+import getEquilibreStablePrices from './kava/getEquilibreStablePrices';
 import getDystopiaStablePrices from './matic/getDystopiaStablePrices';
 import getSolidlyV1StablePrices from './fantom/getSolidlyV1StablePrices';
 import getVoltagePrices from './fuse/getVoltagePrices';
@@ -37,6 +32,7 @@ import getCakeStablePrices from './bsc/pancake/getCakeStablePrices';
 import getUniV3PolygonPrices from './matic/getUniV3PolygonPrices';
 import getCurveKavaPrices from './kava/getCurvePrices';
 import getSushiKavaPrices from './kava/getSushiPrices';
+import getSushiArbPrices from './arbitrum/getSushiPrice';
 import getGmxArbitrumPrices from './arbitrum/getGmxPrices';
 import getGmxAvalanchePrices from './avax/getGmxPrices';
 import getAuraBalancerPrices from './ethereum/getAuraBalancerPrices';
@@ -62,12 +58,43 @@ import { getKyberPolygonPrices } from './matic/getKyberPolygonPrices';
 import { getKyberArbitrumPrices } from './arbitrum/getKyberArbitrumPrices';
 import { getKyberAvaxPrices } from './avax/getKyberAvaxPrices';
 import { getKyberOptimismPrices } from './optimism/getKyberOptimismPrices';
+import getSolidLizardStablePrices from './arbitrum/getSolidLizardStablePrices';
+import getVelocimeterStablePrices from './canto/getVelocimeterStablePrices';
+import getRamsesStablePrices from './arbitrum/getRamsesStablePrices';
+import getMmyFantomPrices from './fantom/getMmyFantomPrices';
+import getMmyOptimismPrices from './optimism/getMmyOptimismPrices';
+import { getMuxArbitrumPrices } from './arbitrum/getMuxPrices';
+import getVelocoreStablePrices from './zksync/getVelocoreStablePrices';
+import getSoliSnekStablePrices from './avax/getSoliSnekStablePrices';
+import { getThenaGammaPrices } from './bsc/getThenaGammaPrices';
+import getCurveCeloPrices from './celo/getCurvePrices';
 
-const getNonAmmPrices = async tokenPrices => {
+export type NonAmmPrices = {
+  prices: Record<string, number>;
+  breakdown: Record<
+    string,
+    {
+      price: number;
+      tokens: string[];
+      balances: string[];
+      totalSupply: string;
+    }
+  >;
+};
+
+export async function getNonAmmPrices(tokenPrices: Record<string, number>): Promise<NonAmmPrices> {
   let prices = {};
   let breakdown = {};
 
   const promises = [
+    getSoliSnekStablePrices(tokenPrices),
+    getVelocoreStablePrices(tokenPrices),
+    getMmyOptimismPrices(tokenPrices),
+    getMmyFantomPrices(tokenPrices),
+    getRamsesStablePrices(tokenPrices),
+    getEquilibreStablePrices(tokenPrices),
+    getVelocimeterStablePrices(tokenPrices),
+    getSolidLizardStablePrices(tokenPrices),
     getCantoStablePrices(tokenPrices),
     getKyberArbitrumPrices(tokenPrices),
     getKyberAvaxPrices(tokenPrices),
@@ -78,6 +105,7 @@ const getNonAmmPrices = async tokenPrices => {
     getMvxPrices(tokenPrices),
     getEqualizerStablePrices(tokenPrices),
     getOlpPrices(),
+    // getMuxArbitrumPrices(tokenPrices),
     getStargateMetisPrices(tokenPrices),
     getStargateOpPrices(tokenPrices),
     getStargatePolygonPrices(tokenPrices),
@@ -90,12 +118,12 @@ const getNonAmmPrices = async tokenPrices => {
     getHopOpPrices(tokenPrices),
     getHopArbPrices(tokenPrices),
     getFerroPrices(tokenPrices),
-    getCurveEthereumPrices(tokenPrices),
     getAuraBalancerPrices(tokenPrices),
     getGmxAvalanchePrices(tokenPrices),
     getGmxArbitrumPrices(tokenPrices),
     getSushiKavaPrices(tokenPrices),
-    getUniV3PolygonPrices(tokenPrices),
+    getSushiArbPrices(tokenPrices),
+    // getUniV3PolygonPrices(tokenPrices),
     getHermesStablePrices(tokenPrices),
     getCakeStablePrices(tokenPrices),
     getSpiritStablePrices(tokenPrices),
@@ -113,9 +141,7 @@ const getNonAmmPrices = async tokenPrices => {
     getBeltPrices(tokenPrices),
     getEllipsisPricesOld(),
     getEllipsisPrices(tokenPrices),
-    getSnob3PoolPrice(),
-    getFroyoPrices(),
-    getGondolaPrices(tokenPrices),
+    getCurveEthereumPrices(tokenPrices),
     getCurvePolygonPrices(tokenPrices),
     getCurveFantomPrices(tokenPrices),
     getCurveArbitrumPrices(tokenPrices),
@@ -124,18 +150,17 @@ const getNonAmmPrices = async tokenPrices => {
     getCurveOptimismPrices(tokenPrices),
     getCurveMoonbeamPrices(tokenPrices),
     getCurveKavaPrices(tokenPrices),
+    getCurveCeloPrices(tokenPrices),
     getRosePrices(tokenPrices),
-    getDopplePrices(),
-    getIronSwapPrices(),
-    getAlpacaIbPrices(tokenPrices),
     getSynapsePrices(),
     getJarvisPrices(tokenPrices),
     getSolarbeamPrices(tokenPrices),
     getStellaswapPrices(tokenPrices),
+    getThenaGammaPrices(tokenPrices),
   ];
 
   // Setup error logs
-  promises.forEach(p => p.catch(e => console.warn('getNonAmmPrices error', e)));
+  promises.forEach((p, i) => p.catch(e => console.warn('getNonAmmPrices error', i, e)));
 
   const results = await Promise.allSettled(promises);
 
@@ -157,6 +182,6 @@ const getNonAmmPrices = async tokenPrices => {
     });
 
   return { prices, breakdown };
-};
+}
 
 export default getNonAmmPrices;

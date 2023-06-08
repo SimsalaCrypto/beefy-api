@@ -7,20 +7,24 @@ const { getArbiBifiGovApy } = require('./getArbiBifiGovApy');
 const { getArbiBifiMaxiApy } = require('./getArbiBifiMaxiApy');
 const getStargateArbApys = require('./getStargateArbApys');
 const getRipaeApys = require('./getRipaeApys');
-const getRadiantLpApys = require('./getRadiantLpApys');
 const { getGmxApys } = require('./getGmxApys');
 const { getHopApys } = require('./getHopApys');
 const { getConvexApys } = require('./getConvexApys');
 const { getSwapFishApys } = require('./getSwapFishApys');
 const { getGnsApys } = require('./getGnsApys');
 const getKyberArbitrumApys = require('./getKyberArbitrumApys');
+const getSolidLizardApys = require('./getSolidLizardApys');
+const getRamsesApys = require('./getRamsesApys');
+const getArbidexApys = require('./getArbidexApys');
+const { getMuxArbitrumApys } = require('./getMuxApys');
+const { getChronosApys } = require('./getChronosApys');
 
 const getApys = [
   getKyberArbitrumApys,
   getGnsApys,
   getHopApys,
   getGmxApys,
-  getRadiantLpApys,
+  // getMuxArbitrumApys,
   getRipaeApys,
   getSushiLpApys,
   getCurveApys,
@@ -32,6 +36,10 @@ const getApys = [
   getArbiBifiMaxiApy,
   getStargateArbApys,
   getSwapFishApys,
+  getSolidLizardApys,
+  getRamsesApys,
+  getChronosApys,
+  getArbidexApys,
 ];
 
 const getArbitrumApys = async () => {

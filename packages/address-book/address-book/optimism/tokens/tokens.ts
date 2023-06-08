@@ -30,6 +30,18 @@ const _tokens = {
       'https://raw.githubusercontent.com/beefyfinance/beefy-app/prod/src/images/single-assets/BIFI.png',
     documentation: 'https://docs.beefy.finance/',
   },
+  wUSDR: {
+    name: 'Real USD',
+    symbol: 'wUSDR',
+    address: '0x340fE1D898ECCAad394e2ba0fC1F93d27c7b717A',
+    chainId: 10,
+    decimals: 9,
+    website: 'https://www.tangible.store/realusd',
+    documentation: 'https://docs.tangible.store/',
+    description:
+      'Real USD (USDR) is the world’s first stablecoin collateralized by tokenized, yield-producing real estate. USDR has a value accrual system built into its design. Using a consistent stream of dependable yield derived from rental revenue, Real USD delivers a native yield to holders. The token on Optimism is bridged via Multichain from Polygon.',
+    logoURI: '',
+  },
   beOPX: {
     name: 'Beefy Escrowed OPX',
     symbol: 'beOPX',
@@ -62,6 +74,7 @@ const _tokens = {
     description:
       'jEUR is a multi-collateralized synthetic token tracking the price of Euro. It is built on the top of UMA and Chainlink.',
     logoURI: 'https://i.imgur.com/ZvP634G.png',
+    documentation: 'https://learn.jarvis.network/',
   },
   HOP: {
     name: 'HOP Protocol',
@@ -855,6 +868,128 @@ const _tokens = {
       'frxETH acts as a stablecoin loosely pegged to ETH, so that 1 frxETH always represents 1 ETH and the amount of frxETH in circulation matches the amount of ETH in the Frax ETH system. When ETH is sent to the frxETHMinter, an equivalent amount of frxETH is minted. Holding frxETH on its own is not eligible for staking yield and should be thought of as analogous as holding ETH.',
     logoURI: '',
     documentation: 'https://docs.frax.finance/frax-ether/frxeth-and-sfrxeth',
+  },
+  sfrxETH: {
+    name: 'Staked Frax Ether',
+    symbol: 'sfrxETH',
+    address: '0x484c2D6e3cDd945a8B2DF735e079178C1036578c',
+    chainId: 10,
+    decimals: 18,
+    website: 'https://app.frax.finance/frxeth/mint',
+    description:
+      'sfrxETH is a ERC-4626 vault designed to accrue the staking yield of the Frax ETH validators. At any time, frxETH can be exchanged for sfrxETH by depositing it into the sfrxETH vault, which allows users to earn staking yield on their frxETH. Over time, as validators accrue staking yield, an equivalent amount of frxETH is minted and added to the vault, allowing users to redeem their sfrxETH for an greater amount of frxETH than they deposited. ',
+    logoURI: '',
+    documentation: 'https://docs.frax.finance/frax-ether/frxeth-and-sfrxeth',
+  },
+  MLP: {
+    name: 'MLP',
+    symbol: 'MLP',
+    address: '0xB280D03909Cc18640621955Cb3bC30948DF2Fa9a',
+    chainId: 10,
+    decimals: 18,
+    website: 'https://app.mummy.finance/#/trade?ref=beefy',
+    description:
+      'MLP consists of an index of assets used for swaps and leverage trading on Mummy Finance. MLP holders will make a profit when leverage traders make a loss and vice versa. Staked MLP also earns escrowed MMY rewards and 60% of platform fees distributed in ETH.',
+    logoURI: 'https://app.mummy.finance/static/media/ic_mlp_40.92637cb6.svg',
+    documentation: 'https://docs.mummy.finance/mlp',
+  },
+  LINK: {
+    name: 'ChainLink Token',
+    symbol: 'LINK',
+    address: '0x350a791Bfc2C21F9Ed5d10980Dad2e2638ffa7f6',
+    chainId: 10,
+    decimals: 18,
+    website: 'https://chain.link/',
+    description:
+      'Link is the currency used to pay the Chainlink node operators for their work. Chainlink node operators have to stake LINK in the network in order to participate and provide data services.',
+    logoURI:
+      'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x514910771AF9Ca656af840dff83E8264EcF986CA/logo.png',
+    documentation: 'https://docs.chain.link/resources/link-token-contracts',
+  },
+  BOB: {
+    name: 'BOB',
+    symbol: 'BOB',
+    address: '0xB0B195aEFA3650A6908f15CdaC7D92F8a5791B0B',
+    chainId: 10,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://www.zkbob.com/',
+    description:
+      'BOB is a multi-chain & multi-collateral stable token (stablecoin) enhanced with optional privacy features.',
+    documentation: 'https://docs.zkbob.com/bob-stablecoin/bob-highlights',
+  },
+  KNC: {
+    name: 'Kyber Network Crystal v2',
+    symbol: 'KNC',
+    address: '0xa00E3A3511aAC35cA78530c85007AFCd31753819',
+    chainId: 10,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://kyberswap.com/swap/optimism',
+    description:
+      'KNC is a utility and governance token and an integral part of Kyber Network and its product KyberSwap - the multi-chain decentralized exchange (DEX) protocol that provides the best rates for traders and maximizes earnings for liquidity providers',
+    documentation: 'https://docs.kyberswap.com/',
+  },
+  UNLOCK: {
+    name: 'Unlock Token',
+    symbol: 'UNLOCK',
+    address: '0x7aE97042a4A0eB4D1eB370C34BfEC71042a056B7',
+    chainId: 10,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://200keys.com/',
+    description:
+      'The UNLOCK token is part of the 200 Keys NFT project ecosystem where it can be staked for rewards or used for minting and upgrading NFTs from The Forge',
+    documentation: 'https://200keys.com/tokenomics.pdf',
+  },
+  '3CRV': {
+    name: 'Curve.fi DAI/USDC/USDT',
+    symbol: '3CRV',
+    address: '0x1337BedC9D22ecbe766dF105c9623922A27963EC',
+    chainId: 1,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://curve.fi/',
+    oracle: 'lps',
+    oracleId: 'curve-op-3crv',
+    description: 'Curve Optimism base 3pool consisting of DAI, USDC and USDT',
+  },
+  STG: {
+    name: 'StargateToken',
+    symbol: 'STG',
+    address: '0x296F55F8Fb28E498B858d0BcDA06D955B2Cb3f97',
+    chainId: 10,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://stargate.finance/',
+    description:
+      'Stargate is a community-driven organization building the first fully composable native asset bridge, and the first dApp built on LayerZero.',
+    documentation: 'https://stargateprotocol.gitbook.io/stargate/v/user-docs/',
+  },
+  wTBT: {
+    name: 'wTBT(Bridge Token)',
+    symbol: 'wTBT',
+    address: '0xdb4eA87fF83eB1c80b8976FC47731Da6a31D35e5',
+    chainId: 10,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://www.tprotocol.io/',
+    description:
+      'The launch of TProtocol will drastically alter the current DeFi picture and add an important missing piece, making DeFi users able to benefit from the mid-term interest rate gap between the stables and rising treasury. TProtocol will provide permissionless interest bearing tokens backed by the treasury with short duration. The redemption price of this treasury token will increase over time as interest from treasury accrues into the tokens.',
+    documentation:
+      'https://tprotocol.gitbook.io/tprotocol-documentation/white-paper/tprotocol-documentation',
+  },
+  MTA: {
+    name: 'Meta',
+    symbol: 'MTA',
+    address: '0x929B939f8524c3Be977af57A4A0aD3fb1E374b50',
+    chainId: 10,
+    decimals: 18,
+    logoURI: '',
+    website: 'https://mstable.org/',
+    description:
+      'Meta Vault is a composable architecture for yield-bearing tokens. It combines, optimises and allocates yield in a diversified manner.',
+    documentation: 'https://docs.mstable.org/',
   },
 } as const;
 

@@ -25,16 +25,21 @@ export interface ApyBreakdownResult {
 
 export const getApyBreakdown = (
   pools: { name: string; address: string; beefyFee?: number }[],
-  tradingAprs: Record<string, BigNumber>,
+  tradingAprs: Record<string, BigNumber> | undefined,
   farmAprs: BigNumber[],
-  providerFee: number | BigNumber[],
-  liquidStakingAprs?: number,
-  composablePoolAprs?: number
+  providerFee?: number | BigNumber[],
+  liquidStakingAprs?: number[],
+  composablePoolAprs?: number[]
 ): ApyBreakdownResult => {
   const result: ApyBreakdownResult = {
     apys: {},
     apyBreakdowns: {},
   };
+
+  if (providerFee === undefined) {
+    console.warn(`No provider fee provided for getApyBreakdown, defaulting to 0`);
+    providerFee = 0;
+  }
 
   pools.forEach((pool, i) => {
     const liquidStakingApr: number | undefined = liquidStakingAprs
@@ -61,11 +66,14 @@ export const getApyBreakdown = (
     const vaultApr = simpleApr * shareAfterBeefyPerformanceFee;
     let vaultApy = compound(simpleApr, BASE_HPY, 1, shareAfterBeefyPerformanceFee);
 
-    const tradingApr: number | undefined = (
-      (tradingAprs[pool.address.toLowerCase()] ?? new BigNumber(0)).isFinite()
-        ? tradingAprs[pool.address.toLowerCase()]
-        : new BigNumber(0)
-    )?.toNumber();
+    let tradingApr: number | undefined = 0;
+    if (tradingAprs != null) {
+      tradingApr = (
+        (tradingAprs[pool.address.toLowerCase()] ?? new BigNumber(0)).isFinite()
+          ? tradingAprs[pool.address.toLowerCase()]
+          : new BigNumber(0)
+      )?.toNumber();
+    }
 
     const totalApy =
       getFarmWithTradingFeesApy(simpleApr, tradingApr, BASE_HPY, 1, shareAfterBeefyPerformanceFee) +

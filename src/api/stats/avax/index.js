@@ -27,8 +27,10 @@ import getbeJOEEarnApy from './getbeJOEEarnApy';
 const getSwapsicleApys = require('./getSwapsicleApys');
 const { getGmxApys } = require('./getGmxApys');
 const getKyberAvaxApys = require('./getKyberAvaxApys');
+const getSoliSnekApys = require('./getSoliSnekApys');
 
 const getApys = [
+  getSoliSnekApys,
   getKyberAvaxApys,
   getGmxApys,
   getbeJOEApy,
@@ -50,7 +52,7 @@ const getApys = [
   getBlizzLpApys,
   getBlizzLendingApys,
   getBankerJoeApys,
-  getSynapseApys,
+  // getSynapseApys,
   getSpellApys,
   getMaiApys,
   getMaiCurveApys,

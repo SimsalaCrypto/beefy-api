@@ -23,11 +23,12 @@ const MULTICALLS = {
   2222: '0xA338D34c5de06B88197609956a2dEAAfF7Af46c8',
   1: '0x9D55cAEE108aBdd4C47E42088C97ecA43510E969',
   7700: '0xe6CcE165Aa3e52B2cC55F17b1dBC6A8fe5D66610',
+  324: '0x8BBbA444553e149968A52f46d1294C280C1458B6',
 };
 
 const MulticallAbi = require('../abis/BeefyPriceMulticall.json');
-const ERC20 = require('../abis/common/ERC20/ERC20.json');
 const BATCH_SIZE = 128;
+const DEBUG_ORACLES = [];
 
 const sortByKeys = o => {
   return Object.keys(o)
@@ -70,41 +71,22 @@ const fetchAmmPrices = async (pools, knownPrices) => {
   let lps = {};
   let breakdown = {};
   let weights = {};
+
   Object.keys(knownPrices).forEach(known => {
     weights[known] = Number.MAX_SAFE_INTEGER;
   });
-
-  for (let chain in MULTICALLS) {
-    let filtered = pools.filter(p => p.chainId == chain);
-
+  const promises = Object.keys(MULTICALLS).map(async chain => {
+    let chainPools = pools.filter(p => p.chainId == chain);
     // Old BSC pools don't have the chainId attr
     if (chain == '56') {
-      filtered = pools.filter(p => p.chainId === undefined).concat(filtered);
+      chainPools = pools.filter(p => p.chainId === undefined).concat(chainPools);
     }
+    await fetchChainPools(chain, chainPools);
+    return chainPools;
+  });
 
-    // Setup multichain
-    const provider = new ethers.providers.JsonRpcProvider(MULTICHAIN_RPC[chain]);
-    const multicall = new ethers.Contract(MULTICALLS[chain], MulticallAbi, provider);
-
-    // Split query in batches
-    const query = filtered.map(p => [p.address, p.lp0.address, p.lp1.address]);
-    for (let i = 0; i < filtered.length; i += BATCH_SIZE) {
-      const batch = query.slice(i, i + BATCH_SIZE);
-      let buf = [];
-      try {
-        buf = await multicall.getLpInfo(batch);
-      } catch (e) {
-        console.error('fetchAmmPrices', e);
-      }
-
-      // Merge fetched data
-      for (let j = 0; j < batch.length; j++) {
-        filtered[j + i].totalSupply = new BigNumber(buf[j * 3 + 0]?.toString());
-        filtered[j + i].lp0.balance = new BigNumber(buf[j * 3 + 1]?.toString());
-        filtered[j + i].lp1.balance = new BigNumber(buf[j * 3 + 2]?.toString());
-      }
-    }
-
+  const allPools = await Promise.all(promises);
+  for (let filtered of allPools) {
     const unsolved = filtered.slice();
     let solving = true;
     while (solving) {
@@ -112,32 +94,54 @@ const fetchAmmPrices = async (pools, knownPrices) => {
 
       for (let i = unsolved.length - 1; i >= 0; i--) {
         const pool = unsolved[i];
+        const trySolve = [];
 
-        let knownToken, unknownToken;
-        if (pool.lp0.oracleId in prices) {
-          knownToken = pool.lp0;
-          unknownToken = pool.lp1;
+        if (pool.lp0.oracleId in weights && pool.lp1.oracleId in weights) {
+          trySolve.push({ knownToken: pool.lp0, unknownToken: pool.lp1 });
+          trySolve.push({ knownToken: pool.lp1, unknownToken: pool.lp0 });
+        } else if (pool.lp0.oracleId in prices) {
+          trySolve.push({ knownToken: pool.lp0, unknownToken: pool.lp1 });
         } else if (pool.lp1.oracleId in prices) {
-          knownToken = pool.lp1;
-          unknownToken = pool.lp0;
+          trySolve.push({ knownToken: pool.lp1, unknownToken: pool.lp0 });
         } else {
-          console.log('unsolved: ', pool.lp0.oracleId, pool.lp1.oracleId, pool.name);
+          // both unknown: not solved yet but could be solved later
           continue;
         }
 
-        const { price, weight } = calcTokenPrice(
-          prices[knownToken.oracleId],
-          knownToken,
-          unknownToken
-        );
-        if (weight > (weights[unknownToken.oracleId] || 0)) {
-          prices[unknownToken.oracleId] = price;
-          weights[unknownToken.oracleId] = weight;
+        for (const { knownToken, unknownToken } of trySolve) {
+          const { price, weight } = calcTokenPrice(
+            prices[knownToken.oracleId],
+            knownToken,
+            unknownToken
+          );
+          const existingWeight = weights[unknownToken.oracleId] || 0;
+          const betterPrice = weight > existingWeight;
+
+          if (DEBUG_ORACLES.includes(unknownToken.oracleId)) {
+            console.log(
+              `${betterPrice ? 'Setting' : 'Skipping'} ${unknownToken.oracleId} to $${price} via ${
+                knownToken.oracleId
+              } ($${prices[knownToken.oracleId]}) in ${pool.name} (${
+                pool.address
+              }) - new weight ${weight} vs existing ${existingWeight}`
+            );
+          }
+
+          if (betterPrice) {
+            prices[unknownToken.oracleId] = price;
+            weights[unknownToken.oracleId] = weight;
+          }
         }
 
         unsolved.splice(i, 1);
         solving = true;
       }
+    }
+
+    if (unsolved.length > 0) {
+      // actually not solved
+      console.log('Unsolved pools: ');
+      unsolved.forEach(pool => console.log(pool.lp0.oracleId, pool.lp1.oracleId, pool.name));
     }
   }
 
@@ -152,6 +156,30 @@ const fetchAmmPrices = async (pools, knownPrices) => {
     tokenPrices: sortByKeys(prices),
     lpsBreakdown: sortByKeys(breakdown),
   };
+};
+
+const fetchChainPools = async (chain, pools) => {
+  const provider = new ethers.providers.JsonRpcProvider(MULTICHAIN_RPC[chain]);
+  const multicall = new ethers.Contract(MULTICALLS[chain], MulticallAbi, provider);
+
+  // Split query in batches
+  const query = pools.map(p => [p.address, p.lp0.address, p.lp1.address]);
+  for (let i = 0; i < pools.length; i += BATCH_SIZE) {
+    const batch = query.slice(i, i + BATCH_SIZE);
+    let buf = [];
+    try {
+      buf = await multicall.getLpInfo(batch);
+    } catch (e) {
+      console.error('fetchAmmPrices', chain, e);
+    }
+
+    // Merge fetched data
+    for (let j = 0; j < batch.length; j++) {
+      pools[j + i].totalSupply = new BigNumber(buf[j * 3 + 0]?.toString());
+      pools[j + i].lp0.balance = new BigNumber(buf[j * 3 + 1]?.toString());
+      pools[j + i].lp1.balance = new BigNumber(buf[j * 3 + 2]?.toString());
+    }
+  }
 };
 
 module.exports = { fetchAmmPrices };
